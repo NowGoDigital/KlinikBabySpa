@@ -86,10 +86,10 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .hero-slider{position:relative;height:100vh;min-height:700px;overflow:hidden}
 .hero-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1s cubic-bezier(.4,0,.2,1),visibility 1s}
 .hero-slide.active{opacity:1;visibility:visible}
-.hero-slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.7)}
-.hero-slide-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(42,31,45,.4) 0%,rgba(212,31,106,.2) 100%)}
+.hero-slide-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:brightness(.65)}
+.hero-slide-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(42,31,45,.55) 0%,rgba(212,31,106,.25) 100%)}
 .hero-slide-content{position:relative;z-index:2;height:100%;display:flex;align-items:center;padding:0 40px}
-.hero-slide-inner{max-width:1400px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.2fr 1fr;gap:80px;align-items:center}
+.hero-slide-inner{max-width:1400px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .hero-slide-text{color:#fff;animation:slideInLeft 1s cubic-bezier(.4,0,.2,1)}
 @keyframes slideInLeft{from{opacity:0;transform:translateX(-40px)}to{opacity:1;transform:translateX(0)}}
 .hero-slide-badge{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.15);backdrop-filter:blur(20px);padding:10px 22px;border-radius:40px;font-size:.82rem;font-weight:500;color:#fff;margin-bottom:28px;border:1px solid rgba(255,255,255,.2)}
@@ -104,20 +104,13 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .btn-slider-outline{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(10px)}
 .btn-slider-outline:hover{background:rgba(255,255,255,.2);border-color:#fff;transform:translateY(-3px)}
 
+/* Hero Visual - Clean Image Only */
 .hero-slide-visual{position:relative;display:flex;justify-content:center;align-items:center;animation:slideInRight 1s cubic-bezier(.4,0,.2,1)}
 @keyframes slideInRight{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
 .hero-slide-img-wrap{position:relative;width:420px;height:520px;max-width:100%}
 .hero-slide-img-frame{width:100%;height:100%;border-radius:var(--radius-xl);overflow:hidden;position:relative;box-shadow:var(--shadow-xl);border:6px solid rgba(255,255,255,.2)}
 .hero-slide-img-frame img{width:100%;height:100%;object-fit:cover}
-.hero-slide-float{position:absolute;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-radius:20px;padding:16px 20px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:14px;animation:floatY 5s ease-in-out infinite;z-index:2;border:1px solid rgba(255,255,255,.8)}
-.hero-slide-float.f1{top:40px;right:-40px;animation-delay:0s}
-.hero-slide-float.f2{bottom:80px;left:-50px;animation-delay:-2s}
-@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-.float-ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.2rem;flex-shrink:0}
-.float-ico.rose{background:var(--rose-100);color:var(--rose-600)}
-.float-ico.gold{background:var(--champagne);color:var(--gold-dark)}
-.float-txt strong{display:block;font-size:.88rem;color:var(--charcoal);font-weight:600}
-.float-txt span{font-size:.72rem;color:var(--charcoal-muted)}
+.hero-slide-img-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(42,31,45,.3) 100%);pointer-events:none}
 
 /* Slider Controls */
 .slider-controls{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:10}
@@ -345,7 +338,6 @@ section{position:relative;z-index:1}
   .hero-slide-subtitle{margin:0 auto 36px}
   .hero-slide-ctas{justify-content:center}
   .hero-slide-img-wrap{width:340px;height:440px}
-  .hero-slide-float.f1{right:0}.hero-slide-float.f2{left:0}
   .why-grid{grid-template-columns:repeat(2,1fr)}
   .footer-grid{grid-template-columns:1fr 1fr}
   .contact-grid{grid-template-columns:1fr}
@@ -361,7 +353,6 @@ section{position:relative;z-index:1}
   .hero-slide{padding:0 24px}
   .hero-slide-title{font-size:2.2rem}
   .hero-slide-img-wrap{width:280px;height:380px}
-  .hero-slide-float{display:none}
   .section-title{font-size:2rem}
   .services-grid{grid-template-columns:1fr 1fr}
   .testi-grid{grid-template-columns:1fr}
@@ -447,14 +438,6 @@ section{position:relative;z-index:1}
             <div class="hero-slide-img-frame">
               <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&q=80" alt="Baby Spa Treatment">
             </div>
-            <div class="hero-slide-float f1">
-              <div class="float-ico rose"><i class="fas fa-heart"></i></div>
-              <div class="float-txt"><strong>Aman & Nyaman</strong><span>Untuk Si Kecil</span></div>
-            </div>
-            <div class="hero-slide-float f2">
-              <div class="float-ico gold"><i class="fas fa-award"></i></div>
-              <div class="float-txt"><strong>Bersertifikat</strong><span>Terapis Profesional</span></div>
-            </div>
           </div>
         </div>
       </div>
@@ -480,14 +463,6 @@ section{position:relative;z-index:1}
             <div class="hero-slide-img-frame">
               <img src="https://images.unsplash.com/photo-1544126592-807ade215a0b?w=800&q=80" alt="Mother and Baby Care">
             </div>
-            <div class="hero-slide-float f1">
-              <div class="float-ico rose"><i class="fas fa-heart-pulse"></i></div>
-              <div class="float-txt"><strong>Penuh Kasih</strong><span>Perawatan Lembut</span></div>
-            </div>
-            <div class="hero-slide-float f2">
-              <div class="float-ico gold"><i class="fas fa-users"></i></div>
-              <div class="float-txt"><strong>500+ Keluarga</strong><span>Sudah Percaya</span></div>
-            </div>
           </div>
         </div>
       </div>
@@ -512,14 +487,6 @@ section{position:relative;z-index:1}
           <div class="hero-slide-img-wrap">
             <div class="hero-slide-img-frame">
               <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=800&q=80" alt="Professional Baby Care">
-            </div>
-            <div class="hero-slide-float f1">
-              <div class="float-ico rose"><i class="fas fa-shield-heart"></i></div>
-              <div class="float-txt"><strong>100% Aman</strong><span>Peralatan Steril</span></div>
-            </div>
-            <div class="hero-slide-float f2">
-              <div class="float-ico gold"><i class="fas fa-certificate"></i></div>
-              <div class="float-txt"><strong>Bersertifikat</strong><span>Standar Tinggi</span></div>
             </div>
           </div>
         </div>
@@ -649,17 +616,17 @@ section{position:relative;z-index:1}
           <div class="service-options" id="serviceOptions">
             <div class="service-opt" data-service="Nafas Grok-Grok"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Nafas Grok-Grok</h4><p>Melegakan pernapasan</p></div>
             <div class="service-opt" data-service="Hidung Tersumbat"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Hidung Tersumbat</h4><p>Terapi lembut</p></div>
-            <div class="service-opt" data-service="Batuk Pilek"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🤧</div><h4>Batuk Pilek</h4><p>Alami tanpa obat</p></div>
+            <div class="service-opt" data-service="Batuk Pilek"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Batuk Pilek</h4><p>Alami tanpa obat</p></div>
             <div class="service-opt" data-service="Batuk Berdahak"><div class="check"><i class="fas fa-check"></i></div><div class="ico">💨</div><h4>Batuk Berdahak</h4><p>Pijat terapeutik</p></div>
             <div class="service-opt" data-service="Perut Kembung"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🫧</div><h4>Perut Kembung</h4><p>Kurangi kolik</p></div>
             <div class="service-opt" data-service="Rewel/Susah Tidur"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🌙</div><h4>Rewel/Susah Tidur</h4><p>Tidur nyenyak</p></div>
             <div class="service-opt" data-service="Sembelit"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Sembelit</h4><p>Lancar pencernaan</p></div>
             <div class="service-opt" data-service="Diare"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Diare</h4><p>Perawatan komprehensif</p></div>
             <div class="service-opt" data-service="Pijat Sehat"><div class="check"><i class="fas fa-check"></i></div><div class="ico">👐</div><h4>Pijat Sehat</h4><p>Stimulasi tumbuh kembang</p></div>
-            <div class="service-opt" data-service="GTM"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🍽️</div><h4>GTM</h4><p>Kembali nafsu makan</p></div>
+            <div class="service-opt" data-service="GTM"><div class="check"><i class="fas fa-check"></i></div><div class="ico">️</div><h4>GTM</h4><p>Kembali nafsu makan</p></div>
             <div class="service-opt" data-service="Pijat Oksitosin"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Pijat Oksitosin</h4><p>Lancar ASI</p></div>
             <div class="service-opt" data-service="Senam Hamil"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🤰</div><h4>Senam Hamil</h4><p>Kebugaran ibu</p></div>
-            <div class="service-opt" data-service="Cukur Gundul"><div class="check"><i class="fas fa-check"></i></div><div class="ico">✂️</div><h4>Cukur Gundul</h4><p>Peralatan steril</p></div>
+            <div class="service-opt" data-service="Cukur Gundul"><div class="check"><i class="fas fa-check"></i></div><div class="ico">️</div><h4>Cukur Gundul</h4><p>Peralatan steril</p></div>
             <div class="service-opt" data-service="Pijat Laktasi"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🍼</div><h4>Pijat Laktasi</h4><p>Atasi bendungan ASI</p></div>
             <div class="service-opt" data-service="Perawatan Bayi Baru Lahir"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Perawatan BBL</h4><p>Komprehensif</p></div>
           </div>
@@ -1213,11 +1180,11 @@ document.getElementById('submitBooking').addEventListener('click',()=>{
   const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
   const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0A`+
     `Halo Bidan Tasya, saya ingin booking:%0A%0A`+
-    `📋 *Layanan:* ${bookingData.services.join(', ')}%0A`+
+    ` *Layanan:* ${bookingData.services.join(', ')}%0A`+
     `📅 *Tanggal:* ${dateFormatted}%0A`+
     `⏰ *Waktu:* ${bookingData.time} WITA%0A`+
     `👩 *Nama Bunda:* ${bookingData.name}%0A`+
-    `📱 *WhatsApp:* ${bookingData.phone}%0A`+
+    ` *WhatsApp:* ${bookingData.phone}%0A`+
     `👶 *Nama Bayi:* ${bookingData.baby}%0A`+
     `🎂 *Usia Bayi:* ${bookingData.age}%0A`+
     (bookingData.notes?`📝 *Catatan:* ${bookingData.notes}%0A`:'')+
