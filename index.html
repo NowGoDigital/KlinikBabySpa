@@ -836,36 +836,69 @@ document.getElementById('successModal').addEventListener('click',e=>{if(e.target
 </script>
 
 <script>
-// ===== INTEGRASI BOOKING KE LOCALSTORAGE =====
-// Simpan booking ke localStorage agar bisa dibaca admin panel
-const originalSubmit = document.getElementById('submitBooking');
-if(originalSubmit){
-  originalSubmit.addEventListener('click', function(){
-    // Tunggu sebentar agar data form terisi
-    setTimeout(() => {
-      const bookingData = {
-        id: 'BT-' + Date.now().toString(36).toUpperCase(),
-        name: document.getElementById('bookName').value.trim(),
-        phone: document.getElementById('bookPhone').value.trim(),
-        baby: document.getElementById('bookBaby').value.trim(),
-        age: document.getElementById('bookAge').value,
-        services: window.bookingData?.services || [],
-        date: document.getElementById('bookDate').value,
-        time: window.bookingData?.time || '',
-        notes: document.getElementById('bookNotes').value.trim(),
-        status: 'pending',
-        createdAt: new Date().toISOString()
-      };
-      
-      if(bookingData.name && bookingData.phone){
-        const bookings = JSON.parse(localStorage.getItem('bidanTasya_bookings') || '[]');
-        bookings.unshift(bookingData);
-        localStorage.setItem('bidanTasya_bookings', JSON.stringify(bookings));
-        console.log('✅ Booking saved to localStorage:', bookingData.id);
-      }
-    }, 500);
-  }, true);
-}
+// ===== INTEGRASI BOOKING KE LOCALSTORAGE (FIXED) =====
+(function(){
+  // Override fungsi submitBooking yang sudah ada
+  const submitBtn = document.getElementById('submitBooking');
+  if(!submitBtn) return;
+  
+  // Simpan referensi fungsi asli
+  const originalClick = submitBtn.onclick;
+  
+  submitBtn.addEventListener('click', function(e){
+    // Ambil data langsung dari DOM (lebih reliable)
+    const name = document.getElementById('bookName')?.value.trim();
+    const phone = document.getElementById('bookPhone')?.value.trim();
+    const baby = document.getElementById('bookBaby')?.value.trim();
+    const age = document.getElementById('bookAge')?.value;
+    const date = document.getElementById('bookDate')?.value;
+    const notes = document.getElementById('bookNotes')?.value.trim();
+    
+    // Ambil layanan dari service-opt yang selected
+    const selectedServices = [];
+    document.querySelectorAll('.service-opt.selected').forEach(opt => {
+      const svc = opt.dataset.service;
+      if(svc) selectedServices.push(svc);
+    });
+    
+    // Ambil waktu dari time-slot yang selected
+    let time = '';
+    const selectedTime = document.querySelector('.time-slot.selected');
+    if(selectedTime) time = selectedTime.dataset.time;
+    
+    // Validasi minimal
+    if(!name || !phone || selectedServices.length === 0){
+      console.warn('⚠️ Data booking tidak lengkap');
+      return;
+    }
+    
+    // Buat booking object
+    const bookingData = {
+      id: 'BT-' + Date.now().toString(36).toUpperCase(),
+      name: name,
+      phone: phone,
+      baby: baby || '-',
+      age: age || '-',
+      services: selectedServices,
+      date: date || '',
+      time: time || '-',
+      notes: notes || '',
+      status: 'pending',
+      createdAt: new Date().toISOString()
+    };
+    
+    // Simpan ke localStorage
+    try {
+      const bookings = JSON.parse(localStorage.getItem('bidanTasya_bookings') || '[]');
+      bookings.unshift(bookingData);
+      localStorage.setItem('bidanTasya_bookings', JSON.stringify(bookings));
+      console.log('✅ Booking saved:', bookingData);
+      console.log('📋 Services:', bookingData.services);
+    } catch(err) {
+      console.error('❌ Error saving booking:', err);
+    }
+  }, true); // true = capture phase, jalan duluan sebelum handler lain
+})();
 </script>
 
 
