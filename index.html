@@ -14,11 +14,11 @@
   --charcoal:#2a1f2d;--charcoal-light:#4a3a4d;--charcoal-muted:#6b5a6e;
   --white:#ffffff;
   --shadow-sm:0 2px 12px rgba(42,31,45,.06);
-  --shadow-md:0 8px 30px rgba(42,31,45,.10);
-  --shadow-lg:0 20px 60px rgba(42,31,45,.14);
-  --shadow-xl:0 30px 80px rgba(212,31,106,.18);
-  --shadow-glow:0 0 40px rgba(244,63,133,.25);
-  --radius-sm:12px;--radius-md:20px;--radius-lg:32px;--radius-xl:48px;
+  --shadow-md:0 6px 20px rgba(42,31,45,.08);
+  --shadow-lg:0 12px 40px rgba(42,31,45,.12);
+  --shadow-xl:0 20px 60px rgba(212,31,106,.16);
+  --shadow-glow:0 0 30px rgba(244,63,133,.2);
+  --radius-sm:14px;--radius-md:18px;--radius-lg:24px;--radius-xl:40px;
   --grad-rose:linear-gradient(135deg,#ff6fa3 0%,#f43f85 50%,#d41f6a 100%);
   --grad-gold:linear-gradient(135deg,#f7e7ce 0%,#c9a96e 100%);
   --grad-cream:linear-gradient(135deg,#faf3ee 0%,#f7e7ce 100%);
@@ -56,7 +56,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .loader-bar::after{content:'';display:block;width:40%;height:100%;background:var(--grad-rose);animation:load 1.2s ease-in-out infinite}
 @keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
 
-/* ===== NAVBAR - COMPACT & RAMPING ===== */
+/* ===== NAVBAR ===== */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:10px 0;transition:all .4s cubic-bezier(.4,0,.2,1);background:rgba(42,31,45,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 .navbar.scrolled{background:rgba(250,243,238,.95);box-shadow:var(--shadow-sm);padding:8px 0}
 .nav-container{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
@@ -109,8 +109,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .btn-slider-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(244,63,133,.45)}
 .btn-slider-outline{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.3);backdrop-filter:blur(10px)}
 .btn-slider-outline:hover{background:rgba(255,255,255,.2);border-color:#fff;transform:translateY(-3px)}
-
-/* Slider Controls */
 .slider-controls{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:10}
 .slider-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s;border:2px solid transparent}
 .slider-dot.active{background:#fff;transform:scale(1.3);border-color:var(--rose-400)}
@@ -119,214 +117,208 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .slider-arrow:hover{background:rgba(255,255,255,.3);transform:scale(1.1)}
 .slider-progress{position:absolute;bottom:0;left:0;height:3px;background:var(--grad-rose);z-index:10;transition:width .1s linear}
 
-/* ===== SECTIONS ===== */
+/* ===== SECTIONS - MINIMALIST ===== */
 section{position:relative;z-index:1}
-.container{max-width:1400px;margin:0 auto;padding:0 40px}
-.section-head{text-align:center;margin-bottom:70px}
-.section-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(255,111,163,.1);color:var(--rose-600);padding:8px 22px;border-radius:40px;font-size:.8rem;font-weight:600;margin-bottom:20px;letter-spacing:1px;text-transform:uppercase}
-.section-tag::before,.section-tag::after{content:'';width:20px;height:1px;background:var(--rose-400)}
-.section-title{font-family:var(--font-display);font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;color:var(--charcoal);margin-bottom:18px;line-height:1.15;letter-spacing:-.5px}
+.container{max-width:1280px;margin:0 auto;padding:0 32px}
+.section-head{margin-bottom:50px}
+.section-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(255,111,163,.08);color:var(--rose-600);padding:7px 18px;border-radius:30px;font-size:.75rem;font-weight:600;margin-bottom:16px;letter-spacing:1px;text-transform:uppercase}
+.section-tag::before,.section-tag::after{content:'';width:16px;height:1px;background:var(--rose-400)}
+.section-title{font-family:var(--font-display);font-size:clamp(1.7rem,3.5vw,2.4rem);font-weight:700;color:var(--charcoal);margin-bottom:12px;line-height:1.2;letter-spacing:-.5px}
 .section-title .accent{background:linear-gradient(135deg,var(--rose-500),var(--gold-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-style:italic}
-.section-desc{font-size:1.05rem;color:var(--charcoal-muted);max-width:640px;margin:0 auto;line-height:1.7}
+.section-desc{font-size:.95rem;color:var(--charcoal-muted);max-width:560px;margin:0 auto;line-height:1.65}
 
-/* ===== SERVICES ===== */
-.services{padding:120px 0;background:var(--white);position:relative}
+/* ===== SERVICES - MINIMALIST CARDS ===== */
+.services{padding:80px 0;background:var(--white);position:relative}
 .services::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose-200),transparent)}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
-.service-card{background:var(--cream);border-radius:var(--radius-md);padding:34px 28px;transition:all .5s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;border:1px solid transparent;cursor:pointer}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-rose);transform:scaleX(0);transform-origin:left;transition:transform .5s}
-.service-card::after{content:'';position:absolute;inset:0;background:var(--grad-rose);opacity:0;transition:opacity .5s;z-index:0}
-.service-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-xl);border-color:rgba(244,63,133,.1)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:18px}
+.service-card{background:var(--white);border-radius:var(--radius-sm);padding:24px 22px;transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;border:1px solid rgba(42,31,45,.06);cursor:pointer}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-rose);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(244,63,133,.15)}
 .service-card:hover::before{transform:scaleX(1)}
-.service-card:hover::after{opacity:.03}
-.service-card>*{position:relative;z-index:1}
-.service-ico{width:60px;height:60px;border-radius:18px;display:grid;place-items:center;font-size:1.5rem;margin-bottom:22px;background:var(--white);color:var(--rose-500);box-shadow:var(--shadow-sm);transition:all .4s}
-.service-card:hover .service-ico{background:var(--grad-rose);color:#fff;transform:scale(1.1) rotate(8deg);box-shadow:var(--shadow-glow)}
-.service-card h3{font-family:var(--font-display);font-size:1.2rem;font-weight:600;color:var(--charcoal);margin-bottom:10px}
-.service-card p{font-size:.88rem;color:var(--charcoal-muted);line-height:1.65}
-.service-card .arrow{position:absolute;top:28px;right:28px;width:32px;height:32px;border-radius:50%;background:var(--white);display:grid;place-items:center;color:var(--rose-400);font-size:.8rem;transition:all .4s;opacity:0;transform:translateX(-10px)}
+.service-ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:1.25rem;margin-bottom:16px;background:var(--rose-50);color:var(--rose-500);transition:all .4s}
+.service-card:hover .service-ico{background:var(--grad-rose);color:#fff;transform:scale(1.08) rotate(6deg);box-shadow:var(--shadow-glow)}
+.service-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:600;color:var(--charcoal);margin-bottom:6px}
+.service-card p{font-size:.82rem;color:var(--charcoal-muted);line-height:1.55}
+.service-card .arrow{position:absolute;top:22px;right:22px;width:28px;height:28px;border-radius:50%;background:var(--rose-50);display:grid;place-items:center;color:var(--rose-400);font-size:.7rem;transition:all .4s;opacity:0;transform:translateX(-8px)}
 .service-card:hover .arrow{opacity:1;transform:translateX(0)}
 
-/* ===== BOOKING SYSTEM ===== */
-.booking{padding:120px 0;background:var(--grad-hero);position:relative;overflow:hidden}
-.booking::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,169,110,.15) 0%,transparent 70%);border-radius:50%}
-.booking-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
-.booking-card{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-xl);overflow:hidden;border:1px solid rgba(255,255,255,.8)}
-.booking-header{background:var(--grad-rose);padding:40px 50px;color:#fff;position:relative;overflow:hidden}
-.booking-header::before{content:'';position:absolute;top:-50%;right:-10%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.15) 0%,transparent 70%);border-radius:50%}
-.booking-header h2{font-family:var(--font-display);font-size:2rem;font-weight:700;margin-bottom:8px;position:relative}
-.booking-header p{opacity:.9;font-size:.95rem;position:relative}
-.booking-progress{display:flex;justify-content:space-between;padding:30px 50px 0;position:relative}
-.booking-progress::before{content:'';position:absolute;top:45px;left:80px;right:80px;height:2px;background:var(--rose-100);z-index:0}
-.booking-progress .fill{position:absolute;top:45px;left:80px;height:2px;background:var(--grad-rose);z-index:1;transition:width .5s cubic-bezier(.4,0,.2,1);width:0}
-.step-item{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative;z-index:2;flex:1}
-.step-num{width:32px;height:32px;border-radius:50%;background:var(--white);border:2px solid var(--rose-200);display:grid;place-items:center;font-size:.85rem;font-weight:600;color:var(--charcoal-muted);transition:all .4s}
+/* ===== BOOKING SYSTEM - MINIMALIST ===== */
+.booking{padding:80px 0;background:var(--grad-hero);position:relative;overflow:hidden}
+.booking::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,169,110,.12) 0%,transparent 70%);border-radius:50%}
+.booking-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1}
+.booking-card{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid rgba(255,255,255,.8)}
+.booking-header{background:var(--grad-rose);padding:30px 36px;color:#fff;position:relative;overflow:hidden}
+.booking-header::before{content:'';position:absolute;top:-50%;right:-10%;width:250px;height:250px;background:radial-gradient(circle,rgba(255,255,255,.15) 0%,transparent 70%);border-radius:50%}
+.booking-header h2{font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin-bottom:4px;position:relative}
+.booking-header p{opacity:.92;font-size:.88rem;position:relative}
+.booking-progress{display:flex;justify-content:space-between;padding:24px 36px 0;position:relative}
+.booking-progress::before{content:'';position:absolute;top:36px;left:60px;right:60px;height:2px;background:var(--rose-100);z-index:0}
+.booking-progress .fill{position:absolute;top:36px;left:60px;height:2px;background:var(--grad-rose);z-index:1;transition:width .5s cubic-bezier(.4,0,.2,1);width:0}
+.step-item{display:flex;flex-direction:column;align-items:center;gap:8px;position:relative;z-index:2;flex:1}
+.step-num{width:28px;height:28px;border-radius:50%;background:var(--white);border:2px solid var(--rose-200);display:grid;place-items:center;font-size:.78rem;font-weight:600;color:var(--charcoal-muted);transition:all .4s}
 .step-item.active .step-num{background:var(--grad-rose);border-color:var(--rose-500);color:#fff;box-shadow:var(--shadow-glow);transform:scale(1.1)}
 .step-item.done .step-num{background:var(--rose-500);border-color:var(--rose-500);color:#fff}
-.step-label{font-size:.75rem;font-weight:600;color:var(--charcoal-muted);text-transform:uppercase;letter-spacing:1px}
+.step-label{font-size:.68rem;font-weight:600;color:var(--charcoal-muted);text-transform:uppercase;letter-spacing:1px}
 .step-item.active .step-label{color:var(--rose-600)}
-.booking-body{padding:40px 50px 50px;min-height:420px}
+.booking-body{padding:30px 36px 36px;min-height:380px}
 .booking-step{display:none;animation:fadeIn .5s}
 .booking-step.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.step-title{font-family:var(--font-display);font-size:1.5rem;font-weight:600;color:var(--charcoal);margin-bottom:8px}
-.step-subtitle{font-size:.9rem;color:var(--charcoal-muted);margin-bottom:28px}
-.service-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.service-opt{background:var(--cream);border:2px solid transparent;border-radius:var(--radius-sm);padding:20px;cursor:pointer;transition:all .3s;position:relative}
+@keyframes fadeIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.step-title{font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:var(--charcoal);margin-bottom:6px}
+.step-subtitle{font-size:.85rem;color:var(--charcoal-muted);margin-bottom:22px}
+.service-options{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.service-opt{background:var(--cream);border:2px solid transparent;border-radius:var(--radius-sm);padding:16px 14px;cursor:pointer;transition:all .3s;position:relative}
 .service-opt:hover{border-color:var(--rose-200);transform:translateY(-2px)}
 .service-opt.selected{border-color:var(--rose-500);background:var(--rose-50);box-shadow:var(--shadow-sm)}
-.service-opt .check{position:absolute;top:12px;right:12px;width:24px;height:24px;border-radius:50%;background:var(--rose-500);color:#fff;display:grid;place-items:center;font-size:.7rem;opacity:0;transform:scale(0);transition:all .3s}
+.service-opt .check{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;background:var(--rose-500);color:#fff;display:grid;place-items:center;font-size:.65rem;opacity:0;transform:scale(0);transition:all .3s}
 .service-opt.selected .check{opacity:1;transform:scale(1)}
-.service-opt .ico{font-size:1.5rem;margin-bottom:10px}
-.service-opt h4{font-size:.95rem;font-weight:600;color:var(--charcoal);margin-bottom:4px}
-.service-opt p{font-size:.78rem;color:var(--charcoal-muted)}
-.date-time-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.dt-group label{display:block;font-size:.82rem;font-weight:600;color:var(--charcoal);margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
-.dt-input{width:100%;padding:14px 18px;border:2px solid var(--rose-100);border-radius:var(--radius-sm);font-family:inherit;font-size:.95rem;color:var(--charcoal);background:var(--cream);transition:all .3s}
-.dt-input:focus{outline:none;border-color:var(--rose-400);background:var(--white);box-shadow:0 0 0 4px rgba(244,63,133,.1)}
-.time-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.time-slot{padding:12px;border:2px solid var(--rose-100);border-radius:var(--radius-sm);text-align:center;font-size:.88rem;font-weight:500;cursor:pointer;transition:all .3s;background:var(--cream)}
+.service-opt .ico{font-size:1.3rem;margin-bottom:8px}
+.service-opt h4{font-size:.88rem;font-weight:600;color:var(--charcoal);margin-bottom:3px}
+.service-opt p{font-size:.72rem;color:var(--charcoal-muted)}
+.date-time-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.dt-group label{display:block;font-size:.75rem;font-weight:600;color:var(--charcoal);margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
+.dt-input{width:100%;padding:12px 16px;border:2px solid var(--rose-100);border-radius:var(--radius-sm);font-family:inherit;font-size:.9rem;color:var(--charcoal);background:var(--cream);transition:all .3s}
+.dt-input:focus{outline:none;border-color:var(--rose-400);background:var(--white);box-shadow:0 0 0 4px rgba(244,63,133,.08)}
+.time-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.time-slot{padding:10px;border:2px solid var(--rose-100);border-radius:var(--radius-sm);text-align:center;font-size:.82rem;font-weight:500;cursor:pointer;transition:all .3s;background:var(--cream)}
 .time-slot:hover{border-color:var(--rose-300)}
 .time-slot.selected{background:var(--grad-rose);color:#fff;border-color:var(--rose-500);box-shadow:var(--shadow-glow)}
 .time-slot.disabled{opacity:.4;cursor:not-allowed;text-decoration:line-through}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.form-group{display:flex;flex-direction:column;gap:8px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-group{display:flex;flex-direction:column;gap:6px}
 .form-group.full{grid-column:1/-1}
-.form-group label{font-size:.82rem;font-weight:600;color:var(--charcoal);text-transform:uppercase;letter-spacing:1px}
-.form-group input,.form-group select,.form-group textarea{padding:14px 18px;border:2px solid var(--rose-100);border-radius:var(--radius-sm);font-family:inherit;font-size:.95rem;color:var(--charcoal);background:var(--cream);transition:all .3s}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--rose-400);background:var(--white);box-shadow:0 0 0 4px rgba(244,63,133,.1)}
-.form-group textarea{resize:vertical;min-height:100px}
-.booking-summary{background:var(--cream);border-radius:var(--radius-md);padding:24px;margin-bottom:24px}
-.summary-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(42,31,45,.08);font-size:.92rem}
+.form-group label{font-size:.75rem;font-weight:600;color:var(--charcoal);text-transform:uppercase;letter-spacing:1px}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border:2px solid var(--rose-100);border-radius:var(--radius-sm);font-family:inherit;font-size:.9rem;color:var(--charcoal);background:var(--cream);transition:all .3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--rose-400);background:var(--white);box-shadow:0 0 0 4px rgba(244,63,133,.08)}
+.form-group textarea{resize:vertical;min-height:80px}
+.booking-summary{background:var(--cream);border-radius:var(--radius-sm);padding:20px;margin-bottom:20px}
+.summary-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(42,31,45,.06);font-size:.85rem}
 .summary-row:last-child{border-bottom:none}
 .summary-row .label{color:var(--charcoal-muted)}
 .summary-row .value{font-weight:600;color:var(--charcoal)}
-.booking-nav{display:flex;justify-content:space-between;margin-top:30px;gap:14px}
-.btn-nav{padding:14px 28px;border-radius:50px;font-size:.9rem;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:10px}
+.booking-nav{display:flex;justify-content:space-between;margin-top:24px;gap:12px}
+.btn-nav{padding:12px 24px;border-radius:50px;font-size:.85rem;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:8px}
 .btn-back{background:var(--cream);color:var(--charcoal)}
 .btn-back:hover{background:var(--rose-100)}
 .btn-next{background:var(--grad-rose);color:#fff;box-shadow:var(--shadow-glow)}
-.btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(244,63,133,.4)}
+.btn-next:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(244,63,133,.35)}
 .btn-next:disabled{opacity:.5;cursor:not-allowed;transform:none}
 
 /* Success Modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(42,31,45,.6);backdrop-filter:blur(10px);z-index:2000;display:grid;place-items:center;opacity:0;visibility:hidden;transition:all .4s}
 .modal-overlay.show{opacity:1;visibility:visible}
-.modal{background:var(--white);border-radius:var(--radius-lg);padding:50px;max-width:480px;width:90%;text-align:center;transform:scale(.9);transition:transform .4s;position:relative}
+.modal{background:var(--white);border-radius:var(--radius-lg);padding:40px;max-width:440px;width:90%;text-align:center;transform:scale(.9);transition:transform .4s;position:relative}
 .modal-overlay.show .modal{transform:scale(1)}
-.modal-ico{width:80px;height:80px;border-radius:50%;background:var(--grad-rose);display:grid;place-items:center;margin:0 auto 24px;font-size:2rem;color:#fff;box-shadow:var(--shadow-glow);animation:successPulse 1s ease-in-out}
+.modal-ico{width:72px;height:72px;border-radius:50%;background:var(--grad-rose);display:grid;place-items:center;margin:0 auto 20px;font-size:1.8rem;color:#fff;box-shadow:var(--shadow-glow);animation:successPulse 1s ease-in-out}
 @keyframes successPulse{0%{transform:scale(0)}50%{transform:scale(1.2)}100%{transform:scale(1)}}
-.modal h3{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--charcoal);margin-bottom:12px}
-.modal p{color:var(--charcoal-muted);margin-bottom:24px;line-height:1.6}
-.modal-close{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--charcoal);transition:all .3s}
+.modal h3{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--charcoal);margin-bottom:10px}
+.modal p{color:var(--charcoal-muted);margin-bottom:20px;line-height:1.6;font-size:.9rem}
+.modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--charcoal);transition:all .3s;font-size:.9rem}
 .modal-close:hover{background:var(--rose-100);transform:rotate(90deg)}
 
-/* ===== WHY US ===== */
-.why{padding:120px 0;background:var(--white)}
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:26px}
-.why-card{text-align:center;padding:44px 28px;border-radius:var(--radius-md);background:var(--cream);border:1px solid transparent;transition:all .5s;position:relative;overflow:hidden}
-.why-card::before{content:'';position:absolute;inset:0;background:var(--grad-rose);opacity:0;transition:opacity .5s}
-.why-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-xl);border-color:rgba(244,63,133,.1)}
-.why-card:hover::before{opacity:.03}
-.why-card>*{position:relative;z-index:1}
-.why-ico{width:80px;height:80px;border-radius:50%;display:grid;place-items:center;font-size:1.8rem;margin:0 auto 22px;background:var(--white);color:var(--rose-500);box-shadow:var(--shadow-md);transition:all .5s}
-.why-card:hover .why-ico{background:var(--grad-rose);color:#fff;transform:scale(1.1) rotate(10deg);box-shadow:var(--shadow-glow)}
-.why-card h3{font-family:var(--font-display);font-size:1.2rem;font-weight:600;color:var(--charcoal);margin-bottom:10px}
-.why-card p{font-size:.88rem;color:var(--charcoal-muted);line-height:1.65}
+/* ===== WHY US - MINIMALIST ===== */
+.why{padding:80px 0;background:var(--white)}
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.why-card{text-align:center;padding:32px 22px;border-radius:var(--radius-md);background:var(--white);border:1px solid rgba(42,31,45,.06);transition:all .4s;position:relative;overflow:hidden}
+.why-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:rgba(244,63,133,.15)}
+.why-ico{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-size:1.5rem;margin:0 auto 16px;background:var(--rose-50);color:var(--rose-500);box-shadow:var(--shadow-sm);transition:all .5s}
+.why-card:hover .why-ico{background:var(--grad-rose);color:#fff;transform:scale(1.08) rotate(8deg);box-shadow:var(--shadow-glow)}
+.why-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:600;color:var(--charcoal);margin-bottom:8px}
+.why-card p{font-size:.82rem;color:var(--charcoal-muted);line-height:1.6}
 
-/* ===== TESTIMONIALS ===== */
-.testimonials{padding:120px 0;background:var(--grad-hero);position:relative;overflow:hidden}
-.testimonials::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(244,63,133,.06) 0%,transparent 70%);border-radius:50%}
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:26px;position:relative;z-index:1}
-.testi-card{background:var(--white);border-radius:var(--radius-md);padding:36px 32px;box-shadow:var(--shadow-sm);transition:all .5s;position:relative;border:1px solid rgba(255,255,255,.8)}
-.testi-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
-.testi-card .quote-ico{position:absolute;top:24px;right:28px;font-size:3rem;color:var(--rose-100);font-family:var(--font-display);line-height:1}
-.testi-stars{color:var(--gold);margin-bottom:16px;font-size:.9rem;letter-spacing:2px}
-.testi-text{font-family:var(--font-elegant);font-size:1.15rem;font-style:italic;color:var(--charcoal);line-height:1.7;margin-bottom:24px}
-.testi-author{display:flex;align-items:center;gap:14px;padding-top:20px;border-top:1px solid var(--rose-100)}
-.testi-avatar{width:50px;height:50px;border-radius:50%;background:var(--grad-rose);display:grid;place-items:center;color:#fff;font-weight:600;font-size:1.1rem;font-family:var(--font-display)}
-.testi-author strong{display:block;font-size:.95rem;color:var(--charcoal);font-weight:600}
-.testi-author span{font-size:.78rem;color:var(--charcoal-muted)}
+/* ===== TESTIMONIALS - MINIMALIST ===== */
+.testimonials{padding:80px 0;background:var(--grad-hero);position:relative;overflow:hidden}
+.testimonials::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(244,63,133,.05) 0%,transparent 70%);border-radius:50%}
+.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;position:relative;z-index:1}
+.testi-card{background:var(--white);border-radius:var(--radius-md);padding:28px 26px;box-shadow:var(--shadow-sm);transition:all .4s;position:relative;border:1px solid rgba(255,255,255,.8)}
+.testi-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.testi-card .quote-ico{position:absolute;top:20px;right:24px;font-size:2.5rem;color:var(--rose-100);font-family:var(--font-display);line-height:1}
+.testi-stars{color:var(--gold);margin-bottom:12px;font-size:.82rem;letter-spacing:2px}
+.testi-text{font-family:var(--font-elegant);font-size:1.05rem;font-style:italic;color:var(--charcoal);line-height:1.65;margin-bottom:18px}
+.testi-author{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid var(--rose-100)}
+.testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--grad-rose);display:grid;place-items:center;color:#fff;font-weight:600;font-size:1rem;font-family:var(--font-display)}
+.testi-author strong{display:block;font-size:.9rem;color:var(--charcoal);font-weight:600}
+.testi-author span{font-size:.72rem;color:var(--charcoal-muted)}
 
-/* ===== CONTACT ===== */
-.contact{padding:120px 0;background:var(--white)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}
-.contact-list{display:flex;flex-direction:column;gap:20px}
-.contact-card{background:var(--cream);border-radius:var(--radius-md);padding:26px 28px;display:flex;align-items:center;gap:20px;transition:all .4s;border:1px solid transparent;cursor:pointer}
-.contact-card:hover{transform:translateX(8px);box-shadow:var(--shadow-md);border-color:rgba(244,63,133,.15);background:var(--white)}
-.contact-ico{width:56px;height:56px;min-width:56px;border-radius:16px;display:grid;place-items:center;font-size:1.3rem;color:#fff}
+/* ===== CONTACT - MINIMALIST ===== */
+.contact{padding:80px 0;background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start}
+.contact-list{display:flex;flex-direction:column;gap:14px}
+.contact-card{background:var(--white);border-radius:var(--radius-md);padding:20px 22px;display:flex;align-items:center;gap:16px;transition:all .3s;border:1px solid rgba(42,31,45,.06);cursor:pointer}
+.contact-card:hover{transform:translateX(6px);box-shadow:var(--shadow-md);border-color:rgba(244,63,133,.15)}
+.contact-ico{width:46px;height:46px;min-width:46px;border-radius:12px;display:grid;place-items:center;font-size:1.1rem;color:#fff}
 .contact-ico.rose{background:var(--grad-rose);box-shadow:var(--shadow-glow)}
-.contact-ico.gold{background:var(--grad-gold);box-shadow:0 4px 14px rgba(201,169,110,.3)}
-.contact-ico.charcoal{background:var(--grad-dark);box-shadow:0 4px 14px rgba(42,31,45,.3)}
-.contact-info h4{font-size:.75rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--charcoal-muted);margin-bottom:4px;font-weight:600}
-.contact-info p,.contact-info a{font-size:1rem;font-weight:600;color:var(--charcoal)}
+.contact-ico.gold{background:var(--grad-gold);box-shadow:0 4px 12px rgba(201,169,110,.25)}
+.contact-ico.charcoal{background:var(--grad-dark);box-shadow:0 4px 12px rgba(42,31,45,.25)}
+.contact-info h4{font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--charcoal-muted);margin-bottom:2px;font-weight:600}
+.contact-info p,.contact-info a{font-size:.92rem;font-weight:600;color:var(--charcoal)}
 .contact-info a{color:var(--rose-600);transition:color .3s}
 .contact-info a:hover{color:var(--gold-dark)}
 .contact-map{background:var(--cream);border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(42,31,45,.05);box-shadow:var(--shadow-sm)}
-.map-ph{width:100%;height:280px;background:linear-gradient(145deg,var(--rose-100),var(--champagne));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:var(--charcoal-muted);position:relative}
-.map-ph::before{content:'';position:absolute;inset:20px;border:1px dashed rgba(212,31,106,.2);border-radius:var(--radius-md)}
-.map-ph i{font-size:3.5rem;color:var(--rose-400)}
-.map-ph span{font-family:var(--font-display);font-weight:600;font-size:1.1rem;color:var(--charcoal)}
-.map-ph small{font-size:.82rem}
-.map-body{padding:30px 32px}
-.map-body h3{font-family:var(--font-display);font-size:1.3rem;font-weight:600;color:var(--charcoal);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+.map-ph{width:100%;height:220px;background:linear-gradient(145deg,var(--rose-100),var(--champagne));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--charcoal-muted);position:relative}
+.map-ph::before{content:'';position:absolute;inset:16px;border:1px dashed rgba(212,31,106,.2);border-radius:var(--radius-md)}
+.map-ph i{font-size:2.8rem;color:var(--rose-400)}
+.map-ph span{font-family:var(--font-display);font-weight:600;font-size:1rem;color:var(--charcoal)}
+.map-ph small{font-size:.78rem}
+.map-body{padding:24px 26px}
+.map-body h3{font-family:var(--font-display);font-size:1.15rem;font-weight:600;color:var(--charcoal);margin-bottom:12px;display:flex;align-items:center;gap:10px}
 .map-body h3 i{color:var(--rose-500)}
-.map-body>p{font-size:.9rem;color:var(--charcoal-muted);margin-bottom:22px}
-.schedule{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.sched-item{display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--charcoal);padding:10px 14px;background:var(--white);border-radius:var(--radius-sm);transition:all .3s}
-.sched-item:hover{transform:translateX(4px)}
-.sched-dot{width:10px;height:10px;border-radius:50%;background:var(--rose-500)}
+.map-body>p{font-size:.85rem;color:var(--charcoal-muted);margin-bottom:16px}
+.schedule{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.sched-item{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--charcoal);padding:8px 12px;background:var(--white);border-radius:var(--radius-sm);transition:all .3s}
+.sched-item:hover{transform:translateX(3px)}
+.sched-dot{width:8px;height:8px;border-radius:50%;background:var(--rose-500)}
 .sched-item.off{opacity:.5}
 .sched-item.off .sched-dot{background:var(--charcoal-muted)}
 
 /* ===== CTA ===== */
-.cta{padding:100px 0;background:var(--grad-dark);position:relative;overflow:hidden}
+.cta{padding:80px 0;background:var(--grad-dark);position:relative;overflow:hidden}
 .cta::before{content:'';position:absolute;top:-50%;right:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(244,63,133,.2) 0%,transparent 70%);border-radius:50%}
 .cta::after{content:'';position:absolute;bottom:-40%;left:-10%;width:400px;height:400px;background:radial-gradient(circle,rgba(201,169,110,.15) 0%,transparent 70%);border-radius:50%}
-.cta-inner{max-width:900px;margin:0 auto;text-align:center;position:relative;z-index:1}
-.cta h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:18px;font-weight:700}
+.cta-inner{max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.cta h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.5rem);color:#fff;margin-bottom:14px;font-weight:700}
 .cta h2 .accent{font-style:italic;color:var(--champagne)}
-.cta p{font-size:1.05rem;color:rgba(255,255,255,.8);margin-bottom:36px;line-height:1.7}
-.cta-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.cta p{font-size:1rem;color:rgba(255,255,255,.85);margin-bottom:28px;line-height:1.65}
+.cta-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 .btn-white{background:#fff;color:var(--rose-600);box-shadow:var(--shadow-lg)}
 .btn-white:hover{transform:translateY(-3px);box-shadow:var(--shadow-xl)}
 .btn-outline-white{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}
 .btn-outline-white:hover{background:rgba(255,255,255,.1);border-color:#fff;transform:translateY(-3px)}
 
 /* ===== FOOTER ===== */
-.footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:70px 0 24px;position:relative}
+.footer{background:var(--charcoal);color:rgba(255,255,255,.7);padding:60px 0 24px;position:relative}
 .footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose-400),transparent)}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:50px;margin-bottom:50px}
-.footer-brand{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-.footer-logo{width:48px;height:48px;border-radius:50%;background:var(--grad-rose);display:grid;place-items:center;color:#fff;font-size:1.2rem;box-shadow:var(--shadow-glow)}
-.footer-brand-name{font-family:var(--font-display);font-size:1.25rem;font-weight:700;color:#fff}
-.footer-desc{font-size:.9rem;line-height:1.7;margin-bottom:20px}
-.footer h4{color:#fff;font-size:.95rem;font-weight:600;margin-bottom:22px;position:relative;padding-bottom:12px}
-.footer h4::after{content:'';position:absolute;bottom:0;left:0;width:30px;height:2px;background:var(--grad-rose);border-radius:2px}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:12px}
-.footer-links a{color:rgba(255,255,255,.6);font-size:.88rem;transition:all .3s;display:flex;align-items:center;gap:10px}
-.footer-links a:hover{color:var(--rose-300);transform:translateX(4px)}
-.footer-links a i{font-size:.7rem;color:var(--rose-400)}
-.footer-contact{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px;font-size:.88rem}
-.footer-contact i{color:var(--rose-300);margin-top:3px;min-width:18px}
-.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;font-size:.84rem}
-.footer-bottom-links{display:flex;gap:20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:40px}
+.footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.footer-logo{width:42px;height:42px;border-radius:50%;background:var(--grad-rose);display:grid;place-items:center;color:#fff;font-size:1.05rem;box-shadow:var(--shadow-glow)}
+.footer-brand-name{font-family:var(--font-display);font-size:1.1rem;font-weight:700;color:#fff}
+.footer-desc{font-size:.85rem;line-height:1.65;margin-bottom:16px}
+.footer h4{color:#fff;font-size:.9rem;font-weight:600;margin-bottom:18px;position:relative;padding-bottom:10px}
+.footer h4::after{content:'';position:absolute;bottom:0;left:0;width:26px;height:2px;background:var(--grad-rose);border-radius:2px}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{color:rgba(255,255,255,.6);font-size:.84rem;transition:all .3s;display:flex;align-items:center;gap:8px}
+.footer-links a:hover{color:var(--rose-300);transform:translateX(3px)}
+.footer-links a i{font-size:.65rem;color:var(--rose-400)}
+.footer-contact{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;font-size:.84rem}
+.footer-contact i{color:var(--rose-300);margin-top:3px;min-width:16px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:.82rem}
+.footer-bottom-links{display:flex;gap:18px}
 .footer-bottom-links a{color:rgba(255,255,255,.5);transition:color .3s}
 .footer-bottom-links a:hover{color:var(--rose-300)}
 
 /* ===== FLOATING ===== */
-.wa-float{position:fixed;bottom:28px;left:28px;z-index:999}
-.wa-float a{display:flex;align-items:center;gap:12px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;padding:14px 24px;border-radius:50px;font-weight:600;font-size:.92rem;box-shadow:0 8px 24px rgba(37,211,102,.4);transition:all .4s}
-.wa-float a:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 32px rgba(37,211,102,.5)}
-.wa-float a i{font-size:1.3rem}
+.wa-float{position:fixed;bottom:24px;left:24px;z-index:999}
+.wa-float a{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;padding:12px 20px;border-radius:50px;font-weight:600;font-size:.88rem;box-shadow:0 6px 20px rgba(37,211,102,.4);transition:all .4s}
+.wa-float a:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 10px 28px rgba(37,211,102,.5)}
+.wa-float a i{font-size:1.2rem}
 .wa-float .pulse{position:absolute;inset:0;border-radius:50px;background:linear-gradient(135deg,#25d366,#128c7e);animation:waPulse 2s infinite;z-index:-1}
 @keyframes waPulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.3);opacity:0}}
-.scroll-top{position:fixed;bottom:28px;right:28px;width:50px;height:50px;border-radius:50%;background:var(--grad-rose);color:#fff;display:grid;place-items:center;font-size:1.1rem;box-shadow:var(--shadow-glow);transition:all .4s;opacity:0;visibility:hidden;z-index:999}
+.scroll-top{position:fixed;bottom:24px;right:24px;width:44px;height:44px;border-radius:50%;background:var(--grad-rose);color:#fff;display:grid;place-items:center;font-size:1rem;box-shadow:var(--shadow-glow);transition:all .4s;opacity:0;visibility:hidden;z-index:999}
 .scroll-top.show{opacity:1;visibility:visible}
-.scroll-top:hover{transform:translateY(-4px) rotate(360deg)}
+.scroll-top:hover{transform:translateY(-3px) rotate(360deg)}
 
 /* ===== REVEAL ===== */
-.reveal{opacity:0;transform:translateY(40px);transition:all 1s cubic-bezier(.4,0,.2,1)}
+.reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.4,0,.2,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal.d1{transition-delay:.1s}.reveal.d2{transition-delay:.2s}.reveal.d3{transition-delay:.3s}.reveal.d4{transition-delay:.4s}.reveal.d5{transition-delay:.5s}
 
@@ -337,8 +329,8 @@ section{position:relative;z-index:1}
   .footer-grid{grid-template-columns:1fr 1fr}
   .contact-grid{grid-template-columns:1fr}
   .date-time-grid,.form-grid{grid-template-columns:1fr}
-  .booking-header,.booking-body,.booking-progress{padding-left:30px;padding-right:30px}
-  .booking-progress::before{left:50px;right:50px}
+  .booking-header,.booking-body,.booking-progress{padding-left:28px;padding-right:28px}
+  .booking-progress::before{left:45px;right:45px}
 }
 @media(max-width:768px){
   .nav-menu{display:none;position:fixed;inset:0;background:rgba(42,31,45,.98);backdrop-filter:blur(30px);flex-direction:column;justify-content:center;align-items:center;gap:16px;z-index:998}
@@ -349,19 +341,19 @@ section{position:relative;z-index:1}
   .hero-slide{padding:0 24px}
   .hero-slide-title{font-size:clamp(2rem,7vw,3rem)}
   .hero-slide-subtitle{font-size:1rem}
-  .section-title{font-size:2rem}
+  .section-title{font-size:1.8rem}
   .services-grid{grid-template-columns:1fr 1fr}
   .testi-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
   .schedule{grid-template-columns:1fr}
   .wa-float a span{display:none}
-  .wa-float a{padding:16px;border-radius:50%}
+  .wa-float a{padding:14px;border-radius:50%}
   .time-slots{grid-template-columns:repeat(3,1fr)}
-  .booking-progress{padding:24px 20px 0}
+  .booking-progress{padding:20px 20px 0}
   .booking-progress::before{left:30px;right:30px}
-  .step-label{font-size:.65rem}
+  .step-label{font-size:.62rem}
   .slider-arrows{padding:0 15px}
-  .slider-arrow{width:40px;height:40px}
+  .slider-arrow{width:42px;height:42px}
 }
 @media(max-width:480px){
   .container{padding:0 20px}
@@ -369,7 +361,7 @@ section{position:relative;z-index:1}
   .hero-slide-ctas{flex-direction:column;align-items:center}
   .btn-slider{width:100%;justify-content:center}
   .booking-header,.booking-body{padding-left:20px;padding-right:20px}
-  .modal{padding:36px 24px}
+  .modal{padding:32px 22px}
 }
 </style>
 </head>
@@ -415,7 +407,6 @@ section{position:relative;z-index:1}
 
 <!-- Hero Slider -->
 <section class="hero-slider" id="beranda">
-  <!-- Slide 1 -->
   <div class="hero-slide active" data-slide="0">
     <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1519689680058-324335c77eba?w=1920&q=80')"></div>
     <div class="hero-slide-content">
@@ -432,8 +423,6 @@ section{position:relative;z-index:1}
       </div>
     </div>
   </div>
-
-  <!-- Slide 2 -->
   <div class="hero-slide" data-slide="1">
     <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1544126592-807ade215a0b?w=1920&q=80')"></div>
     <div class="hero-slide-content">
@@ -450,8 +439,6 @@ section{position:relative;z-index:1}
       </div>
     </div>
   </div>
-
-  <!-- Slide 3 -->
   <div class="hero-slide" data-slide="2">
     <div class="hero-slide-bg" style="background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1920&q=80')"></div>
     <div class="hero-slide-content">
@@ -468,8 +455,6 @@ section{position:relative;z-index:1}
       </div>
     </div>
   </div>
-
-  <!-- Slider Controls -->
   <div class="slider-arrows">
     <button class="slider-arrow" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
     <button class="slider-arrow" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
@@ -487,66 +472,16 @@ section{position:relative;z-index:1}
       <p class="section-desc">Kami menangani berbagai keluhan si kecil dengan perawatan profesional dan penuh kasih sayang</p>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal d1">
-        <div class="service-ico"><i class="fas fa-lungs"></i></div>
-        <h3>Nafas Grok-Grok</h3>
-        <p>Perawatan khusus untuk melegakan pernapasan si kecil</p>
-        <div class="arrow"><i class="fas fa-arrow-right"></i></div>
-      </div>
-      <div class="service-card reveal d2">
-        <div class="service-ico"><i class="fas fa-head-side-cough"></i></div>
-        <h3>Hidung Tersumbat</h3>
-        <p>Terapi lembut agar si kecil bernapas dengan lega</p>
-        <div class="arrow"><i class="fas fa-arrow-right"></i></div>
-      </div>
-      <div class="service-card reveal d3">
-        <div class="service-ico"><i class="fas fa-head-side-virus"></i></div>
-        <h3>Batuk Pilek</h3>
-        <p>Penanganan alami tanpa obat kimia</p>
-        <div class="arrow"><i class="fas fa-arrow-right"></i></div>
-      </div>
-      <div class="service-card reveal d1">
-        <div class="service-ico"><i class="fas fa-wind"></i></div>
-        <h3>Batuk Berdahak</h3>
-        <p>Pijat terapeutik untuk mengencerkan dahak</p>
-        <div class="arrow"><i class="fas fa-arrow-right"></i></div>
-      </div>
-      <div class="service-card reveal d2">
-        <div class="service-ico"><i class="fas fa-circle-dot"></i></div>
-        <h3>Perut Kembung</h3>
-        <p>Pijat khusus untuk mengurangi kembung & kolik</p>
-        <div class="arrow"><i class="fas fa-arrow-right"></i></div>
-      </div>
-      <div class="service-card reveal d3">
-        <div class="service-ico"><i class="fas fa-moon"></i></div>
-        <h3>Rewel / Susah Tidur</h3>
-        <p>Relaksasi untuk tidur nyenyak dan tenang</p>
-        <div class="arrow"><i class="fas fa-arrow-right"></i></div>
-      </div>
-      <div class="service-card reveal d1">
-        <div class="service-ico"><i class="fas fa-toilet"></i></div>
-        <h3>Sembelit</h3>
-        <p>Pijat abdomen untuk melancarkan pencernaan</p>
-        <div class="arrow"><i class="fas fa-arrow-right"></i></div>
-      </div>
-      <div class="service-card reveal d2">
-        <div class="service-ico"><i class="fas fa-droplet"></i></div>
-        <h3>Diare</h3>
-        <p>Perawatan komprehensif untuk diare bayi</p>
-        <div class="arrow"><i class="fas fa-arrow-right"></i></div>
-      </div>
-      <div class="service-card reveal d3">
-        <div class="service-ico"><i class="fas fa-hands"></i></div>
-        <h3>Pijat Sehat</h3>
-        <p>Stimulasi tumbuh kembang & imunitas</p>
-        <div class="arrow"><i class="fas fa-arrow-right"></i></div>
-      </div>
-      <div class="service-card reveal d1">
-        <div class="service-ico"><i class="fas fa-utensils"></i></div>
-        <h3>GTM</h3>
-        <p>Terapi untuk mengembalikan nafsu makan</p>
-        <div class="arrow"><i class="fas fa-arrow-right"></i></div>
-      </div>
+      <div class="service-card reveal d1"><div class="service-ico"><i class="fas fa-lungs"></i></div><h3>Nafas Grok-Grok</h3><p>Melegakan pernapasan si kecil</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="service-card reveal d2"><div class="service-ico"><i class="fas fa-head-side-cough"></i></div><h3>Hidung Tersumbat</h3><p>Terapi lembut agar bernapas lega</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="service-card reveal d3"><div class="service-ico"><i class="fas fa-head-side-virus"></i></div><h3>Batuk Pilek</h3><p>Penanganan alami tanpa obat kimia</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="service-card reveal d1"><div class="service-ico"><i class="fas fa-wind"></i></div><h3>Batuk Berdahak</h3><p>Pijat terapeutik mengencerkan dahak</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="service-card reveal d2"><div class="service-ico"><i class="fas fa-circle-dot"></i></div><h3>Perut Kembung</h3><p>Kurangi kembung & kolik bayi</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="service-card reveal d3"><div class="service-ico"><i class="fas fa-moon"></i></div><h3>Rewel / Susah Tidur</h3><p>Relaksasi untuk tidur nyenyak</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="service-card reveal d1"><div class="service-ico"><i class="fas fa-toilet"></i></div><h3>Sembelit</h3><p>Pijat abdomen lancar pencernaan</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="service-card reveal d2"><div class="service-ico"><i class="fas fa-droplet"></i></div><h3>Diare</h3><p>Perawatan komprehensif diare bayi</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="service-card reveal d3"><div class="service-ico"><i class="fas fa-hands"></i></div><h3>Pijat Sehat</h3><p>Stimulasi tumbuh kembang & imunitas</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
+      <div class="service-card reveal d1"><div class="service-ico"><i class="fas fa-utensils"></i></div><h3>GTM</h3><p>Terapi kembalikan nafsu makan</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
     </div>
   </div>
 </section>
@@ -561,30 +496,17 @@ section{position:relative;z-index:1}
     </div>
     <div class="booking-card reveal">
       <div class="booking-header">
-        <h2><i class="fas fa-calendar-check" style="margin-right:12px"></i>Reservasi Layanan</h2>
+        <h2><i class="fas fa-calendar-check" style="margin-right:10px"></i>Reservasi Layanan</h2>
         <p>Isi formulir di bawah untuk booking jadwal baby spa</p>
       </div>
       <div class="booking-progress">
         <div class="fill" id="progressFill"></div>
-        <div class="step-item active" data-step="1">
-          <div class="step-num">1</div>
-          <div class="step-label">Layanan</div>
-        </div>
-        <div class="step-item" data-step="2">
-          <div class="step-num">2</div>
-          <div class="step-label">Jadwal</div>
-        </div>
-        <div class="step-item" data-step="3">
-          <div class="step-num">3</div>
-          <div class="step-label">Data</div>
-        </div>
-        <div class="step-item" data-step="4">
-          <div class="step-num">4</div>
-          <div class="step-label">Konfirmasi</div>
-        </div>
+        <div class="step-item active" data-step="1"><div class="step-num">1</div><div class="step-label">Layanan</div></div>
+        <div class="step-item" data-step="2"><div class="step-num">2</div><div class="step-label">Jadwal</div></div>
+        <div class="step-item" data-step="3"><div class="step-num">3</div><div class="step-label">Data</div></div>
+        <div class="step-item" data-step="4"><div class="step-num">4</div><div class="step-label">Konfirmasi</div></div>
       </div>
       <div class="booking-body">
-        <!-- Step 1 -->
         <div class="booking-step active" data-step="1">
           <h3 class="step-title">Pilih Layanan</h3>
           <p class="step-subtitle">Pilih satu atau lebih layanan yang Anda butuhkan</p>
@@ -593,101 +515,51 @@ section{position:relative;z-index:1}
             <div class="service-opt" data-service="Hidung Tersumbat"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Hidung Tersumbat</h4><p>Terapi lembut</p></div>
             <div class="service-opt" data-service="Batuk Pilek"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Batuk Pilek</h4><p>Alami tanpa obat</p></div>
             <div class="service-opt" data-service="Batuk Berdahak"><div class="check"><i class="fas fa-check"></i></div><div class="ico">💨</div><h4>Batuk Berdahak</h4><p>Pijat terapeutik</p></div>
-            <div class="service-opt" data-service="Perut Kembung"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🫧</div><h4>Perut Kembung</h4><p>Kurangi kolik</p></div>
+            <div class="service-opt" data-service="Perut Kembung"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Perut Kembung</h4><p>Kurangi kolik</p></div>
             <div class="service-opt" data-service="Rewel/Susah Tidur"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🌙</div><h4>Rewel/Susah Tidur</h4><p>Tidur nyenyak</p></div>
             <div class="service-opt" data-service="Sembelit"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Sembelit</h4><p>Lancar pencernaan</p></div>
             <div class="service-opt" data-service="Diare"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Diare</h4><p>Perawatan komprehensif</p></div>
             <div class="service-opt" data-service="Pijat Sehat"><div class="check"><i class="fas fa-check"></i></div><div class="ico">👐</div><h4>Pijat Sehat</h4><p>Stimulasi tumbuh kembang</p></div>
-            <div class="service-opt" data-service="GTM"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🍽️</div><h4>GTM</h4><p>Kembali nafsu makan</p></div>
+            <div class="service-opt" data-service="GTM"><div class="check"><i class="fas fa-check"></i></div><div class="ico">️</div><h4>GTM</h4><p>Kembali nafsu makan</p></div>
             <div class="service-opt" data-service="Pijat Oksitosin"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Pijat Oksitosin</h4><p>Lancar ASI</p></div>
             <div class="service-opt" data-service="Senam Hamil"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🤰</div><h4>Senam Hamil</h4><p>Kebugaran ibu</p></div>
             <div class="service-opt" data-service="Cukur Gundul"><div class="check"><i class="fas fa-check"></i></div><div class="ico">✂️</div><h4>Cukur Gundul</h4><p>Peralatan steril</p></div>
             <div class="service-opt" data-service="Pijat Laktasi"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🍼</div><h4>Pijat Laktasi</h4><p>Atasi bendungan ASI</p></div>
             <div class="service-opt" data-service="Perawatan Bayi Baru Lahir"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Perawatan BBL</h4><p>Komprehensif</p></div>
           </div>
-          <div class="booking-nav">
-            <div></div>
-            <button class="btn-nav btn-next" id="next1" disabled>Lanjut <i class="fas fa-arrow-right"></i></button>
-          </div>
+          <div class="booking-nav"><div></div><button class="btn-nav btn-next" id="next1" disabled>Lanjut <i class="fas fa-arrow-right"></i></button></div>
         </div>
-
-        <!-- Step 2 -->
         <div class="booking-step" data-step="2">
           <h3 class="step-title">Pilih Jadwal</h3>
           <p class="step-subtitle">Pilih tanggal dan waktu yang sesuai untuk Anda</p>
           <div class="date-time-grid">
-            <div class="dt-group">
-              <label><i class="fas fa-calendar" style="margin-right:6px;color:var(--rose-500)"></i>Tanggal</label>
-              <input type="date" class="dt-input" id="bookDate" min="">
-            </div>
-            <div class="dt-group">
-              <label><i class="fas fa-clock" style="margin-right:6px;color:var(--rose-500)"></i>Waktu</label>
+            <div class="dt-group"><label><i class="fas fa-calendar" style="margin-right:6px;color:var(--rose-500)"></i>Tanggal</label><input type="date" class="dt-input" id="bookDate" min=""></div>
+            <div class="dt-group"><label><i class="fas fa-clock" style="margin-right:6px;color:var(--rose-500)"></i>Waktu</label>
               <div class="time-slots" id="timeSlots">
-                <div class="time-slot" data-time="08:30">08:30</div>
-                <div class="time-slot" data-time="09:30">09:30</div>
-                <div class="time-slot" data-time="10:30">10:30</div>
-                <div class="time-slot" data-time="11:30">11:30</div>
-                <div class="time-slot" data-time="13:30">13:30</div>
-                <div class="time-slot" data-time="14:30">14:30</div>
-                <div class="time-slot" data-time="15:30">15:30</div>
-                <div class="time-slot" data-time="16:30">16:30</div>
+                <div class="time-slot" data-time="08:30">08:30</div><div class="time-slot" data-time="09:30">09:30</div><div class="time-slot" data-time="10:30">10:30</div><div class="time-slot" data-time="11:30">11:30</div>
+                <div class="time-slot" data-time="13:30">13:30</div><div class="time-slot" data-time="14:30">14:30</div><div class="time-slot" data-time="15:30">15:30</div><div class="time-slot" data-time="16:30">16:30</div>
               </div>
             </div>
           </div>
-          <div class="booking-nav">
-            <button class="btn-nav btn-back" id="back2"><i class="fas fa-arrow-left"></i> Kembali</button>
-            <button class="btn-nav btn-next" id="next2" disabled>Lanjut <i class="fas fa-arrow-right"></i></button>
-          </div>
+          <div class="booking-nav"><button class="btn-nav btn-back" id="back2"><i class="fas fa-arrow-left"></i> Kembali</button><button class="btn-nav btn-next" id="next2" disabled>Lanjut <i class="fas fa-arrow-right"></i></button></div>
         </div>
-
-        <!-- Step 3 -->
         <div class="booking-step" data-step="3">
           <h3 class="step-title">Data Anda</h3>
           <p class="step-subtitle">Isi data untuk konfirmasi booking</p>
           <div class="form-grid">
-            <div class="form-group">
-              <label>Nama Bunda</label>
-              <input type="text" id="bookName" placeholder="Masukkan nama lengkap">
-            </div>
-            <div class="form-group">
-              <label>No. WhatsApp</label>
-              <input type="tel" id="bookPhone" placeholder="08xxxxxxxxxx">
-            </div>
-            <div class="form-group">
-              <label>Nama Bayi</label>
-              <input type="text" id="bookBaby" placeholder="Nama si kecil">
-            </div>
-            <div class="form-group">
-              <label>Usia Bayi</label>
-              <select id="bookAge">
-                <option value="">Pilih usia</option>
-                <option>0-3 bulan</option>
-                <option>3-6 bulan</option>
-                <option>6-12 bulan</option>
-                <option>1-2 tahun</option>
-                <option>2+ tahun</option>
-              </select>
-            </div>
-            <div class="form-group full">
-              <label>Keluhan / Catatan (Opsional)</label>
-              <textarea id="bookNotes" placeholder="Ceritakan keluhan si kecil..."></textarea>
-            </div>
+            <div class="form-group"><label>Nama Bunda</label><input type="text" id="bookName" placeholder="Masukkan nama lengkap"></div>
+            <div class="form-group"><label>No. WhatsApp</label><input type="tel" id="bookPhone" placeholder="08xxxxxxxxxx"></div>
+            <div class="form-group"><label>Nama Bayi</label><input type="text" id="bookBaby" placeholder="Nama si kecil"></div>
+            <div class="form-group"><label>Usia Bayi</label><select id="bookAge"><option value="">Pilih usia</option><option>0-3 bulan</option><option>3-6 bulan</option><option>6-12 bulan</option><option>1-2 tahun</option><option>2+ tahun</option></select></div>
+            <div class="form-group full"><label>Keluhan / Catatan (Opsional)</label><textarea id="bookNotes" placeholder="Ceritakan keluhan si kecil..."></textarea></div>
           </div>
-          <div class="booking-nav">
-            <button class="btn-nav btn-back" id="back3"><i class="fas fa-arrow-left"></i> Kembali</button>
-            <button class="btn-nav btn-next" id="next3" disabled>Lanjut <i class="fas fa-arrow-right"></i></button>
-          </div>
+          <div class="booking-nav"><button class="btn-nav btn-back" id="back3"><i class="fas fa-arrow-left"></i> Kembali</button><button class="btn-nav btn-next" id="next3" disabled>Lanjut <i class="fas fa-arrow-right"></i></button></div>
         </div>
-
-        <!-- Step 4 -->
         <div class="booking-step" data-step="4">
           <h3 class="step-title">Konfirmasi Booking</h3>
           <p class="step-subtitle">Periksa kembali data booking Anda</p>
           <div class="booking-summary" id="bookingSummary"></div>
-          <div class="booking-nav">
-            <button class="btn-nav btn-back" id="back4"><i class="fas fa-arrow-left"></i> Kembali</button>
-            <button class="btn-nav btn-next" id="submitBooking"><i class="fab fa-whatsapp"></i> Kirim via WhatsApp</button>
-          </div>
+          <div class="booking-nav"><button class="btn-nav btn-back" id="back4"><i class="fas fa-arrow-left"></i> Kembali</button><button class="btn-nav btn-next" id="submitBooking"><i class="fab fa-whatsapp"></i> Kirim via WhatsApp</button></div>
         </div>
       </div>
     </div>
@@ -703,26 +575,10 @@ section{position:relative;z-index:1}
       <p class="section-desc">Komitmen kami memberikan perawatan terbaik untuk si kecil dan keluarga Anda</p>
     </div>
     <div class="why-grid">
-      <div class="why-card reveal d1">
-        <div class="why-ico"><i class="fas fa-certificate"></i></div>
-        <h3>Bersertifikat</h3>
-        <p>Terapis profesional dengan sertifikat resmi dan pelatihan khusus</p>
-      </div>
-      <div class="why-card reveal d2">
-        <div class="why-ico"><i class="fas fa-shield-heart"></i></div>
-        <h3>Aman & Nyaman</h3>
-        <p>Metode aman, lembut, dan lingkungan nyaman untuk bayi</p>
-      </div>
-      <div class="why-card reveal d3">
-        <div class="why-ico"><i class="fas fa-heart-pulse"></i></div>
-        <h3>Penuh Kasih</h3>
-        <p>Perawatan dengan kasih sayang seperti对待 anak sendiri</p>
-      </div>
-      <div class="why-card reveal d4">
-        <div class="why-ico"><i class="fas fa-clock"></i></div>
-        <h3>Jam Fleksibel</h3>
-        <p>Buka 6 hari seminggu, 08.30 - 18.00 WITA</p>
-      </div>
+      <div class="why-card reveal d1"><div class="why-ico"><i class="fas fa-certificate"></i></div><h3>Bersertifikat</h3><p>Terapis profesional dengan sertifikat resmi</p></div>
+      <div class="why-card reveal d2"><div class="why-ico"><i class="fas fa-shield-heart"></i></div><h3>Aman & Nyaman</h3><p>Metode aman, lembut, lingkungan nyaman</p></div>
+      <div class="why-card reveal d3"><div class="why-ico"><i class="fas fa-heart-pulse"></i></div><h3>Penuh Kasih</h3><p>Perawatan dengan kasih sayang tulus</p></div>
+      <div class="why-card reveal d4"><div class="why-ico"><i class="fas fa-clock"></i></div><h3>Jam Fleksibel</h3><p>Buka 6 hari, 08.30 - 18.00 WITA</p></div>
     </div>
   </div>
 </section>
@@ -740,28 +596,19 @@ section{position:relative;z-index:1}
         <div class="quote-ico">"</div>
         <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <p class="testi-text">Alhamdulillah setelah pijat di Bidan Tasya, nafas grok-grok anak saya jadi lega. Pelayanannya ramah dan profesional. Recommended banget!</p>
-        <div class="testi-author">
-          <div class="testi-avatar">S</div>
-          <div><strong>Bunda Siti</strong><span>Desa Dasan Borok</span></div>
-        </div>
+        <div class="testi-author"><div class="testi-avatar">S</div><div><strong>Bunda Siti</strong><span>Desa Dasan Borok</span></div></div>
       </div>
       <div class="testi-card reveal d2">
         <div class="quote-ico">"</div>
         <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <p class="testi-text">Bayi saya yang susah tidur jadi lebih nyenyak setelah rutin baby spa di sini. Tempatnya bersih dan nyaman. Terima kasih Bidan Tasya!</p>
-        <div class="testi-author">
-          <div class="testi-avatar">R</div>
-          <div><strong>Bunda Rahma</strong><span>Kec. Suralaga</span></div>
-        </div>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><strong>Bunda Rahma</strong><span>Kec. Suralaga</span></div></div>
       </div>
       <div class="testi-card reveal d3">
         <div class="quote-ico">"</div>
         <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <p class="testi-text">Pijat oksitosinnya mantap, ASI jadi lancar. Bidan Tasya sangat sabar dan telaten. Pasti balik lagi untuk perawatan si kecil.</p>
-        <div class="testi-author">
-          <div class="testi-avatar">A</div>
-          <div><strong>Bunda Aisyah</strong><span>Lotim</span></div>
-        </div>
+        <div class="testi-author"><div class="testi-avatar">A</div><div><strong>Bunda Aisyah</strong><span>Lotim</span></div></div>
       </div>
     </div>
   </div>
@@ -777,29 +624,13 @@ section{position:relative;z-index:1}
     </div>
     <div class="contact-grid">
       <div class="contact-list">
-        <div class="contact-card reveal d1">
-          <div class="contact-ico rose"><i class="fas fa-user-nurse"></i></div>
-          <div class="contact-info"><h4>Bidan Tasya</h4><a href="tel:087854832279">0878-5483-2279</a></div>
-        </div>
-        <div class="contact-card reveal d2">
-          <div class="contact-ico rose"><i class="fas fa-headset"></i></div>
-          <div class="contact-info"><h4>Admin</h4><a href="tel:081947552069">0819-4755-2069</a></div>
-        </div>
-        <div class="contact-card reveal d3">
-          <div class="contact-ico gold"><i class="fas fa-location-dot"></i></div>
-          <div class="contact-info"><h4>Alamat</h4><p>Desa Dasan Borok, Kec. Suralaga, Lotim</p></div>
-        </div>
-        <div class="contact-card reveal d4">
-          <div class="contact-ico charcoal"><i class="fas fa-clock"></i></div>
-          <div class="contact-info"><h4>Jam Buka</h4><p>08.30 - 18.00 WITA</p></div>
-        </div>
+        <div class="contact-card reveal d1"><div class="contact-ico rose"><i class="fas fa-user-nurse"></i></div><div class="contact-info"><h4>Bidan Tasya</h4><a href="tel:087854832279">0878-5483-2279</a></div></div>
+        <div class="contact-card reveal d2"><div class="contact-ico rose"><i class="fas fa-headset"></i></div><div class="contact-info"><h4>Admin</h4><a href="tel:081947552069">0819-4755-2069</a></div></div>
+        <div class="contact-card reveal d3"><div class="contact-ico gold"><i class="fas fa-location-dot"></i></div><div class="contact-info"><h4>Alamat</h4><p>Desa Dasan Borok, Kec. Suralaga, Lotim</p></div></div>
+        <div class="contact-card reveal d4"><div class="contact-ico charcoal"><i class="fas fa-clock"></i></div><div class="contact-info"><h4>Jam Buka</h4><p>08.30 - 18.00 WITA</p></div></div>
       </div>
       <div class="contact-map reveal d2">
-        <div class="map-ph">
-          <i class="fas fa-map-location-dot"></i>
-          <span>Lokasi Klinik Baby Spa Bidan Tasya</span>
-          <small>Desa Dasan Borok, Kec. Suralaga, Lotim</small>
-        </div>
+        <div class="map-ph"><i class="fas fa-map-location-dot"></i><span>Lokasi Klinik Baby Spa Bidan Tasya</span><small>Desa Dasan Borok, Kec. Suralaga, Lotim</small></div>
         <div class="map-body">
           <h3><i class="fas fa-calendar-check"></i> Jadwal Operasional</h3>
           <p>Kami siap melayani si kecil dengan penuh kasih sayang</p>
@@ -837,11 +668,8 @@ section{position:relative;z-index:1}
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand">
-          <div class="footer-logo"><i class="fas fa-baby"></i></div>
-          <div class="footer-brand-name">Klinik Baby Spa Bidan Tasya</div>
-        </div>
-        <p class="footer-desc">Rawat Si Kecil dengan Penuh Kasih, aman & nyaman. Terapis Profesional & Bersertifikat untuk tumbuh kembang optimal buah hati Anda.</p>
+        <div class="footer-brand"><div class="footer-logo"><i class="fas fa-baby"></i></div><div class="footer-brand-name">Klinik Baby Spa Bidan Tasya</div></div>
+        <p class="footer-desc">Rawat Si Kecil dengan Penuh Kasih, aman & nyaman. Terapis Profesional & Bersertifikat.</p>
       </div>
       <div>
         <h4>Layanan</h4>
@@ -874,10 +702,7 @@ section{position:relative;z-index:1}
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 Klinik Baby Spa Bidan Tasya. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="#">Kebijakan Privasi</a>
-        <a href="#">Syarat & Ketentuan</a>
-      </div>
+      <div class="footer-bottom-links"><a href="#">Kebijakan Privasi</a><a href="#">Syarat & Ketentuan</a></div>
     </div>
   </div>
 </footer>
@@ -900,262 +725,70 @@ section{position:relative;z-index:1}
     <div class="modal-ico"><i class="fas fa-check"></i></div>
     <h3>Booking Terkirim!</h3>
     <p>Terima kasih! Data booking Anda akan dikirim via WhatsApp. Tim kami akan segera menghubungi Anda untuk konfirmasi.</p>
-    <button class="btn btn-primary" id="modalOk" style="width:100%;justify-content:center"><i class="fas fa-thumbs-up"></i> Mengerti</button>
+    <button class="btn btn-primary" id="modalOk" style="width:100%;justify-content:center;background:var(--grad-rose);color:#fff;padding:12px 24px;border-radius:50px;font-weight:600;font-size:.9rem"><i class="fas fa-thumbs-up"></i> Mengerti</button>
   </div>
 </div>
 
 <script>
-// Loader
-window.addEventListener('load',()=>{
-  setTimeout(()=>{document.getElementById('loader').classList.add('hidden')},1500);
-});
-
-// Custom Cursor
-const dot=document.getElementById('cursorDot');
-const ring=document.getElementById('cursorRing');
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden')},1500)});
+const dot=document.getElementById('cursorDot'),ring=document.getElementById('cursorRing');
 let mouseX=0,mouseY=0,ringX=0,ringY=0;
-document.addEventListener('mousemove',e=>{
-  mouseX=e.clientX;mouseY=e.clientY;
-  dot.style.left=mouseX+'px';dot.style.top=mouseY+'px';
-});
-function animateRing(){
-  ringX+=(mouseX-ringX)*.15;
-  ringY+=(mouseY-ringY)*.15;
-  ring.style.left=ringX-18+'px';
-  ring.style.top=ringY-18+'px';
-  requestAnimationFrame(animateRing);
-}
+document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;dot.style.left=mouseX+'px';dot.style.top=mouseY+'px'});
+function animateRing(){ringX+=(mouseX-ringX)*.15;ringY+=(mouseY-ringY)*.15;ring.style.left=ringX-18+'px';ring.style.top=ringY-18+'px';requestAnimationFrame(animateRing)}
 animateRing();
-document.querySelectorAll('a,button,.service-card,.service-opt,.time-slot,.contact-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
-  el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
-});
-
-// Navbar scroll
+document.querySelectorAll('a,button,.service-card,.service-opt,.time-slot,.contact-card').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hover'));el.addEventListener('mouseleave',()=>ring.classList.remove('hover'))});
 const navbar=document.getElementById('navbar');
 window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
-
-// Hamburger
-const hamburger=document.getElementById('hamburger');
-const navMenu=document.getElementById('navMenu');
+const hamburger=document.getElementById('hamburger'),navMenu=document.getElementById('navMenu');
 hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');navMenu.classList.toggle('open')});
 document.querySelectorAll('.nav-menu a').forEach(l=>l.addEventListener('click',()=>{hamburger.classList.remove('active');navMenu.classList.remove('open')}));
-
-// Scroll top
 const scrollTopBtn=document.getElementById('scrollTop');
 window.addEventListener('scroll',()=>{scrollTopBtn.classList.toggle('show',window.scrollY>500)});
 scrollTopBtn.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-// Reveal on scroll
 const revealEls=document.querySelectorAll('.reveal');
-const revealObs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}});
-},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+const revealObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 revealEls.forEach(el=>revealObs.observe(el));
-
-// Active nav link
 const sections=document.querySelectorAll('section[id]');
-window.addEventListener('scroll',()=>{
-  let cur='';
-  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.getAttribute('id')});
-  document.querySelectorAll('.nav-menu a').forEach(a=>{
-    a.classList.remove('active');
-    if(a.getAttribute('href')==='#'+cur)a.classList.add('active');
-  });
-});
-
-// ===== HERO SLIDER =====
-const slides=document.querySelectorAll('.hero-slide');
-const dotsContainer=document.getElementById('sliderDots');
-const progressBar=document.getElementById('sliderProgress');
-let currentSlide=0;
-const SLIDE_DURATION=6000;
-const PROGRESS_INTERVAL=50;
-
-slides.forEach((_,i)=>{
-  const dot=document.createElement('button');
-  dot.className='slider-dot'+(i===0?' active':'');
-  dot.addEventListener('click',()=>goToSlide(i));
-  dotsContainer.appendChild(dot);
-});
-
-function goToSlide(index){
-  slides[currentSlide].classList.remove('active');
-  document.querySelectorAll('.slider-dot')[currentSlide].classList.remove('active');
-  currentSlide=index;
-  slides[currentSlide].classList.add('active');
-  document.querySelectorAll('.slider-dot')[currentSlide].classList.add('active');
-  resetProgress();
-}
-
+window.addEventListener('scroll',()=>{let cur='';sections.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.getAttribute('id')});document.querySelectorAll('.nav-menu a').forEach(a=>{a.classList.remove('active');if(a.getAttribute('href')==='#'+cur)a.classList.add('active')})});
+const slides=document.querySelectorAll('.hero-slide'),dotsContainer=document.getElementById('sliderDots'),progressBar=document.getElementById('sliderProgress');
+let currentSlide=0;const SLIDE_DURATION=6000,PROGRESS_INTERVAL=50;
+slides.forEach((_,i)=>{const dot=document.createElement('button');dot.className='slider-dot'+(i===0?' active':'');dot.addEventListener('click',()=>goToSlide(i));dotsContainer.appendChild(dot)});
+function goToSlide(index){slides[currentSlide].classList.remove('active');document.querySelectorAll('.slider-dot')[currentSlide].classList.remove('active');currentSlide=index;slides[currentSlide].classList.add('active');document.querySelectorAll('.slider-dot')[currentSlide].classList.add('active');resetProgress()}
 function nextSlide(){goToSlide((currentSlide+1)%slides.length)}
 function prevSlide(){goToSlide((currentSlide-1+slides.length)%slides.length)}
-
 document.getElementById('nextSlide').addEventListener('click',()=>{nextSlide();resetAutoplay()});
 document.getElementById('prevSlide').addEventListener('click',()=>{prevSlide();resetAutoplay()});
-
-let progress=0;
-let progressTimer;
-function updateProgress(){
-  progress+=100/(SLIDE_DURATION/PROGRESS_INTERVAL);
-  progressBar.style.width=progress+'%';
-  if(progress>=100){nextSlide();progress=0}
-}
+let progress=0,progressTimer;
+function updateProgress(){progress+=100/(SLIDE_DURATION/PROGRESS_INTERVAL);progressBar.style.width=progress+'%';if(progress>=100){nextSlide();progress=0}}
 function resetProgress(){progress=0;progressBar.style.width='0%'}
 function startAutoplay(){progressTimer=setInterval(updateProgress,PROGRESS_INTERVAL)}
 function resetAutoplay(){clearInterval(progressTimer);resetProgress();startAutoplay()}
 startAutoplay();
-
 document.querySelector('.hero-slider').addEventListener('mouseenter',()=>{clearInterval(progressTimer)});
 document.querySelector('.hero-slider').addEventListener('mouseleave',startAutoplay);
-
 let touchStartX=0;
 document.querySelector('.hero-slider').addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX});
-document.querySelector('.hero-slider').addEventListener('touchend',e=>{
-  const diff=touchStartX-e.changedTouches[0].clientX;
-  if(Math.abs(diff)>50){
-    if(diff>0)nextSlide();else prevSlide();
-    resetAutoplay();
-  }
-});
-
-// ===== BOOKING SYSTEM =====
+document.querySelector('.hero-slider').addEventListener('touchend',e=>{const diff=touchStartX-e.changedTouches[0].clientX;if(Math.abs(diff)>50){if(diff>0)nextSlide();else prevSlide();resetAutoplay()}});
 const bookingData={services:[],date:'',time:'',name:'',phone:'',baby:'',age:'',notes:''};
-let currentStep=1;
-
-const today=new Date().toISOString().split('T')[0];
-document.getElementById('bookDate').min=today;
-
-document.querySelectorAll('.service-opt').forEach(opt=>{
-  opt.addEventListener('click',()=>{
-    opt.classList.toggle('selected');
-    const svc=opt.dataset.service;
-    if(opt.classList.contains('selected')){
-      if(!bookingData.services.includes(svc))bookingData.services.push(svc);
-    }else{
-      bookingData.services=bookingData.services.filter(s=>s!==svc);
-    }
-    document.getElementById('next1').disabled=bookingData.services.length===0;
-  });
-});
-
-document.querySelectorAll('.time-slot').forEach(slot=>{
-  slot.addEventListener('click',()=>{
-    if(slot.classList.contains('disabled'))return;
-    document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));
-    slot.classList.add('selected');
-    bookingData.time=slot.dataset.time;
-    checkStep2();
-  });
-});
-
-document.getElementById('bookDate').addEventListener('change',e=>{
-  bookingData.date=e.target.value;
-  const d=new Date(bookingData.date);
-  const isSaturday=d.getDay()===6;
-  document.querySelectorAll('.time-slot').forEach(s=>{
-    if(isSaturday)s.classList.add('disabled');
-    else s.classList.remove('disabled');
-  });
-  if(isSaturday){
-    document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));
-    bookingData.time='';
-  }
-  checkStep2();
-});
-
+const today=new Date().toISOString().split('T')[0];document.getElementById('bookDate').min=today;
+document.querySelectorAll('.service-opt').forEach(opt=>{opt.addEventListener('click',()=>{opt.classList.toggle('selected');const svc=opt.dataset.service;if(opt.classList.contains('selected')){if(!bookingData.services.includes(svc))bookingData.services.push(svc)}else{bookingData.services=bookingData.services.filter(s=>s!==svc)}document.getElementById('next1').disabled=bookingData.services.length===0})});
+document.querySelectorAll('.time-slot').forEach(slot=>{slot.addEventListener('click',()=>{if(slot.classList.contains('disabled'))return;document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));slot.classList.add('selected');bookingData.time=slot.dataset.time;checkStep2()})});
+document.getElementById('bookDate').addEventListener('change',e=>{bookingData.date=e.target.value;const d=new Date(bookingData.date);const isSaturday=d.getDay()===6;document.querySelectorAll('.time-slot').forEach(s=>{if(isSaturday)s.classList.add('disabled');else s.classList.remove('disabled')});if(isSaturday){document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));bookingData.time=''}checkStep2()});
 function checkStep2(){document.getElementById('next2').disabled=!(bookingData.date&&bookingData.time)}
-
-['bookName','bookPhone','bookBaby','bookAge'].forEach(id=>{
-  document.getElementById(id).addEventListener('input',checkStep3);
-});
-function checkStep3(){
-  const n=document.getElementById('bookName').value.trim();
-  const p=document.getElementById('bookPhone').value.trim();
-  const b=document.getElementById('bookBaby').value.trim();
-  const a=document.getElementById('bookAge').value;
-  document.getElementById('next3').disabled=!(n&&p&&b&&a);
-}
-
-function goToStep(step){
-  currentStep=step;
-  document.querySelectorAll('.booking-step').forEach(s=>s.classList.remove('active'));
-  document.querySelector(`.booking-step[data-step="${step}"]`).classList.add('active');
-  document.querySelectorAll('.step-item').forEach(s=>{
-    const sStep=parseInt(s.dataset.step);
-    s.classList.remove('active','done');
-    if(sStep===step)s.classList.add('active');
-    else if(sStep<step)s.classList.add('done');
-  });
-  const fillPct=((step-1)/3)*100;
-  document.getElementById('progressFill').style.width=fillPct+'%';
-  if(step===4)buildSummary();
-  window.scrollTo({top:document.getElementById('booking').offsetTop-100,behavior:'smooth'});
-}
-
+['bookName','bookPhone','bookBaby','bookAge'].forEach(id=>{document.getElementById(id).addEventListener('input',checkStep3)});
+function checkStep3(){const n=document.getElementById('bookName').value.trim(),p=document.getElementById('bookPhone').value.trim(),b=document.getElementById('bookBaby').value.trim(),a=document.getElementById('bookAge').value;document.getElementById('next3').disabled=!(n&&p&&b&&a)}
+function goToStep(step){document.querySelectorAll('.booking-step').forEach(s=>s.classList.remove('active'));document.querySelector(`.booking-step[data-step="${step}"]`).classList.add('active');document.querySelectorAll('.step-item').forEach(s=>{const sStep=parseInt(s.dataset.step);s.classList.remove('active','done');if(sStep===step)s.classList.add('active');else if(sStep<step)s.classList.add('done')});const fillPct=((step-1)/3)*100;document.getElementById('progressFill').style.width=fillPct+'%';if(step===4)buildSummary();window.scrollTo({top:document.getElementById('booking').offsetTop-100,behavior:'smooth'})}
 document.getElementById('next1').addEventListener('click',()=>goToStep(2));
 document.getElementById('next2').addEventListener('click',()=>goToStep(3));
 document.getElementById('next3').addEventListener('click',()=>goToStep(4));
 document.getElementById('back2').addEventListener('click',()=>goToStep(1));
 document.getElementById('back3').addEventListener('click',()=>goToStep(2));
 document.getElementById('back4').addEventListener('click',()=>goToStep(3));
-
-function buildSummary(){
-  bookingData.name=document.getElementById('bookName').value.trim();
-  bookingData.phone=document.getElementById('bookPhone').value.trim();
-  bookingData.baby=document.getElementById('bookBaby').value.trim();
-  bookingData.age=document.getElementById('bookAge').value;
-  bookingData.notes=document.getElementById('bookNotes').value.trim();
-  const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  document.getElementById('bookingSummary').innerHTML=`
-    <div class="summary-row"><span class="label">Layanan</span><span class="value">${bookingData.services.join(', ')}</span></div>
-    <div class="summary-row"><span class="label">Tanggal</span><span class="value">${dateFormatted}</span></div>
-    <div class="summary-row"><span class="label">Waktu</span><span class="value">${bookingData.time} WITA</span></div>
-    <div class="summary-row"><span class="label">Nama Bunda</span><span class="value">${bookingData.name}</span></div>
-    <div class="summary-row"><span class="label">WhatsApp</span><span class="value">${bookingData.phone}</span></div>
-    <div class="summary-row"><span class="label">Nama Bayi</span><span class="value">${bookingData.baby}</span></div>
-    <div class="summary-row"><span class="label">Usia Bayi</span><span class="value">${bookingData.age}</span></div>
-    ${bookingData.notes?`<div class="summary-row"><span class="label">Catatan</span><span class="value">${bookingData.notes}</span></div>`:''}
-  `;
-}
-
-document.getElementById('submitBooking').addEventListener('click',()=>{
-  const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0A`+
-    `Halo Bidan Tasya, saya ingin booking:%0A%0A`+
-    `📋 *Layanan:* ${bookingData.services.join(', ')}%0A`+
-    `📅 *Tanggal:* ${dateFormatted}%0A`+
-    `⏰ *Waktu:* ${bookingData.time} WITA%0A`+
-    ` *Nama Bunda:* ${bookingData.name}%0A`+
-    `📱 *WhatsApp:* ${bookingData.phone}%0A`+
-    ` *Nama Bayi:* ${bookingData.baby}%0A`+
-    `🎂 *Usia Bayi:* ${bookingData.age}%0A`+
-    (bookingData.notes?`📝 *Catatan:* ${bookingData.notes}%0A`:'')+
-    `%0ATerima kasih!`;
-  window.open(`https://wa.me/6287854832279?text=${msg}`,'_blank');
-  document.getElementById('successModal').classList.add('show');
-});
-
+function buildSummary(){bookingData.name=document.getElementById('bookName').value.trim();bookingData.phone=document.getElementById('bookPhone').value.trim();bookingData.baby=document.getElementById('bookBaby').value.trim();bookingData.age=document.getElementById('bookAge').value;bookingData.notes=document.getElementById('bookNotes').value.trim();const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});document.getElementById('bookingSummary').innerHTML=`<div class="summary-row"><span class="label">Layanan</span><span class="value">${bookingData.services.join(', ')}</span></div><div class="summary-row"><span class="label">Tanggal</span><span class="value">${dateFormatted}</span></div><div class="summary-row"><span class="label">Waktu</span><span class="value">${bookingData.time} WITA</span></div><div class="summary-row"><span class="label">Nama Bunda</span><span class="value">${bookingData.name}</span></div><div class="summary-row"><span class="label">WhatsApp</span><span class="value">${bookingData.phone}</span></div><div class="summary-row"><span class="label">Nama Bayi</span><span class="value">${bookingData.baby}</span></div><div class="summary-row"><span class="label">Usia Bayi</span><span class="value">${bookingData.age}</span></div>${bookingData.notes?`<div class="summary-row"><span class="label">Catatan</span><span class="value">${bookingData.notes}</span></div>`:''}`}
+document.getElementById('submitBooking').addEventListener('click',()=>{const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0AHalo Bidan Tasya, saya ingin booking:%0A%0A📋 *Layanan:* ${bookingData.services.join(', ')}%0A📅 *Tanggal:* ${dateFormatted}%0A⏰ *Waktu:* ${bookingData.time} WITA%0A👩 *Nama Bunda:* ${bookingData.name}%0A📱 *WhatsApp:* ${bookingData.phone}%0A👶 *Nama Bayi:* ${bookingData.baby}%0A🎂 *Usia Bayi:* ${bookingData.age}%0A${bookingData.notes?`📝 *Catatan:* ${bookingData.notes}%0A`:''}%0ATerima kasih!`;window.open(`https://wa.me/6287854832279?text=${msg}`,'_blank');document.getElementById('successModal').classList.add('show')});
 document.getElementById('modalClose').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show')});
-document.getElementById('modalOk').addEventListener('click',()=>{
-  document.getElementById('successModal').classList.remove('show');
-  bookingData.services=[];bookingData.date='';bookingData.time='';
-  document.querySelectorAll('.service-opt').forEach(s=>s.classList.remove('selected'));
-  document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));
-  document.getElementById('bookDate').value='';
-  document.getElementById('bookName').value='';
-  document.getElementById('bookPhone').value='';
-  document.getElementById('bookBaby').value='';
-  document.getElementById('bookAge').value='';
-  document.getElementById('bookNotes').value='';
-  document.getElementById('next1').disabled=true;
-  document.getElementById('next2').disabled=true;
-  document.getElementById('next3').disabled=true;
-  goToStep(1);
-});
-document.getElementById('successModal').addEventListener('click',e=>{
-  if(e.target.id==='successModal')document.getElementById('successModal').classList.remove('show');
-});
+document.getElementById('modalOk').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show');bookingData.services=[];bookingData.date='';bookingData.time='';document.querySelectorAll('.service-opt').forEach(s=>s.classList.remove('selected'));document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));document.getElementById('bookDate').value='';document.getElementById('bookName').value='';document.getElementById('bookPhone').value='';document.getElementById('bookBaby').value='';document.getElementById('bookAge').value='';document.getElementById('bookNotes').value='';document.getElementById('next1').disabled=true;document.getElementById('next2').disabled=true;document.getElementById('next3').disabled=true;goToStep(1)});
+document.getElementById('successModal').addEventListener('click',e=>{if(e.target.id==='successModal')document.getElementById('successModal').classList.remove('show')});
 </script>
 </body>
 </html>
