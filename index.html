@@ -1,1 +1,2141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klinik Baby Spa Bidan Tasya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --pink-light: #fce4ec;
+            --pink-main: #f48fb1;
+            --pink-dark: #e91e63;
+            --pink-deeper: #c2185b;
+            --purple-light: #f3e5f5;
+            --purple-main: #ce93d8;
+            --purple-dark: #9c27b0;
+            --cream: #fff8f0;
+            --gold: #f9a825;
+            --gold-light: #fdd835;
+            --text-dark: #4a2c3a;
+            --text-medium: #6d4c5e;
+            --white: #ffffff;
+            --shadow-soft: 0 4px 20px rgba(233, 30, 99, 0.15);
+            --shadow-medium: 0 8px 32px rgba(233, 30, 99, 0.2);
+            --shadow-strong: 0 12px 48px rgba(233, 30, 99, 0.25);
+            --gradient-pink: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 50%, #f48fb1 100%);
+            --gradient-hero: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 30%, #e8eaf6 60%, #fce4ec 100%);
+            --gradient-card: linear-gradient(145deg, #ffffff 0%, #fce4ec 100%);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--cream);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* ===== FLOATING DECORATIONS ===== */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-bubble {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: floatBubble 8s ease-in-out infinite;
+        }
+
+        .floating-bubble:nth-child(1) {
+            width: 80px; height: 80px;
+            background: var(--pink-main);
+            top: 10%; left: 5%;
+            animation-delay: 0s;
+        }
+        .floating-bubble:nth-child(2) {
+            width: 60px; height: 60px;
+            background: var(--purple-main);
+            top: 30%; right: 8%;
+            animation-delay: 2s;
+        }
+        .floating-bubble:nth-child(3) {
+            width: 100px; height: 100px;
+            background: var(--pink-light);
+            top: 60%; left: 3%;
+            animation-delay: 4s;
+        }
+        .floating-bubble:nth-child(4) {
+            width: 50px; height: 50px;
+            background: var(--gold-light);
+            top: 80%; right: 5%;
+            animation-delay: 1s;
+        }
+        .floating-bubble:nth-child(5) {
+            width: 70px; height: 70px;
+            background: var(--purple-light);
+            top: 50%; left: 50%;
+            animation-delay: 3s;
+        }
+
+        @keyframes floatBubble {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-20px) rotate(5deg); }
+            50% { transform: translateY(-10px) rotate(-3deg); }
+            75% { transform: translateY(-25px) rotate(3deg); }
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(244, 143, 177, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0;
+        }
+
+        .navbar.scrolled {
+            box-shadow: var(--shadow-soft);
+            padding: 0;
+        }
+
+        .navbar-inner {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 30px;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .navbar-logo {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            box-shadow: 0 4px 15px rgba(244, 143, 177, 0.4);
+        }
+
+        .navbar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--pink-deeper);
+            line-height: 1.2;
+        }
+
+        .navbar-title span {
+            display: block;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: var(--text-medium);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 8px 18px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: var(--pink-light);
+            color: var(--pink-deeper);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-dark)) !important;
+            color: white !important;
+            font-weight: 600 !important;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4) !important;
+            background: linear-gradient(135deg, var(--pink-dark), var(--pink-deeper)) !important;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 8px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .hamburger:hover {
+            background: var(--pink-light);
+        }
+
+        .hamburger span {
+            width: 24px;
+            height: 2.5px;
+            background: var(--pink-deeper);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-hero);
+            padding: 120px 30px 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(244, 143, 177, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(206, 147, 216, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--pink-deeper);
+            margin-bottom: 24px;
+            border: 1px solid rgba(244, 143, 177, 0.3);
+            box-shadow: 0 4px 15px rgba(244, 143, 177, 0.15);
+        }
+
+        .hero-badge i {
+            color: var(--gold);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .hero-title .highlight {
+            background: linear-gradient(135deg, var(--pink-dark), var(--purple-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-dark));
+            color: white;
+            box-shadow: 0 6px 25px rgba(233, 30, 99, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(233, 30, 99, 0.45);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--pink-deeper);
+            border: 2px solid var(--pink-main);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--pink-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--pink-deeper);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-medium);
+            margin-top: 4px;
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 420px;
+            height: 480px;
+        }
+
+        .hero-image-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow-strong);
+            border: 4px solid white;
+        }
+
+        .hero-image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, var(--pink-light), var(--purple-light));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .hero-image-placeholder i {
+            font-size: 5rem;
+            color: var(--pink-main);
+            opacity: 0.6;
+        }
+
+        .hero-image-placeholder span {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            font-weight: 500;
+        }
+
+        .hero-float-card {
+            position: absolute;
+            background: white;
+            border-radius: 16px;
+            padding: 16px 20px;
+            box-shadow: var(--shadow-medium);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: floatCard 4s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        .hero-float-card:nth-child(2) {
+            top: 20px;
+            right: -30px;
+            animation-delay: 0s;
+        }
+
+        .hero-float-card:nth-child(3) {
+            bottom: 40px;
+            left: -40px;
+            animation-delay: 2s;
+        }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .float-icon.pink {
+            background: var(--pink-light);
+            color: var(--pink-dark);
+        }
+
+        .float-icon.purple {
+            background: var(--purple-light);
+            color: var(--purple-dark);
+        }
+
+        .float-text strong {
+            display: block;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+        }
+
+        .float-text span {
+            font-size: 0.75rem;
+            color: var(--text-medium);
+        }
+
+        /* ===== SECTION STYLES ===== */
+        section {
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--pink-light);
+            color: var(--pink-deeper);
+            padding: 6px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .section-title .highlight {
+            background: linear-gradient(135deg, var(--pink-dark), var(--purple-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-medium);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            padding: 100px 30px;
+            background: white;
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 200px;
+            background: linear-gradient(180deg, var(--cream) 0%, white 100%);
+        }
+
+        .services-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--gradient-card);
+            border-radius: 20px;
+            padding: 32px 28px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(244, 143, 177, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--pink-main), var(--purple-main));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+            transform-origin: left;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+            border-color: rgba(244, 143, 177, 0.3);
+        }
+
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-icon.pink {
+            background: var(--pink-light);
+            color: var(--pink-dark);
+        }
+
+        .service-icon.purple {
+            background: var(--purple-light);
+            color: var(--purple-dark);
+        }
+
+        .service-icon.gold {
+            background: #fff8e1;
+            color: var(--gold);
+        }
+
+        .service-icon.green {
+            background: #e8f5e9;
+            color: #43a047;
+        }
+
+        .service-icon.blue {
+            background: #e3f2fd;
+            color: #1e88e5;
+        }
+
+        .service-icon.orange {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            font-size: 0.88rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* ===== ADDITIONAL SERVICES ===== */
+        .additional {
+            padding: 100px 30px;
+            background: var(--gradient-hero);
+            position: relative;
+        }
+
+        .additional-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .additional-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .additional-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 40px 36px;
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .additional-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .additional-icon {
+            width: 64px;
+            height: 64px;
+            min-width: 64px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, var(--pink-light), var(--purple-light));
+            color: var(--pink-deeper);
+        }
+
+        .additional-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .additional-card p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* ===== ABOUT / WHY US ===== */
+        .why-us {
+            padding: 100px 30px;
+            background: white;
+        }
+
+        .why-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 40px 24px;
+            border-radius: 24px;
+            background: var(--gradient-card);
+            border: 1px solid rgba(244, 143, 177, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .why-icon {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--pink-main), var(--purple-main));
+            color: white;
+            box-shadow: 0 6px 20px rgba(244, 143, 177, 0.4);
+        }
+
+        .why-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .why-card p {
+            font-size: 0.88rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 100px 30px;
+            background: var(--gradient-hero);
+            position: relative;
+        }
+
+        .contact-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 28px 32px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+        }
+
+        .contact-card:hover {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .contact-icon {
+            width: 52px;
+            height: 52px;
+            min-width: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        .contact-icon.purple {
+            background: linear-gradient(135deg, var(--purple-main), var(--purple-dark));
+            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);
+        }
+
+        .contact-icon.gold {
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
+            box-shadow: 0 4px 15px rgba(249, 168, 37, 0.3);
+        }
+
+        .contact-icon.green {
+            background: linear-gradient(135deg, #81c784, #43a047);
+            box-shadow: 0 4px 15px rgba(67, 160, 71, 0.3);
+        }
+
+        .contact-details h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-medium);
+            margin-bottom: 4px;
+        }
+
+        .contact-details p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .contact-details a {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--pink-deeper);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: var(--purple-dark);
+        }
+
+        .contact-map {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(145deg, var(--pink-light), var(--purple-light));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: var(--text-medium);
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            color: var(--pink-main);
+        }
+
+        .map-info {
+            padding: 28px 32px;
+        }
+
+        .map-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .map-info p {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .schedule-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+        }
+
+        .schedule-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--pink-main);
+        }
+
+        .schedule-dot.closed {
+            background: #ccc;
+        }
+
+        /* ===== SOCIAL MEDIA ===== */
+        .social-section {
+            padding: 60px 30px;
+            background: white;
+        }
+
+        .social-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--gradient-card);
+            padding: 16px 28px;
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(244, 143, 177, 0.15);
+        }
+
+        .social-link:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .social-link i {
+            font-size: 1.4rem;
+        }
+
+        .social-link.ig i { color: #e1306c; }
+        .social-link.tiktok i { color: #000; }
+        .social-link.fb i { color: #1877f2; }
+        .social-link.wa i { color: #25d366; }
+
+        /* ===== CTA BANNER ===== */
+        .cta-banner {
+            padding: 80px 30px;
+            background: linear-gradient(135deg, var(--pink-dark), var(--purple-dark));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-banner h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--pink-deeper);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .btn-outline-white:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--text-dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 60px 30px 30px;
+        }
+
+        .footer-container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .footer-logo {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--pink-main), var(--purple-main));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .footer-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .footer-desc {
+            font-size: 0.88rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .footer h4 {
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: var(--pink-main);
+            border-radius: 3px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.88rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--pink-main);
+            transform: translateX(4px);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 0.88rem;
+        }
+
+        .footer-contact-item i {
+            color: var(--pink-main);
+            margin-top: 3px;
+            min-width: 16px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .footer-bottom p {
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--pink-main);
+        }
+
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--pink-main), var(--pink-dark));
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 20px rgba(233, 30, 99, 0.4);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(233, 30, 99, 0.5);
+        }
+
+        /* ===== WHATSAPP FLOAT ===== */
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 999;
+        }
+
+        .wa-float a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #25d366;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .wa-float a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.5);
+        }
+
+        .wa-float a i {
+            font-size: 1.3rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+        .fade-in-delay-4 { transition-delay: 0.4s; }
+        .fade-in-delay-5 { transition-delay: 0.5s; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text {
+                order: 1;
+            }
+
+            .hero-image {
+                order: 0;
+            }
+
+            .hero-subtitle {
+                margin: 0 auto 32px;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-image-wrapper {
+                width: 320px;
+                height: 380px;
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 16px;
+                z-index: 998;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                padding: 12px 30px;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 999;
+            }
+
+            .hero-title {
+                font-size: 2.4rem;
+            }
+
+            .hero-image-wrapper {
+                width: 260px;
+                height: 320px;
+            }
+
+            .hero-float-card {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .additional-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-banner h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-stats {
+                gap: 24px;
+            }
+
+            .wa-float a span {
+                display: none;
+            }
+
+            .wa-float a {
+                padding: 14px;
+                border-radius: 50%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 20px 60px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .schedule-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-bubble"></div>
+        <div class="floating-bubble"></div>
+        <div class="floating-bubble"></div>
+        <div class="floating-bubble"></div>
+        <div class="floating-bubble"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-inner">
+            <a href="#" class="navbar-brand">
+                <div class="navbar-logo"></div>
+                <div class="navbar-title">
+                    Bidan Tasya
+                    <span>Baby Spa Clinic</span>
+                </div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#beranda" class="active">Beranda</a></li>
+                <li><a href="#layanan">Layanan</a></li>
+                <li><a href="#tambahan">Tambahan</a></li>
+                <li><a href="#keunggulan">Keunggulan</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+                <li><a href="https://wa.me/6287854832279" class="nav-cta"><i class="fab fa-whatsapp"></i> Booking</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i class="fas fa-certificate"></i>
+                    Terapis Profesional & Bersertifikat
+                </div>
+                <h1 class="hero-title">
+                    Klinik Baby Spa<br>
+                    <span class="highlight">Bidan Tasya</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Rawat Si Kecil dengan Penuh Kasih, aman & nyaman. 
+                    Layanan baby spa profesional untuk tumbuh kembang optimal buah hati Anda.
+                </p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/6287854832279?text=Halo%20Bidan%20Tasya,%20saya%20ingin%20booking%20baby%20spa" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Booking Sekarang
+                    </a>
+                    <a href="#layanan" class="btn btn-secondary">
+                        <i class="fas fa-spa"></i> Lihat Layanan
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Bayi Terlayani</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Layanan</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Hari Buka</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-frame">
+                        <div class="hero-image-placeholder">
+                            <i class="fas fa-user-nurse"></i>
+                            <span>Bidan Tasya</span>
+                        </div>
+                    </div>
+                    <div class="hero-float-card">
+                        <div class="float-icon pink">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="float-text">
+                            <strong>Aman & Nyaman</strong>
+                            <span>Untuk Si Kecil</span>
+                        </div>
+                    </div>
+                    <div class="hero-float-card">
+                        <div class="float-icon purple">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="float-text">
+                            <strong>Bersertifikat</strong>
+                            <span>Terapis Profesional</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="layanan">
+        <div class="services-container">
+            <div class="section-header fade-in">
+                <div class="section-tag">
+                    <i class="fas fa-baby"></i> Layanan Kami
+                </div>
+                <h2 class="section-title">
+                    Layanan untuk <span class="highlight">Si Kecil</span>
+                </h2>
+                <p class="section-desc">
+                    Kami menangani berbagai keluhan si kecil dengan perawatan profesional dan penuh kasih sayang
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in fade-in-delay-1">
+                    <div class="service-icon pink">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <h3>Nafas Grok-Grok</h3>
+                    <p>Perawatan khusus untuk membantu melegakan pernapasan si kecil yang berbunyi grok-grok</p>
+                </div>
+                <div class="service-card fade-in fade-in-delay-2">
+                    <div class="service-icon purple">
+                        <i class="fas fa-head-side-cough"></i>
+                    </div>
+                    <h3>Hidung Tersumbat</h3>
+                    <p>Terapi lembut untuk mengatasi hidung tersumbat agar si kecil bisa bernapas dengan lega</p>
+                </div>
+                <div class="service-card fade-in fade-in-delay-3">
+                    <div class="service-icon blue">
+                        <i class="fas fa-head-side-virus"></i>
+                    </div>
+                    <h3>Batuk Pilek</h3>
+                    <p>Penanganan alami untuk meredakan batuk dan pilek pada bayi tanpa obat kimia</p>
+                </div>
+                <div class="service-card fade-in fade-in-delay-1">
+                    <div class="service-icon green">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3>Batuk Berdahak</h3>
+                    <p>Pijat terapeutik untuk membantu mengencerkan dan mengeluarkan dahak si kecil</p>
+                </div>
+                <div class="service-card fade-in fade-in-delay-2">
+                    <div class="service-icon orange">
+                        <i class="fas fa-circle-dot"></i>
+                    </div>
+                    <h3>Perut Kembung</h3>
+                    <p>Pijat khusus perut untuk mengurangi kembung dan kolik pada bayi</p>
+                </div>
+                <div class="service-card fade-in fade-in-delay-3">
+                    <div class="service-icon pink">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Rewel / Susah Tidur</h3>
+                    <p>Relaksasi dan pijat bayi untuk membantu si kecil tidur lebih nyenyak dan tenang</p>
+                </div>
+                <div class="service-card fade-in fade-in-delay-1">
+                    <div class="service-icon purple">
+                        <i class="fas fa-toilet"></i>
+                    </div>
+                    <h3>Sembelit</h3>
+                    <p>Pijat abdomen untuk membantu melancarkan pencernaan dan mengatasi sembelit</p>
+                </div>
+                <div class="service-card fade-in fade-in-delay-2">
+                    <div class="service-icon green">
+                        <i class="fas fa-droplet"></i>
+                    </div>
+                    <h3>Diare</h3>
+                    <p>Perawatan komprehensif untuk membantu mengatasi diare pada si kecil</p>
+                </div>
+                <div class="service-card fade-in fade-in-delay-3">
+                    <div class="service-icon gold">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3>Pijat Sehat</h3>
+                    <p>Pijat bayi rutin untuk stimulasi tumbuh kembang dan meningkatkan imunitas</p>
+                </div>
+                <div class="service-card fade-in fade-in-delay-1">
+                    <div class="service-icon orange">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>GTM (Gerakan Tutup Mulut)</h3>
+                    <p>Terapi untuk mengatasi GTM dan membantu si kecil kembali nafsu makan</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="additional" id="tambahan">
+        <div class="additional-container">
+            <div class="section-header fade-in">
+                <div class="section-tag">
+                    <i class="fas fa-star"></i> Layanan Tambahan
+                </div>
+                <h2 class="section-title">
+                    Layanan <span class="highlight">Tambahan</span>
+                </h2>
+                <p class="section-desc">
+                    Layanan lengkap untuk ibu dan bayi, dari kehamilan hingga perawatan pasca melahirkan
+                </p>
+            </div>
+            <div class="additional-grid">
+                <div class="additional-card fade-in fade-in-delay-1">
+                    <div class="additional-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <div>
+                        <h3>Pijat Oksitosin</h3>
+                        <p>Pijat khusus untuk merangsang produksi ASI dan membantu proses laktasi ibu menyusui</p>
+                    </div>
+                </div>
+                <div class="additional-card fade-in fade-in-delay-2">
+                    <div class="additional-icon">
+                        <i class="fas fa-person-pregnant"></i>
+                    </div>
+                    <div>
+                        <h3>Senam Hamil</h3>
+                        <p>Senam prenatal untuk menjaga kebugaran ibu hamil dan mempersiapkan proses persalinan</p>
+                    </div>
+                </div>
+                <div class="additional-card fade-in fade-in-delay-3">
+                    <div class="additional-icon">
+                        <i class="fas fa-scissors"></i>
+                    </div>
+                    <div>
+                        <h3>Cukur Gundul</h3>
+                        <p>Layanan cukur gundul bayi dengan peralatan steril dan aman untuk si kecil</p>
+                    </div>
+                </div>
+                <div class="additional-card fade-in fade-in-delay-1">
+                    <div class="additional-icon">
+                        <i class="fas fa-baby-carriage"></i>
+                    </div>
+                    <div>
+                        <h3>Pijat Laktasi</h3>
+                        <p>Pijat payudara untuk memperlancar ASI dan mengatasi bendungan ASI pada ibu menyusui</p>
+                    </div>
+                </div>
+                <div class="additional-card fade-in fade-in-delay-2">
+                    <div class="additional-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div>
+                        <h3>Perawatan Bayi Baru Lahir</h3>
+                        <p>Perawatan komprehensif untuk bayi baru lahir termasuk perawatan tali pusat dan kulit</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="why-us" id="keunggulan">
+        <div class="why-container">
+            <div class="section-header fade-in">
+                <div class="section-tag">
+                    <i class="fas fa-heart"></i> Mengapa Kami
+                </div>
+                <h2 class="section-title">
+                    Mengapa Memilih <span class="highlight">Bidan Tasya?</span>
+                </h2>
+                <p class="section-desc">
+                    Kami berkomitmen memberikan perawatan terbaik untuk si kecil dan keluarga Anda
+                </p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card fade-in fade-in-delay-1">
+                    <div class="why-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Bersertifikat</h3>
+                    <p>Terapis profesional dengan sertifikat resmi dan pelatihan khusus baby spa</p>
+                </div>
+                <div class="why-card fade-in fade-in-delay-2">
+                    <div class="why-icon">
+                        <i class="fas fa-shield-heart"></i>
+                    </div>
+                    <h3>Aman & Nyaman</h3>
+                    <p>Perawatan dengan metode aman, lembut, dan lingkungan yang nyaman untuk bayi</p>
+                </div>
+                <div class="why-card fade-in fade-in-delay-3">
+                    <div class="why-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3>Penuh Kasih</h3>
+                    <p>Setiap perawatan dilakukan dengan penuh kasih sayang seperti对待 anak sendiri</p>
+                </div>
+                <div class="why-card fade-in fade-in-delay-4">
+                    <div class="why-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Jam Fleksibel</h3>
+                    <p>Buka 6 hari seminggu dari pukul 08.30 - 18.00 WITA untuk kemudahan Anda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="kontak">
+        <div class="contact-container">
+            <div class="section-header fade-in">
+                <div class="section-tag">
+                    <i class="fas fa-phone"></i> Hubungi Kami
+                </div>
+                <h2 class="section-title">
+                    Mari <span class="highlight">Hubungi Kami</span>
+                </h2>
+                <p class="section-desc">
+                    Jangan ragu untuk menghubungi kami untuk konsultasi atau booking layanan
+                </p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card fade-in fade-in-delay-1">
+                        <div class="contact-icon">
+                            <i class="fas fa-user-nurse"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Bidan Tasya</h4>
+                            <a href="tel:087854832279">0878-5483-2279</a>
+                        </div>
+                    </div>
+                    <div class="contact-card fade-in fade-in-delay-2">
+                        <div class="contact-icon purple">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Admin</h4>
+                            <a href="tel:081947552069">0819-4755-2069</a>
+                        </div>
+                    </div>
+                    <div class="contact-card fade-in fade-in-delay-3">
+                        <div class="contact-icon gold">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Alamat</h4>
+                            <p>Desa Dasan Borok, Kec. Suralaga, Lotim</p>
+                        </div>
+                    </div>
+                    <div class="contact-card fade-in fade-in-delay-4">
+                        <div class="contact-icon green">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Jam Buka</h4>
+                            <p>08.30 - 18.00 WITA</p>
+                        </div>
+                    </div>
+                    <div class="contact-card fade-in fade-in-delay-5">
+                        <div class="contact-icon">
+                            <i class="fas fa-calendar-week"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Hari Buka</h4>
+                            <p>Senin - Jumat & Minggu (Libur Sabtu)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map fade-in fade-in-delay-2">
+                    <div class="map-placeholder">
+                        <i class="fas fa-map-location-dot"></i>
+                        <span>Lokasi Klinik Baby Spa Bidan Tasya</span>
+                        <span style="font-size: 0.8rem;">Desa Dasan Borok, Kec. Suralaga, Lotim</span>
+                    </div>
+                    <div class="map-info">
+                        <h3><i class="fas fa-calendar-check" style="color: var(--pink-main); margin-right: 8px;"></i>Jadwal Operasional</h3>
+                        <p>Kami siap melayani si kecil dengan penuh kasih sayang</p>
+                        <div class="schedule-grid">
+                            <div class="schedule-item">
+                                <div class="schedule-dot"></div>
+                                <span>Senin</span>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-dot"></div>
+                                <span>Selasa</span>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-dot"></div>
+                                <span>Rabu</span>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-dot"></div>
+                                <span>Kamis</span>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-dot"></div>
+                                <span>Jumat</span>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-dot closed"></div>
+                                <span style="color: #999;">Sabtu (Libur)</span>
+                            </div>
+                            <div class="schedule-item">
+                                <div class="schedule-dot"></div>
+                                <span>Minggu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media -->
+    <section class="social-section">
+        <div class="social-container fade-in">
+            <div class="section-tag">
+                <i class="fas fa-share-nodes"></i> Media Sosial
+            </div>
+            <h2 class="section-title" style="font-size: 2rem;">
+                Ikuti <span class="highlight">Media Sosial</span> Kami
+            </h2>
+            <p class="section-desc">
+                Dapatkan tips perawatan bayi dan info terbaru dari kami
+            </p>
+            <div class="social-links">
+                <a href="https://instagram.com/bidan.tasya_mombabycare" class="social-link ig" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>@bidan.tasya_mombabycare</span>
+                </a>
+                <a href="#" class="social-link tiktok" target="_blank">
+                    <i class="fab fa-tiktok"></i>
+                    <span>Bidan Tasya</span>
+                </a>
+                <a href="#" class="social-link fb" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                    <span>Bidan Tasya</span>
+                </a>
+                <a href="https://wa.me/6287854832279" class="social-link wa" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>0878-5483-2279</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="cta-container fade-in">
+            <h2>Rawat Si Kecil dengan Penuh Kasih</h2>
+            <p>
+                Aman & nyaman — Terapis Profesional & Bersertifikat.<br>
+                Booking sekarang dan berikan perawatan terbaik untuk buah hati Anda!
+            </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/6287854832279?text=Halo%20Bidan%20Tasya,%20saya%20ingin%20booking%20baby%20spa" class="btn btn-white">
+                    <i class="fab fa-whatsapp"></i> Booking via WhatsApp
+                </a>
+                <a href="tel:087854832279" class="btn btn-outline-white">
+                    <i class="fas fa-phone"></i> Hubungi Kami
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <div class="footer-logo"></div>
+                        <div class="footer-brand-name">Klinik Baby Spa Bidan Tasya</div>
+                    </div>
+                    <p class="footer-desc">
+                        Rawat Si Kecil dengan Penuh Kasih, aman & nyaman. 
+                        Terapis Profesional & Bersertifikat untuk tumbuh kembang optimal buah hati Anda.
+                    </p>
+                </div>
+                <div>
+                    <h4>Layanan</h4>
+                    <ul class="footer-links">
+                        <li><a href="#layanan"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Baby Spa</a></li>
+                        <li><a href="#layanan"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Pijat Bayi</a></li>
+                        <li><a href="#tambahan"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Pijat Oksitosin</a></li>
+                        <li><a href="#tambahan"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Senam Hamil</a></li>
+                        <li><a href="#tambahan"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Cukur Gundul</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Navigasi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#beranda"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Beranda</a></li>
+                        <li><a href="#layanan"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Layanan</a></li>
+                        <li><a href="#keunggulan"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Keunggulan</a></li>
+                        <li><a href="#kontak"><i class="fas fa-chevron-right" style="font-size: 0.7rem;"></i> Kontak</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Kontak</h4>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-location-dot"></i>
+                        <span>Desa Dasan Borok, Kec. Suralaga, Lotim</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>0878-5483-2279</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>08.30 - 18.00 WITA</span>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>Senin - Jumat & Minggu</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Klinik Baby Spa Bidan Tasya. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Kebijakan Privasi</a>
+                    <a href="#">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <div class="wa-float">
+        <a href="https://wa.me/6287854832279?text=Halo%20Bidan%20Tasya,%20saya%20ingin%20bertanya%20tentang%20layanan%20baby%20spa" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span>Chat Kami</span>
+        </a>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start) + '+';
+                }
+            }, 16);
+        }
+
+        // Trigger counter animation when hero is visible
+        const heroObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = document.querySelectorAll('.stat-number');
+                    const values = [500, 10, 6];
+                    statNumbers.forEach((el, i) => {
+                        if (i < values.length) {
+                            animateCounter(el, values[i]);
+                        }
+                    });
+                    heroObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const heroSection = document.querySelector('.hero');
+        if (heroSection) heroObserver.observe(heroSection);
+    </script>
+</body>
+</html>
