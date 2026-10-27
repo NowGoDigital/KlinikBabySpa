@@ -56,33 +56,39 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .loader-bar::after{content:'';display:block;width:40%;height:100%;background:var(--grad-rose);animation:load 1.2s ease-in-out infinite}
 @keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
 
-/* ===== NAVBAR ===== */
-.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 0;transition:all .5s cubic-bezier(.4,0,.2,1)}
-.navbar.scrolled{background:rgba(250,243,238,.92);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);box-shadow:var(--shadow-sm);padding:12px 0}
+/* ===== NAVBAR - FIXED ===== */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 0;transition:all .5s cubic-bezier(.4,0,.2,1);background:rgba(42,31,45,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.navbar.scrolled{background:rgba(250,243,238,.95);box-shadow:var(--shadow-sm);padding:12px 0}
 .nav-container{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
 .nav-brand{display:flex;align-items:center;gap:14px}
 .nav-logo{width:52px;height:52px;border-radius:50%;background:var(--grad-rose);display:grid;place-items:center;color:#fff;font-size:1.4rem;box-shadow:var(--shadow-glow);position:relative;transition:transform .4s}
 .nav-logo:hover{transform:rotate(360deg) scale(1.1)}
 .nav-logo::after{content:'';position:absolute;inset:-5px;border-radius:50%;border:1.5px solid var(--rose-300);animation:spin 20s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.nav-brand-text h1{font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:var(--charcoal);line-height:1}
-.nav-brand-text span{font-size:.7rem;color:var(--charcoal-muted);letter-spacing:2.5px;text-transform:uppercase;font-weight:500;margin-top:2px;display:block}
+.nav-brand-text h1{font-family:var(--font-display);font-size:1.35rem;font-weight:700;color:#fff;line-height:1;transition:color .5s}
+.navbar.scrolled .nav-brand-text h1{color:var(--charcoal)}
+.nav-brand-text span{font-size:.7rem;color:rgba(255,255,255,.7);letter-spacing:2.5px;text-transform:uppercase;font-weight:500;margin-top:2px;display:block;transition:color .5s}
+.navbar.scrolled .nav-brand-text span{color:var(--charcoal-muted)}
 .nav-menu{display:flex;list-style:none;gap:4px;align-items:center}
-.nav-menu a{padding:10px 20px;border-radius:30px;font-size:.88rem;font-weight:500;color:var(--charcoal);transition:all .3s;position:relative}
+.nav-menu a{padding:10px 20px;border-radius:30px;font-size:.88rem;font-weight:500;color:#fff;transition:all .3s;position:relative}
+.navbar.scrolled .nav-menu a{color:var(--charcoal)}
 .nav-menu a::before{content:'';position:absolute;bottom:4px;left:50%;width:0;height:2px;background:var(--grad-rose);transition:all .3s;transform:translateX(-50%);border-radius:2px}
 .nav-menu a:hover::before,.nav-menu a.active::before{width:20px}
-.nav-menu a:hover,.nav-menu a.active{color:var(--rose-600)}
+.nav-menu a:hover{background:rgba(255,255,255,.1)}
+.navbar.scrolled .nav-menu a:hover{background:var(--rose-100);color:var(--rose-600)}
 .nav-menu .btn-book{background:var(--grad-rose);color:#fff !important;font-weight:600;box-shadow:var(--shadow-glow);padding:12px 26px}
 .nav-menu .btn-book::before{display:none}
 .nav-menu .btn-book:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(244,63,133,.4)}
 .hamburger{display:none;flex-direction:column;gap:6px;padding:10px;border-radius:10px;transition:background .3s}
-.hamburger:hover{background:var(--rose-100)}
-.hamburger span{width:26px;height:2px;background:var(--charcoal);border-radius:3px;transition:all .3s}
+.hamburger:hover{background:rgba(255,255,255,.1)}
+.navbar.scrolled .hamburger:hover{background:var(--rose-100)}
+.hamburger span{width:26px;height:2px;background:#fff;border-radius:3px;transition:all .3s}
+.navbar.scrolled .hamburger span{background:var(--charcoal)}
 .hamburger.active span:nth-child(1){transform:translateY(8px) rotate(45deg)}
 .hamburger.active span:nth-child(2){opacity:0}
 .hamburger.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 
-/* ===== HERO SLIDER - CLEAN (NO IMAGE BOX) ===== */
+/* ===== HERO SLIDER ===== */
 .hero-slider{position:relative;height:100vh;min-height:700px;overflow:hidden}
 .hero-slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity 1s cubic-bezier(.4,0,.2,1),visibility 1s}
 .hero-slide.active{opacity:1;visibility:visible}
@@ -335,9 +341,10 @@ section{position:relative;z-index:1}
   .booking-progress::before{left:50px;right:50px}
 }
 @media(max-width:768px){
-  .nav-menu{display:none;position:fixed;inset:0;background:rgba(250,243,238,.98);backdrop-filter:blur(30px);flex-direction:column;justify-content:center;align-items:center;gap:16px;z-index:998}
+  .nav-menu{display:none;position:fixed;inset:0;background:rgba(42,31,45,.98);backdrop-filter:blur(30px);flex-direction:column;justify-content:center;align-items:center;gap:16px;z-index:998}
   .nav-menu.open{display:flex}
-  .nav-menu a{font-size:1.1rem;padding:14px 32px}
+  .nav-menu a{font-size:1.1rem;padding:14px 32px;color:#fff}
+  .nav-menu a:hover{background:rgba(255,255,255,.1)}
   .hamburger{display:flex;z-index:999}
   .hero-slide{padding:0 24px}
   .hero-slide-title{font-size:clamp(2rem,7vw,3rem)}
@@ -406,7 +413,7 @@ section{position:relative;z-index:1}
   </div>
 </nav>
 
-<!-- Hero Slider (CLEAN - NO IMAGE BOX) -->
+<!-- Hero Slider -->
 <section class="hero-slider" id="beranda">
   <!-- Slide 1 -->
   <div class="hero-slide active" data-slide="0">
@@ -1117,8 +1124,8 @@ document.getElementById('submitBooking').addEventListener('click',()=>{
   const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0A`+
     `Halo Bidan Tasya, saya ingin booking:%0A%0A`+
     `📋 *Layanan:* ${bookingData.services.join(', ')}%0A`+
-    `📅 *Tanggal:* ${dateFormatted}%0A`+
-    ` *Waktu:* ${bookingData.time} WITA%0A`+
+    ` *Tanggal:* ${dateFormatted}%0A`+
+    `⏰ *Waktu:* ${bookingData.time} WITA%0A`+
     `👩 *Nama Bunda:* ${bookingData.name}%0A`+
     `📱 *WhatsApp:* ${bookingData.phone}%0A`+
     `👶 *Nama Bayi:* ${bookingData.baby}%0A`+
