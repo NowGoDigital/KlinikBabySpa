@@ -857,5 +857,65 @@ document.addEventListener('keydown', e => {
   }
 });
 </script>
+
+<script>
+// ===== INTEGRASI BOOKING KE LOCALSTORAGE =====
+(function(){
+  const submitBtn = document.getElementById('submitBooking');
+  if(!submitBtn) return;
+  
+  submitBtn.addEventListener('click', function(){
+    setTimeout(() => {
+      const name = document.getElementById('bookName')?.value.trim();
+      const phone = document.getElementById('bookPhone')?.value.trim();
+      const baby = document.getElementById('bookBaby')?.value.trim();
+      const age = document.getElementById('bookAge')?.value;
+      const date = document.getElementById('bookDate')?.value;
+      const notes = document.getElementById('bookNotes')?.value.trim();
+      
+      // Ambil layanan dari DOM
+      const selectedServices = [];
+      document.querySelectorAll('.service-opt.selected').forEach(opt => {
+        const svc = opt.dataset.service;
+        if(svc) selectedServices.push(svc);
+      });
+      
+      // Ambil waktu dari DOM
+      let time = '-';
+      const selectedTime = document.querySelector('.time-slot.selected');
+      if(selectedTime) time = selectedTime.dataset.time;
+      
+      if(!name || !phone || selectedServices.length === 0){
+        console.warn('⚠️ Data tidak lengkap');
+        return;
+      }
+      
+      const bookingData = {
+        id: 'BT-' + Date.now().toString(36).toUpperCase(),
+        name: name,
+        phone: phone,
+        baby: baby || '-',
+        age: age || '-',
+        services: selectedServices,
+        date: date || '',
+        time: time,
+        notes: notes || '',
+        status: 'pending',
+        createdAt: new Date().toISOString()
+      };
+      
+      try {
+        const bookings = JSON.parse(localStorage.getItem('bidanTasya_bookings') || '[]');
+        bookings.unshift(bookingData);
+        localStorage.setItem('bidanTasya_bookings', JSON.stringify(bookings));
+        console.log('✅ Booking saved:', bookingData);
+        console.log('📋 Services:', bookingData.services);
+      } catch(err) {
+        console.error('❌ Error:', err);
+      }
+    }, 300);
+  }, true);
+})();
+</script>
 </body>
 </html>
