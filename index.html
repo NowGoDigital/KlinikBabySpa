@@ -9,7 +9,7 @@
 <style>
 :root{
   --rose-50:#fff5f7;--rose-100:#ffe4ec;--rose-200:#ffc9d9;--rose-300:#ff9ebf;--rose-400:#ff6fa3;--rose-500:#f43f85;--rose-600:#d41f6a;--rose-700:#a81555;
-  --champagne:#f7e7ce;--gold:#c9a96e;--gold-dark:#a0824a;
+  --champagne:#f7e7ce;--champagne-light:#fdf5eb;--gold:#c9a96e;--gold-dark:#a0824a;
   --cream:#faf3ee;--cream-dark:#f0e6dc;
   --charcoal:#2a1f2d;--charcoal-light:#4a3a4d;--charcoal-muted:#6b5a6e;
   --white:#ffffff;
@@ -58,15 +58,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 @keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
 
 /* ===== PROMO TOPBAR ===== */
-.promo-topbar{
-  position:fixed;
-  top:0;left:0;right:0;
-  z-index:1001;
-  background:var(--grad-rose);
-  height:var(--topbar-h);
-  transition:transform .4s cubic-bezier(.4,0,.2,1);
-  overflow:hidden;
-}
+.promo-topbar{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--grad-rose);height:var(--topbar-h);transition:transform .4s cubic-bezier(.4,0,.2,1);overflow:hidden}
 .promo-topbar.hide{transform:translateY(-100%)}
 .promo-topbar::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);animation:promoShine 3s ease-in-out infinite}
 @keyframes promoShine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
@@ -85,17 +77,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .promo-timer i{font-size:.7rem}
 
 /* ===== NAVBAR ===== */
-.navbar{
-  position:fixed;
-  top:var(--topbar-h);
-  left:0;right:0;
-  z-index:1000;
-  padding:10px 0;
-  transition:top .4s cubic-bezier(.4,0,.2,1), background .4s, padding .4s;
-  background:rgba(42,31,45,.85);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-}
+.navbar{position:fixed;top:var(--topbar-h);left:0;right:0;z-index:1000;padding:10px 0;transition:top .4s cubic-bezier(.4,0,.2,1), background .4s, padding .4s;background:rgba(42,31,45,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 .navbar.scrolled{background:rgba(250,243,238,.95);box-shadow:var(--shadow-sm);padding:8px 0}
 .navbar.topbar-hidden{top:0}
 .nav-container{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
@@ -118,7 +100,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .nav-menu .btn-book{background:var(--grad-rose);color:#fff !important;font-weight:600;box-shadow:var(--shadow-glow);padding:10px 22px;font-size:.82rem}
 .nav-menu .btn-book::before{display:none}
 .nav-menu .btn-book:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(244,63,133,.4)}
-.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:8px;transition:background .3s}
+.hamburger{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:8px;transition:background .3s;cursor:pointer}
 .hamburger:hover{background:rgba(255,255,255,.1)}
 .navbar.scrolled .hamburger:hover{background:var(--rose-100)}
 .hamburger span{width:22px;height:2px;background:#fff;border-radius:3px;transition:all .3s}
@@ -431,7 +413,7 @@ section{position:relative;z-index:1}
 
 /* ===== RESPONSIVE - MOBILE FIX ===== */
 @media(max-width:768px){
-  /* Topbar Mobile - Fixed height */
+  /* Topbar Mobile */
   .promo-topbar{height:var(--topbar-h-m)}
   .promo-inner{padding:0 44px 0 14px;gap:6px;flex-wrap:wrap;justify-content:center}
   .promo-badge{font-size:.6rem;padding:3px 8px;order:1}
@@ -440,17 +422,17 @@ section{position:relative;z-index:1}
   .promo-timer{font-size:.62rem;padding:2px 8px;order:4}
   .promo-cta{display:none}
   
-  /* Navbar Mobile - NO !important, biar transition smooth */
+  /* Navbar Mobile */
   .navbar{top:var(--topbar-h-m)}
   .navbar.topbar-hidden{top:0}
   .navbar.scrolled{padding:8px 0}
-  .nav-container{padding:0 16px}
+  .nav-container{padding:0 16px;position:relative}
   .nav-brand-text h1{font-size:1.05rem}
   .nav-brand-text span{font-size:.58rem}
   .nav-logo{width:38px;height:38px;font-size:1rem}
   
-  /* Hamburger Mobile */
-  .hamburger{display:flex !important;z-index:1003;position:relative;padding:10px;margin-left:8px}
+  /* Hamburger - Z-index tinggi */
+  .hamburger{display:flex !important;z-index:1005 !important;position:relative;padding:10px;margin-left:8px;background:transparent}
   .hamburger span{width:24px;height:2.5px;background:#fff;border-radius:3px;transition:all .3s}
   .navbar.scrolled .hamburger span{background:var(--charcoal)}
   .hamburger:hover{background:rgba(255,255,255,.15)}
@@ -468,16 +450,17 @@ section{position:relative;z-index:1}
     justify-content:center;
     align-items:center;
     gap:6px;
-    z-index:1002;
+    z-index:1003;
     padding:70px 20px 30px;
     opacity:0;
     visibility:hidden;
     transition:opacity .4s, visibility .4s;
-    overflow-y: auto;
+    overflow-y:auto;
+    pointer-events:none;
   }
-  .nav-menu.open{display:flex;opacity:1;visibility:visible}
+  .nav-menu.open{display:flex;opacity:1;visibility:visible;pointer-events:auto}
   
-  /* Close button INSIDE nav-menu */
+  /* Close button */
   .menu-close{
     position:absolute;
     top:16px;
@@ -494,33 +477,17 @@ section{position:relative;z-index:1}
     cursor:pointer;
     transition:all .3s;
     border:1px solid rgba(255,255,255,.25);
-    z-index:1003;
+    z-index:1006;
   }
   .menu-close:hover{background:rgba(255,255,255,.25);transform:rotate(90deg)}
   .nav-menu.open .menu-close{display:flex}
   
   /* Menu items */
   .nav-menu li{width:100%;max-width:320px;text-align:center}
-  .nav-menu a{
-    display:block;
-    width:100%;
-    font-size:1.05rem;
-    padding:14px 20px;
-    color:#fff;
-    border-radius:12px;
-    font-weight:500;
-    transition:all .3s;
-    border:1px solid transparent;
-  }
+  .nav-menu a{display:block;width:100%;font-size:1.05rem;padding:14px 20px;color:#fff;border-radius:12px;font-weight:500;transition:all .3s;border:1px solid transparent}
   .nav-menu a:hover,.nav-menu a.active{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.1)}
   .nav-menu a::before{display:none}
-  .nav-menu .btn-book{
-    margin-top:10px;
-    background:var(--grad-rose);
-    color:#fff !important;
-    border:none;
-    box-shadow:var(--shadow-glow);
-  }
+  .nav-menu .btn-book{margin-top:10px;background:var(--grad-rose);color:#fff !important;border:none;box-shadow:var(--shadow-glow)}
   .nav-menu .btn-book:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(244,63,133,.4)}
   
   /* Hero Mobile */
@@ -645,7 +612,6 @@ section{position:relative;z-index:1}
         <span>Premium Baby Care</span>
       </div>
     </a>
-    <!-- Menu dengan close button DI DALAM -->
     <ul class="nav-menu" id="navMenu">
       <button class="menu-close" id="menuClose" aria-label="Tutup menu"><i class="fas fa-times"></i></button>
       <li><a href="#beranda" class="active">Beranda</a></li>
@@ -1144,14 +1110,18 @@ function closeMenu(){
   document.body.style.overflow = '';
 }
 
-hamburger.addEventListener('click', () => {
+hamburger.addEventListener('click', (e) => {
+  e.stopPropagation();
   const isOpen = navMenu.classList.toggle('open');
   hamburger.classList.toggle('active', isOpen);
   document.body.style.overflow = isOpen ? 'hidden' : '';
 });
 
 if(menuClose){
-  menuClose.addEventListener('click', closeMenu);
+  menuClose.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeMenu();
+  });
 }
 
 document.querySelectorAll('.nav-menu a').forEach(link => {
@@ -1210,7 +1180,7 @@ document.getElementById('back2').addEventListener('click',()=>goToStep(1));
 document.getElementById('back3').addEventListener('click',()=>goToStep(2));
 document.getElementById('back4').addEventListener('click',()=>goToStep(3));
 function buildSummary(){bookingData.name=document.getElementById('bookName').value.trim();bookingData.phone=document.getElementById('bookPhone').value.trim();bookingData.baby=document.getElementById('bookBaby').value.trim();bookingData.age=document.getElementById('bookAge').value;bookingData.notes=document.getElementById('bookNotes').value.trim();const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});document.getElementById('bookingSummary').innerHTML=`<div class="summary-row"><span class="label">Layanan</span><span class="value">${bookingData.services.join(', ')}</span></div><div class="summary-row"><span class="label">Tanggal</span><span class="value">${dateFormatted}</span></div><div class="summary-row"><span class="label">Waktu</span><span class="value">${bookingData.time} WITA</span></div><div class="summary-row"><span class="label">Nama Bunda</span><span class="value">${bookingData.name}</span></div><div class="summary-row"><span class="label">WhatsApp</span><span class="value">${bookingData.phone}</span></div><div class="summary-row"><span class="label">Nama Bayi</span><span class="value">${bookingData.baby}</span></div><div class="summary-row"><span class="label">Usia Bayi</span><span class="value">${bookingData.age}</span></div>${bookingData.notes?`<div class="summary-row"><span class="label">Catatan</span><span class="value">${bookingData.notes}</span></div>`:''}`}
-document.getElementById('submitBooking').addEventListener('click',()=>{const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0AHalo Bidan Tasya, saya ingin booking:%0A%0A📋 *Layanan:* ${bookingData.services.join(', ')}%0A📅 *Tanggal:* ${dateFormatted}%0A⏰ *Waktu:* ${bookingData.time} WITA%0A *Nama Bunda:* ${bookingData.name}%0A📱 *WhatsApp:* ${bookingData.phone}%0A👶 *Nama Bayi:* ${bookingData.baby}%0A *Usia Bayi:* ${bookingData.age}%0A${bookingData.notes?`📝 *Catatan:* ${bookingData.notes}%0A`:''}%0ATerima kasih!`;window.open(`https://wa.me/6287854832279?text=${msg}`,'_blank');document.getElementById('successModal').classList.add('show')});
+document.getElementById('submitBooking').addEventListener('click',()=>{const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0AHalo Bidan Tasya, saya ingin booking:%0A%0A📋 *Layanan:* ${bookingData.services.join(', ')}%0A📅 *Tanggal:* ${dateFormatted}%0A⏰ *Waktu:* ${bookingData.time} WITA%0A👩 *Nama Bunda:* ${bookingData.name}%0A📱 *WhatsApp:* ${bookingData.phone}%0A👶 *Nama Bayi:* ${bookingData.baby}%0A *Usia Bayi:* ${bookingData.age}%0A${bookingData.notes?`📝 *Catatan:* ${bookingData.notes}%0A`:''}%0ATerima kasih!`;window.open(`https://wa.me/6287854832279?text=${msg}`,'_blank');document.getElementById('successModal').classList.add('show')});
 document.getElementById('modalClose').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show')});
 document.getElementById('modalOk').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show');bookingData.services=[];bookingData.date='';bookingData.time='';document.querySelectorAll('.service-opt').forEach(s=>s.classList.remove('selected'));document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));document.getElementById('bookDate').value='';document.getElementById('bookName').value='';document.getElementById('bookPhone').value='';document.getElementById('bookBaby').value='';document.getElementById('bookAge').value='';document.getElementById('bookNotes').value='';document.getElementById('next1').disabled=true;document.getElementById('next2').disabled=true;document.getElementById('next3').disabled=true;goToStep(1)});
 document.getElementById('successModal').addEventListener('click',e=>{if(e.target.id==='successModal')document.getElementById('successModal').classList.remove('show')});
