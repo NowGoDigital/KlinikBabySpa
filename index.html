@@ -29,7 +29,7 @@
   --font-elegant:'Cormorant Garamond',serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:100px;overflow-y:auto!important}
+html{scroll-behavior:smooth;scroll-padding-top:120px;overflow-y:auto!important}
 body{font-family:var(--font-body);background:var(--cream);color:var(--charcoal);overflow-x:hidden;overflow-y:auto!important;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit}
@@ -56,31 +56,138 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .loader-bar::after{content:'';display:block;width:40%;height:100%;background:var(--grad-rose);animation:load 1.2s ease-in-out infinite}
 @keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
 
-/* ===== PROMO TOPBAR ===== */
-.promo-topbar{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--grad-rose);transition:all .4s cubic-bezier(.4,0,.2,1);overflow:hidden;height:44px}
-.promo-topbar.hidden{transform:translateY(-100%);height:0;opacity:0;pointer-events:none}
-.promo-topbar::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);animation:promoShine 3s ease-in-out infinite}
+/* ===== PROMO TOPBAR - AUTO HIDE ON SCROLL ===== */
+.promo-topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1001;
+  background:var(--grad-rose);
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+  overflow:hidden;
+  height:44px;
+  transform:translateY(0);
+}
+.promo-topbar.hide{
+  transform:translateY(-100%);
+}
+.promo-topbar::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);
+  animation:promoShine 3s ease-in-out infinite;
+}
 @keyframes promoShine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-.promo-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:center;gap:16px;height:100%;position:relative;z-index:2}
-.promo-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;border:1px solid rgba(255,255,255,.3);animation:promoPulse 2s ease-in-out infinite}
-@keyframes promoPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,.4)}50%{transform:scale(1.05);box-shadow:0 0 0 6px rgba(255,255,255,0)}}
+.promo-inner{
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  height:100%;
+  position:relative;
+  z-index:2;
+}
+.promo-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:rgba(255,255,255,.2);
+  backdrop-filter:blur(10px);
+  padding:4px 12px;
+  border-radius:20px;
+  font-size:.7rem;
+  font-weight:700;
+  color:#fff;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  white-space:nowrap;
+  border:1px solid rgba(255,255,255,.3);
+  animation:promoPulse 2s ease-in-out infinite;
+}
+@keyframes promoPulse{
+  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,.4)}
+  50%{transform:scale(1.05);box-shadow:0 0 0 6px rgba(255,255,255,0)}
+}
 .promo-badge i{font-size:.65rem}
-.promo-text{font-size:.85rem;font-weight:500;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+.promo-text{
+  font-size:.85rem;
+  font-weight:500;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
 .promo-text strong{font-weight:700;color:#fff}
-.promo-slot{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--rose-600);padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:700;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.promo-slot{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:#fff;
+  color:var(--rose-600);
+  padding:4px 12px;
+  border-radius:20px;
+  font-size:.75rem;
+  font-weight:700;
+  box-shadow:0 2px 10px rgba(0,0,0,.15);
+}
 .promo-slot i{color:var(--rose-500);animation:slotBlink 1.5s ease-in-out infinite}
 @keyframes slotBlink{0%,100%{opacity:1}50%{opacity:.4}}
-.promo-cta{color:#fff;font-weight:600;font-size:.82rem;padding:6px 16px;border-radius:20px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);transition:all .3s;white-space:nowrap;text-decoration:none}
+.promo-cta{
+  color:#fff;
+  font-weight:600;
+  font-size:.82rem;
+  padding:6px 16px;
+  border-radius:20px;
+  background:rgba(255,255,255,.2);
+  border:1px solid rgba(255,255,255,.4);
+  transition:all .3s;
+  white-space:nowrap;
+  text-decoration:none;
+}
 .promo-cta:hover{background:#fff;color:var(--rose-600);transform:translateY(-1px)}
-.promo-timer{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;color:#fff;background:rgba(0,0,0,.2);padding:4px 10px;border-radius:20px;font-family:monospace;letter-spacing:1px}
+.promo-timer{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:.78rem;
+  font-weight:600;
+  color:#fff;
+  background:rgba(0,0,0,.2);
+  padding:4px 10px;
+  border-radius:20px;
+  font-family:monospace;
+  letter-spacing:1px;
+}
 .promo-timer i{font-size:.7rem}
-.promo-close{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;display:grid;place-items:center;cursor:pointer;transition:all .3s;border:1px solid rgba(255,255,255,.3);font-size:.8rem}
-.promo-close:hover{background:rgba(255,255,255,.4);transform:translateY(-50%) rotate(90deg)}
 
 /* ===== NAVBAR ===== */
-.navbar{position:fixed;top:44px;left:0;right:0;z-index:1000;padding:10px 0;transition:all .4s cubic-bezier(.4,0,.2,1);background:rgba(42,31,45,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
-.navbar.scrolled{background:rgba(250,243,238,.95);box-shadow:var(--shadow-sm);padding:8px 0;top:0}
-.promo-topbar.hidden ~ .navbar{top:0}
+.navbar{
+  position:fixed;
+  top:44px;
+  left:0;
+  right:0;
+  z-index:1000;
+  padding:10px 0;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  background:rgba(42,31,45,.85);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+.navbar.scrolled{
+  background:rgba(250,243,238,.95);
+  box-shadow:var(--shadow-sm);
+  padding:8px 0;
+}
+.navbar.topbar-hidden{
+  top:0;
+}
 .nav-container{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
 .nav-brand{display:flex;align-items:center;gap:12px}
 .nav-logo{width:42px;height:42px;border-radius:50%;background:var(--grad-rose);display:grid;place-items:center;color:#fff;font-size:1.1rem;box-shadow:var(--shadow-glow);position:relative;transition:transform .4s}
@@ -460,6 +567,7 @@ section{position:relative;z-index:1}
   .promo-badge{font-size:.62rem;padding:3px 8px}
   .promo-slot{font-size:.68rem;padding:3px 8px}
   .promo-timer{font-size:.68rem;padding:3px 8px}
+  .promo-cta{display:none}
   .navbar{top:48px !important}
 }
 @media(max-width:480px){
@@ -497,7 +605,6 @@ section{position:relative;z-index:1}
       <span class="promo-timer"><i class="fas fa-clock"></i> <span id="promoCountdown">23:59:59</span></span>
     </div>
     <a href="#booking" class="promo-cta">Klaim Sekarang <i class="fas fa-arrow-right" style="font-size:.7rem;margin-left:4px"></i></a>
-    <button class="promo-close" id="promoClose" aria-label="Tutup"><i class="fas fa-times"></i></button>
   </div>
 </div>
 
@@ -513,10 +620,10 @@ section{position:relative;z-index:1}
     </a>
     <ul class="nav-menu" id="navMenu">
       <li><a href="#beranda" class="active">Beranda</a></li>
+      <li><a href="#profil">Profil</a></li>
       <li><a href="#layanan">Layanan</a></li>
       <li><a href="#booking">Booking</a></li>
       <li><a href="#keunggulan">Keunggulan</a></li>
-      <li><a href="#profil">Profil</a></li>
       <li><a href="#testimoni">Testimoni</a></li>
       <li><a href="#kontak">Kontak</a></li>
       <li><a href="#booking" class="btn-book"><i class="fas fa-calendar-check"></i> Booking</a></li>
@@ -908,15 +1015,11 @@ section{position:relative;z-index:1}
 </div>
 
 <script>
-// ===== SCROLL FIX - PRIORITY =====
+// ===== SCROLL FIX =====
 (function(){
   document.documentElement.style.overflowY = 'auto';
   document.body.style.overflowY = 'auto';
   document.body.style.overflowX = 'hidden';
-  document.body.style.position = 'static';
-  document.body.style.height = 'auto';
-  document.documentElement.style.height = 'auto';
-  console.log('✅ Scroll fix applied');
 })();
 
 // ===== LOADER =====
@@ -924,7 +1027,6 @@ window.addEventListener('load',()=>{
   setTimeout(()=>{
     const loader = document.getElementById('loader');
     if(loader) loader.classList.add('hidden');
-    // Force remove after 3s as backup
     setTimeout(()=>{
       const l = document.getElementById('loader');
       if(l) l.style.display = 'none';
@@ -940,12 +1042,72 @@ function animateRing(){ringX+=(mouseX-ringX)*.15;ringY+=(mouseY-ringY)*.15;ring.
 animateRing();
 document.querySelectorAll('a,button,.service-card,.service-opt,.time-slot,.contact-card,.cta-btn').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hover'));el.addEventListener('mouseleave',()=>ring.classList.remove('hover'))});
 
-// ===== NAVBAR SCROLL =====
-const navbar=document.getElementById('navbar');
-const promoTopbar=document.getElementById('promoTopbar');
-window.addEventListener('scroll',()=>{
-  const isPromoHidden = promoTopbar && promoTopbar.classList.contains('hidden');
-  navbar.classList.toggle('scrolled', window.scrollY > 50 || isPromoHidden);
+// ===== PROMO TOPBAR - AUTO HIDE ON SCROLL =====
+(function(){
+  const topbar = document.getElementById('promoTopbar');
+  const navbar = document.getElementById('navbar');
+  const countdownEl = document.getElementById('promoCountdown');
+  const SCROLL_THRESHOLD = 100; // px - topbar hide setelah scroll 100px
+  let lastScrollY = 0;
+  let ticking = false;
+
+  // Countdown timer
+  function initCountdown(){
+    let endTime = localStorage.getItem('bidanTasya_promo_end');
+    if(!endTime){
+      endTime = Date.now() + (24 * 60 * 60 * 1000);
+      localStorage.setItem('bidanTasya_promo_end', endTime);
+    }
+    function updateTimer(){
+      const now = Date.now();
+      const remaining = endTime - now;
+      if(remaining <= 0){
+        endTime = Date.now() + (24 * 60 * 60 * 1000);
+        localStorage.setItem('bidanTasya_promo_end', endTime);
+        return;
+      }
+      const hours = Math.floor(remaining / (1000 * 60 * 60));
+      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+      countdownEl.textContent = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+    }
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  }
+  if(countdownEl) initCountdown();
+
+  // Scroll handler - hide topbar when scrolling down
+  function onScroll(){
+    lastScrollY = window.scrollY;
+    
+    if(lastScrollY > SCROLL_THRESHOLD){
+      // Scroll lebih dari threshold - hide topbar, navbar naik ke top
+      topbar.classList.add('hide');
+      navbar.classList.add('topbar-hidden');
+    } else {
+      // Scroll di atas threshold - show topbar, navbar di bawah topbar
+      topbar.classList.remove('hide');
+      navbar.classList.remove('topbar-hidden');
+    }
+    
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if(!ticking){
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, {passive: true});
+
+  // Initial check
+  onScroll();
+})();
+
+// ===== NAVBAR SCROLL EFFECT =====
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 150);
 });
 
 // ===== HAMBURGER =====
@@ -1005,7 +1167,7 @@ document.getElementById('back2').addEventListener('click',()=>goToStep(1));
 document.getElementById('back3').addEventListener('click',()=>goToStep(2));
 document.getElementById('back4').addEventListener('click',()=>goToStep(3));
 function buildSummary(){bookingData.name=document.getElementById('bookName').value.trim();bookingData.phone=document.getElementById('bookPhone').value.trim();bookingData.baby=document.getElementById('bookBaby').value.trim();bookingData.age=document.getElementById('bookAge').value;bookingData.notes=document.getElementById('bookNotes').value.trim();const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});document.getElementById('bookingSummary').innerHTML=`<div class="summary-row"><span class="label">Layanan</span><span class="value">${bookingData.services.join(', ')}</span></div><div class="summary-row"><span class="label">Tanggal</span><span class="value">${dateFormatted}</span></div><div class="summary-row"><span class="label">Waktu</span><span class="value">${bookingData.time} WITA</span></div><div class="summary-row"><span class="label">Nama Bunda</span><span class="value">${bookingData.name}</span></div><div class="summary-row"><span class="label">WhatsApp</span><span class="value">${bookingData.phone}</span></div><div class="summary-row"><span class="label">Nama Bayi</span><span class="value">${bookingData.baby}</span></div><div class="summary-row"><span class="label">Usia Bayi</span><span class="value">${bookingData.age}</span></div>${bookingData.notes?`<div class="summary-row"><span class="label">Catatan</span><span class="value">${bookingData.notes}</span></div>`:''}`}
-document.getElementById('submitBooking').addEventListener('click',()=>{const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0AHalo Bidan Tasya, saya ingin booking:%0A%0A📋 *Layanan:* ${bookingData.services.join(', ')}%0A📅 *Tanggal:* ${dateFormatted}%0A⏰ *Waktu:* ${bookingData.time} WITA%0A👩 *Nama Bunda:* ${bookingData.name}%0A📱 *WhatsApp:* ${bookingData.phone}%0A👶 *Nama Bayi:* ${bookingData.baby}%0A *Usia Bayi:* ${bookingData.age}%0A${bookingData.notes?`📝 *Catatan:* ${bookingData.notes}%0A`:''}%0ATerima kasih!`;window.open(`https://wa.me/6287854832279?text=${msg}`,'_blank');document.getElementById('successModal').classList.add('show')});
+document.getElementById('submitBooking').addEventListener('click',()=>{const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0AHalo Bidan Tasya, saya ingin booking:%0A%0A📋 *Layanan:* ${bookingData.services.join(', ')}%0A📅 *Tanggal:* ${dateFormatted}%0A⏰ *Waktu:* ${bookingData.time} WITA%0A *Nama Bunda:* ${bookingData.name}%0A📱 *WhatsApp:* ${bookingData.phone}%0A👶 *Nama Bayi:* ${bookingData.baby}%0A *Usia Bayi:* ${bookingData.age}%0A${bookingData.notes?`📝 *Catatan:* ${bookingData.notes}%0A`:''}%0ATerima kasih!`;window.open(`https://wa.me/6287854832279?text=${msg}`,'_blank');document.getElementById('successModal').classList.add('show')});
 document.getElementById('modalClose').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show')});
 document.getElementById('modalOk').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show');bookingData.services=[];bookingData.date='';bookingData.time='';document.querySelectorAll('.service-opt').forEach(s=>s.classList.remove('selected'));document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));document.getElementById('bookDate').value='';document.getElementById('bookName').value='';document.getElementById('bookPhone').value='';document.getElementById('bookBaby').value='';document.getElementById('bookAge').value='';document.getElementById('bookNotes').value='';document.getElementById('next1').disabled=true;document.getElementById('next2').disabled=true;document.getElementById('next3').disabled=true;goToStep(1)});
 document.getElementById('successModal').addEventListener('click',e=>{if(e.target.id==='successModal')document.getElementById('successModal').classList.remove('show')});
@@ -1031,7 +1193,7 @@ document.getElementById('successModal').addEventListener('click',e=>{if(e.target
       const selectedTime = document.querySelector('.time-slot.selected');
       if(selectedTime) time = selectedTime.dataset.time;
       if(!name || !phone || selectedServices.length === 0){
-        console.warn('⚠️ Data tidak lengkap');
+        console.warn('️ Data tidak lengkap');
         return;
       }
       const bookingData = {
@@ -1059,60 +1221,12 @@ document.getElementById('successModal').addEventListener('click',e=>{if(e.target
   }, true);
 })();
 
-// ===== PROMO TOPBAR =====
-(function(){
-  const topbar = document.getElementById('promoTopbar');
-  const closeBtn = document.getElementById('promoClose');
-  const countdownEl = document.getElementById('promoCountdown');
-  const STORAGE_KEY_PROMO = 'bidanTasya_promo_closed';
-  
-  const isClosed = sessionStorage.getItem(STORAGE_KEY_PROMO);
-  if(isClosed === 'true'){
-    topbar.classList.add('hidden');
-    document.querySelector('.navbar').style.top = '0';
-  }
-  
-  closeBtn.addEventListener('click', () => {
-    topbar.classList.add('hidden');
-    sessionStorage.setItem(STORAGE_KEY_PROMO, 'true');
-    setTimeout(() => {
-      document.querySelector('.navbar').style.top = '0';
-    }, 400);
-  });
-  
-  function initCountdown(){
-    let endTime = localStorage.getItem('bidanTasya_promo_end');
-    if(!endTime){
-      endTime = Date.now() + (24 * 60 * 60 * 1000);
-      localStorage.setItem('bidanTasya_promo_end', endTime);
-    }
-    function updateTimer(){
-      const now = Date.now();
-      const remaining = endTime - now;
-      if(remaining <= 0){
-        endTime = Date.now() + (24 * 60 * 60 * 1000);
-        localStorage.setItem('bidanTasya_promo_end', endTime);
-        return;
-      }
-      const hours = Math.floor(remaining / (1000 * 60 * 60));
-      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
-      countdownEl.textContent = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
-    }
-    updateTimer();
-    setInterval(updateTimer, 1000);
-  }
-  if(countdownEl) initCountdown();
-})();
-
-// ===== CLOSE MODALS ON OVERLAY CLICK =====
+// ===== CLOSE MODALS =====
 document.querySelectorAll('.modal-overlay').forEach(m => {
   m.addEventListener('click', e => {
     if(e.target === m) m.classList.remove('show');
   });
 });
-
-// ===== KEYBOARD ESC =====
 document.addEventListener('keydown', e => {
   if(e.key === 'Escape'){
     document.querySelectorAll('.modal-overlay.show').forEach(m => m.classList.remove('show'));
