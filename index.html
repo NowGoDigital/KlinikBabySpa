@@ -259,24 +259,183 @@ section{position:relative;z-index:1}
 .section-divider::before{left:-16px}
 .section-divider::after{right:-16px}
 
-/* ===== SERVICES ===== */
-.services{padding:80px 0;background:var(--white);position:relative}
+/* ===== SERVICES - REDESIGN MINIMALIS MODERN ===== */
+.services{padding:90px 0;background:var(--white);position:relative;overflow:hidden}
 .services::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose-200),transparent)}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
-.service-card{background:var(--white);border-radius:var(--radius-sm);padding:28px 24px;transition:all .4s cubic-bezier(.4,0,.2,1);position:relative;overflow:hidden;border:1px solid rgba(42,31,45,.06);cursor:pointer}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-rose);transform:scaleX(0);transform-origin:left;transition:transform .4s}
-.service-card::after{content:'';position:absolute;bottom:-50%;right:-50%;width:100%;height:100%;background:radial-gradient(circle,rgba(244,63,133,.08) 0%,transparent 70%);opacity:0;transition:opacity .4s}
-.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:rgba(244,63,133,.15)}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
+
+/* Service Card - New Design */
+.service-card{
+  background:var(--white);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  transition:all .5s cubic-bezier(.4,0,.2,1);
+  position:relative;
+  border:1px solid rgba(42,31,45,.06);
+  cursor:pointer;
+  display:flex;
+  flex-direction:column;
+}
+.service-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:3px;
+  background:var(--grad-rose);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .5s;
+  z-index:3;
+}
+.service-card:hover{
+  transform:translateY(-8px);
+  box-shadow:var(--shadow-xl);
+  border-color:rgba(244,63,133,.2);
+}
 .service-card:hover::before{transform:scaleX(1)}
-.service-card:hover::after{opacity:1}
-.service-ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;margin-bottom:18px;background:var(--rose-50);color:var(--rose-500);transition:all .4s;position:relative}
-.service-ico::after{content:'';position:absolute;inset:-4px;border-radius:18px;border:2px solid var(--rose-200);opacity:0;transition:all .4s}
-.service-card:hover .service-ico{background:var(--grad-rose);color:#fff;transform:scale(1.1) rotate(6deg);box-shadow:var(--shadow-glow)}
-.service-card:hover .service-ico::after{opacity:1;border-color:var(--rose-400)}
-.service-card h3{font-family:var(--font-display);font-size:1.08rem;font-weight:600;color:var(--charcoal);margin-bottom:8px;position:relative}
-.service-card p{font-size:.84rem;color:var(--charcoal-muted);line-height:1.6;position:relative}
-.service-card .arrow{position:absolute;top:24px;right:24px;width:30px;height:30px;border-radius:50%;background:var(--rose-50);display:grid;place-items:center;color:var(--rose-400);font-size:.75rem;transition:all .4s;opacity:0;transform:translateX(-8px)}
-.service-card:hover .arrow{opacity:1;transform:translateX(0)}
+
+/* Image Container */
+.service-img-wrap{
+  position:relative;
+  width:100%;
+  height:180px;
+  overflow:hidden;
+  background:var(--rose-50);
+}
+.service-img-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .6s cubic-bezier(.4,0,.2,1);
+}
+.service-card:hover .service-img-wrap img{
+  transform:scale(1.08);
+}
+.service-img-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(42,31,45,.7) 100%);
+  z-index:1;
+}
+.service-img-badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  width:44px;
+  height:44px;
+  border-radius:12px;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);
+  display:grid;
+  place-items:center;
+  font-size:1.2rem;
+  color:var(--rose-500);
+  z-index:2;
+  box-shadow:0 4px 12px rgba(42,31,45,.1);
+  transition:all .4s;
+}
+.service-card:hover .service-img-badge{
+  background:var(--grad-rose);
+  color:#fff;
+  transform:rotate(-8deg) scale(1.1);
+  box-shadow:var(--shadow-glow);
+}
+.service-img-number{
+  position:absolute;
+  top:14px;
+  right:14px;
+  font-family:var(--font-display);
+  font-size:.75rem;
+  font-weight:700;
+  color:#fff;
+  background:rgba(42,31,45,.6);
+  backdrop-filter:blur(10px);
+  padding:4px 10px;
+  border-radius:20px;
+  z-index:2;
+  letter-spacing:1px;
+}
+
+/* Content */
+.service-content{
+  padding:20px 22px 22px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+.service-card h3{
+  font-family:var(--font-display);
+  font-size:1.1rem;
+  font-weight:600;
+  color:var(--charcoal);
+  margin-bottom:8px;
+  line-height:1.3;
+}
+.service-card p{
+  font-size:.84rem;
+  color:var(--charcoal-muted);
+  line-height:1.6;
+  margin-bottom:14px;
+  flex:1;
+}
+.service-card-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding-top:12px;
+  border-top:1px solid rgba(42,31,45,.06);
+}
+.service-link{
+  font-size:.78rem;
+  font-weight:600;
+  color:var(--rose-600);
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  transition:all .3s;
+  text-decoration:none;
+}
+.service-link i{
+  font-size:.7rem;
+  transition:transform .3s;
+}
+.service-card:hover .service-link i{
+  transform:translateX(4px);
+}
+.service-link:hover{
+  color:var(--rose-700);
+}
+
+/* Different image positions for variety */
+.service-card:nth-child(1) .service-img-wrap img{object-position:center}
+.service-card:nth-child(2) .service-img-wrap img{object-position:left}
+.service-card:nth-child(3) .service-img-wrap img{object-position:right}
+.service-card:nth-child(4) .service-img-wrap img{object-position:center top}
+.service-card:nth-child(5) .service-img-wrap img{object-position:center bottom}
+.service-card:nth-child(6) .service-img-wrap img{object-position:left center}
+.service-card:nth-child(7) .service-img-wrap img{object-position:right center}
+.service-card:nth-child(8) .service-img-wrap img{object-position:center}
+.service-card:nth-child(9) .service-img-wrap img{object-position:left top}
+.service-card:nth-child(10) .service-img-wrap img{object-position:right bottom}
+
+/* Responsive Mobile */
+@media(max-width:768px){
+  .services{padding:60px 0}
+  .services-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .service-img-wrap{height:140px}
+  .service-img-badge{width:36px;height:36px;font-size:1rem;border-radius:10px}
+  .service-img-number{font-size:.65rem;padding:3px 8px}
+  .service-content{padding:14px 16px 16px}
+  .service-card h3{font-size:.95rem}
+  .service-card p{font-size:.76rem;margin-bottom:10px}
+  .service-link{font-size:.72rem}
+}
+@media(max-width:480px){
+  .services-grid{grid-template-columns:1fr}
+  .service-img-wrap{height:180px}
+  .service-content{padding:18px 20px 20px}
+  .service-card h3{font-size:1.05rem}
+}
 
 /* ===== BOOKING ===== */
 .booking{padding:80px 0;background:var(--grad-hero);position:relative;overflow:hidden}
@@ -849,16 +1008,175 @@ section{position:relative;z-index:1}
       <p class="section-desc">Kami menangani berbagai keluhan si kecil dengan perawatan profesional dan penuh kasih sayang</p>
     </div>
     <div class="services-grid">
-      <div class="service-card reveal d1"><div class="service-ico"><i class="fas fa-lungs"></i></div><h3>Nafas Grok-Grok</h3><p>Melegakan pernapasan si kecil</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
-      <div class="service-card reveal d2"><div class="service-ico"><i class="fas fa-head-side-cough"></i></div><h3>Hidung Tersumbat</h3><p>Terapi lembut agar bernapas lega</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
-      <div class="service-card reveal d3"><div class="service-ico"><i class="fas fa-head-side-virus"></i></div><h3>Batuk Pilek</h3><p>Penanganan alami tanpa obat kimia</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
-      <div class="service-card reveal d1"><div class="service-ico"><i class="fas fa-wind"></i></div><h3>Batuk Berdahak</h3><p>Pijat terapeutik mengencerkan dahak</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
-      <div class="service-card reveal d2"><div class="service-ico"><i class="fas fa-circle-dot"></i></div><h3>Perut Kembung</h3><p>Kurangi kembung & kolik bayi</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
-      <div class="service-card reveal d3"><div class="service-ico"><i class="fas fa-moon"></i></div><h3>Rewel / Susah Tidur</h3><p>Relaksasi untuk tidur nyenyak</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
-      <div class="service-card reveal d1"><div class="service-ico"><i class="fas fa-toilet"></i></div><h3>Sembelit</h3><p>Pijat abdomen lancar pencernaan</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
-      <div class="service-card reveal d2"><div class="service-ico"><i class="fas fa-droplet"></i></div><h3>Diare</h3><p>Perawatan komprehensif diare bayi</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
-      <div class="service-card reveal d3"><div class="service-ico"><i class="fas fa-hands"></i></div><h3>Pijat Sehat</h3><p>Stimulasi tumbuh kembang & imunitas</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
-      <div class="service-card reveal d1"><div class="service-ico"><i class="fas fa-utensils"></i></div><h3>GTM</h3><p>Terapi kembalikan nafsu makan</p><div class="arrow"><i class="fas fa-arrow-right"></i></div></div>
+      <!-- Service 1 -->
+      <div class="service-card reveal d1">
+        <div class="service-img-wrap">
+          <img src="baby2.webp" alt="Nafas Grok-Grok">
+          <div class="service-img-overlay"></div>
+          <div class="service-img-badge"><i class="fas fa-lungs"></i></div>
+          <div class="service-img-number">01</div>
+        </div>
+        <div class="service-content">
+          <h3>Nafas Grok-Grok</h3>
+          <p>Melegakan pernapasan si kecil dengan teknik pijat khusus yang aman dan lembut</p>
+          <div class="service-card-footer">
+            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="service-card reveal d2">
+        <div class="service-img-wrap">
+          <img src="baby2.webp" alt="Hidung Tersumbat">
+          <div class="service-img-overlay"></div>
+          <div class="service-img-badge"><i class="fas fa-head-side-cough"></i></div>
+          <div class="service-img-number">02</div>
+        </div>
+        <div class="service-content">
+          <h3>Hidung Tersumbat</h3>
+          <p>Terapi lembut agar si kecil bisa bernapas dengan lega dan nyaman</p>
+          <div class="service-card-footer">
+            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="service-card reveal d3">
+        <div class="service-img-wrap">
+          <img src="baby2.webp" alt="Batuk Pilek">
+          <div class="service-img-overlay"></div>
+          <div class="service-img-badge"><i class="fas fa-head-side-virus"></i></div>
+          <div class="service-img-number">03</div>
+        </div>
+        <div class="service-content">
+          <h3>Batuk Pilek</h3>
+          <p>Penanganan alami tanpa obat kimia untuk meredakan batuk dan pilek</p>
+          <div class="service-card-footer">
+            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="service-card reveal d1">
+        <div class="service-img-wrap">
+          <img src="baby2.webp" alt="Batuk Berdahak">
+          <div class="service-img-overlay"></div>
+          <div class="service-img-badge"><i class="fas fa-wind"></i></div>
+          <div class="service-img-number">04</div>
+        </div>
+        <div class="service-content">
+          <h3>Batuk Berdahak</h3>
+          <p>Pijat terapeutik untuk mengencerkan dan membantu mengeluarkan dahak</p>
+          <div class="service-card-footer">
+            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="service-card reveal d2">
+        <div class="service-img-wrap">
+          <img src="baby2.webp" alt="Perut Kembung">
+          <div class="service-img-overlay"></div>
+          <div class="service-img-badge"><i class="fas fa-circle-dot"></i></div>
+          <div class="service-img-number">05</div>
+        </div>
+        <div class="service-content">
+          <h3>Perut Kembung</h3>
+          <p>Pijat khusus perut untuk mengurangi kembung dan kolik pada bayi</p>
+          <div class="service-card-footer">
+            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 6 -->
+      <div class="service-card reveal d3">
+        <div class="service-img-wrap">
+          <img src="baby2.webp" alt="Rewel Susah Tidur">
+          <div class="service-img-overlay"></div>
+          <div class="service-img-badge"><i class="fas fa-moon"></i></div>
+          <div class="service-img-number">06</div>
+        </div>
+        <div class="service-content">
+          <h3>Rewel / Susah Tidur</h3>
+          <p>Relaksasi dan pijat bayi untuk membantu tidur nyenyak dan tenang</p>
+          <div class="service-card-footer">
+            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 7 -->
+      <div class="service-card reveal d1">
+        <div class="service-img-wrap">
+          <img src="baby2.webp" alt="Sembelit">
+          <div class="service-img-overlay"></div>
+          <div class="service-img-badge"><i class="fas fa-toilet"></i></div>
+          <div class="service-img-number">07</div>
+        </div>
+        <div class="service-content">
+          <h3>Sembelit</h3>
+          <p>Pijat abdomen untuk melancarkan pencernaan dan mengatasi sembelit</p>
+          <div class="service-card-footer">
+            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 8 -->
+      <div class="service-card reveal d2">
+        <div class="service-img-wrap">
+          <img src="baby2.webp" alt="Diare">
+          <div class="service-img-overlay"></div>
+          <div class="service-img-badge"><i class="fas fa-droplet"></i></div>
+          <div class="service-img-number">08</div>
+        </div>
+        <div class="service-content">
+          <h3>Diare</h3>
+          <p>Perawatan komprehensif untuk membantu mengatasi diare pada bayi</p>
+          <div class="service-card-footer">
+            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 9 -->
+      <div class="service-card reveal d3">
+        <div class="service-img-wrap">
+          <img src="baby2.webp" alt="Pijat Sehat">
+          <div class="service-img-overlay"></div>
+          <div class="service-img-badge"><i class="fas fa-hands"></i></div>
+          <div class="service-img-number">09</div>
+        </div>
+        <div class="service-content">
+          <h3>Pijat Sehat</h3>
+          <p>Stimulasi tumbuh kembang dan meningkatkan imunitas si kecil</p>
+          <div class="service-card-footer">
+            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service 10 -->
+      <div class="service-card reveal d1">
+        <div class="service-img-wrap">
+          <img src="baby2.webp" alt="GTM">
+          <div class="service-img-overlay"></div>
+          <div class="service-img-badge"><i class="fas fa-utensils"></i></div>
+          <div class="service-img-number">10</div>
+        </div>
+        <div class="service-content">
+          <h3>GTM</h3>
+          <p>Terapi khusus untuk mengembalikan nafsu makan si kecil</p>
+          <div class="service-card-footer">
+            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
