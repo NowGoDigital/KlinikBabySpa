@@ -182,7 +182,7 @@ tr:hover td{background:var(--rose-50)}
 .empty-state h4{font-family:var(--font-display);font-size:1.2rem;color:var(--charcoal);margin-bottom:8px}
 .empty-state p{font-size:.88rem}
 
-/* Modal */
+/* Detail Modal */
 .modal-overlay{position:fixed;inset:0;background:rgba(42,31,45,.6);backdrop-filter:blur(10px);z-index:2000;display:grid;place-items:center;opacity:0;visibility:hidden;transition:all .3s;padding:20px}
 .modal-overlay.show{opacity:1;visibility:visible}
 .modal{background:var(--white);border-radius:var(--radius-lg);max-width:600px;width:100%;max-height:90vh;overflow-y:auto;transform:scale(.9);transition:transform .3s}
@@ -198,6 +198,35 @@ tr:hover td{background:var(--rose-50)}
 .detail-item strong{font-size:.92rem;color:var(--charcoal);font-weight:600}
 .detail-item.full{grid-column:1/-1}
 .modal-footer{padding:20px 28px;border-top:1px solid var(--rose-100);display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+
+/* ===== CUSTOM CONFIRM MODAL ===== */
+.confirm-overlay{position:fixed;inset:0;background:rgba(42,31,45,.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:5000;display:grid;place-items:center;opacity:0;visibility:hidden;transition:all .35s cubic-bezier(.4,0,.2,1);padding:20px}
+.confirm-overlay.show{opacity:1;visibility:visible}
+.confirm-modal{background:var(--white);border-radius:var(--radius-lg);max-width:420px;width:100%;text-align:center;transform:scale(.85) translateY(20px);transition:transform .4s cubic-bezier(.4,0,.2,1);box-shadow:0 25px 80px rgba(42,31,45,.3);overflow:hidden;position:relative}
+.confirm-overlay.show .confirm-modal{transform:scale(1) translateY(0)}
+.confirm-header{background:var(--grad-rose);padding:28px 24px 20px;position:relative;overflow:hidden}
+.confirm-header::before{content:'';position:absolute;top:-50%;right:-20%;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.15) 0%,transparent 70%);border-radius:50%}
+.confirm-header::after{content:'';position:absolute;bottom:-30%;left:-10%;width:150px;height:150px;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 70%);border-radius:50%}
+.confirm-icon{width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);display:grid;place-items:center;margin:0 auto 14px;font-size:1.6rem;color:#fff;position:relative;z-index:1;border:2px solid rgba(255,255,255,.3);animation:confirmPop .5s cubic-bezier(.4,0,.2,1)}
+@keyframes confirmPop{0%{transform:scale(0) rotate(-180deg);opacity:0}60%{transform:scale(1.2) rotate(10deg)}100%{transform:scale(1) rotate(0);opacity:1}}
+.confirm-title{font-family:var(--font-display);font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:4px;position:relative;z-index:1}
+.confirm-subtitle{font-size:.78rem;color:rgba(255,255,255,.85);position:relative;z-index:1}
+.confirm-body{padding:28px 28px 8px}
+.confirm-message{font-size:.95rem;color:var(--charcoal);line-height:1.6;margin-bottom:6px}
+.confirm-message strong{color:var(--rose-600);font-weight:600}
+.confirm-message .highlight{background:var(--rose-50);color:var(--rose-600);padding:2px 8px;border-radius:6px;font-weight:600}
+.confirm-footer{padding:16px 28px 28px;display:flex;gap:12px;justify-content:center}
+.confirm-btn{padding:12px 28px;border-radius:50px;font-size:.88rem;font-weight:600;transition:all .3s;display:inline-flex;align-items:center;gap:8px;min-width:120px;justify-content:center}
+.confirm-btn-cancel{background:var(--cream);color:var(--charcoal);border:1.5px solid rgba(42,31,45,.1)}
+.confirm-btn-cancel:hover{background:var(--rose-50);border-color:var(--rose-300);color:var(--rose-600)}
+.confirm-btn-ok{background:var(--grad-rose);color:#fff;box-shadow:var(--shadow-glow)}
+.confirm-btn-ok:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(244,63,133,.4)}
+.confirm-btn.danger{background:linear-gradient(135deg,#ef4444,#dc2626);box-shadow:0 4px 15px rgba(239,68,68,.3)}
+.confirm-btn.danger:hover{box-shadow:0 8px 24px rgba(239,68,68,.4)}
+.confirm-icon.warning{background:rgba(245,158,11,.2);border-color:rgba(245,158,11,.3)}
+.confirm-icon.danger{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.3)}
+.confirm-header.warning{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.confirm-header.danger{background:linear-gradient(135deg,#ef4444,#dc2626)}
 
 /* Toast */
 .toast-container{position:fixed;top:24px;right:24px;z-index:3000;display:flex;flex-direction:column;gap:10px}
@@ -279,7 +308,7 @@ tr:hover td{background:var(--rose-50)}
         </button>
       </form>
       <div class="login-hint" id="loginHint" style="display:none">
-        <strong> Default Credentials:</strong><br>
+        <strong>💡 Default Credentials:</strong><br>
         Username: <strong>admin</strong><br>
         Password: <strong>bidantasya2026</strong>
       </div>
@@ -331,7 +360,7 @@ tr:hover td{background:var(--rose-50)}
   <main class="main-content">
     <div class="topbar">
       <div>
-        <h1>Selamat Datang, <span>Admin</span> 👋</h1>
+        <h1>Selamat Datang, <span>Admin</span> </h1>
         <p style="font-size:.85rem;color:var(--charcoal-muted);margin-top:4px" id="currentDate"></p>
       </div>
       <div class="topbar-actions">
@@ -435,6 +464,24 @@ tr:hover td{background:var(--rose-50)}
   </div>
 </div>
 
+<!-- ===== CUSTOM CONFIRM MODAL ===== -->
+<div class="confirm-overlay" id="confirmOverlay">
+  <div class="confirm-modal">
+    <div class="confirm-header" id="confirmHeader">
+      <div class="confirm-icon" id="confirmIcon"><i class="fas fa-question"></i></div>
+      <div class="confirm-title">Bidan Tasya menyatakan</div>
+      <div class="confirm-subtitle" id="confirmSubtitle">Konfirmasi tindakan Anda</div>
+    </div>
+    <div class="confirm-body">
+      <p class="confirm-message" id="confirmMessage">Apakah Anda yakin?</p>
+    </div>
+    <div class="confirm-footer">
+      <button class="confirm-btn confirm-btn-cancel" id="confirmCancel"><i class="fas fa-times"></i> Batal</button>
+      <button class="confirm-btn confirm-btn-ok" id="confirmOk"><i class="fas fa-check"></i> Oke</button>
+    </div>
+  </div>
+</div>
+
 <!-- Toast Container -->
 <div class="toast-container" id="toastContainer"></div>
 
@@ -446,6 +493,72 @@ const CREDENTIALS = {
 };
 const STORAGE_KEY = 'bidanTasya_bookings';
 const SESSION_KEY = 'bidanTasya_session';
+
+// ===== CUSTOM CONFIRM MODAL =====
+function showConfirm(message, options = {}){
+  return new Promise((resolve) => {
+    const overlay = document.getElementById('confirmOverlay');
+    const header = document.getElementById('confirmHeader');
+    const icon = document.getElementById('confirmIcon');
+    const subtitle = document.getElementById('confirmSubtitle');
+    const msg = document.getElementById('confirmMessage');
+    const btnOk = document.getElementById('confirmOk');
+    const btnCancel = document.getElementById('confirmCancel');
+    
+    // Reset classes
+    header.className = 'confirm-header';
+    icon.className = 'confirm-icon';
+    btnOk.className = 'confirm-btn confirm-btn-ok';
+    
+    // Set variant
+    const variant = options.variant || 'default';
+    if(variant === 'warning'){
+      header.classList.add('warning');
+      icon.classList.add('warning');
+      icon.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+    } else if(variant === 'danger'){
+      header.classList.add('danger');
+      icon.classList.add('danger');
+      icon.innerHTML = '<i class="fas fa-trash-alt"></i>';
+      btnOk.classList.add('danger');
+    } else {
+      icon.innerHTML = '<i class="fas fa-question"></i>';
+    }
+    
+    // Set content
+    subtitle.textContent = options.subtitle || 'Konfirmasi tindakan Anda';
+    msg.innerHTML = message;
+    
+    // Show modal
+    overlay.classList.add('show');
+    
+    // Cleanup function
+    const cleanup = () => {
+      overlay.classList.remove('show');
+      btnOk.onclick = null;
+      btnCancel.onclick = null;
+      overlay.onclick = null;
+    };
+    
+    // Button handlers
+    btnOk.onclick = () => {
+      cleanup();
+      resolve(true);
+    };
+    btnCancel.onclick = () => {
+      cleanup();
+      resolve(false);
+    };
+    
+    // Close on overlay click
+    overlay.onclick = (e) => {
+      if(e.target === overlay){
+        cleanup();
+        resolve(false);
+      }
+    };
+  });
+}
 
 // ===== AUTH =====
 function checkSession(){
@@ -500,8 +613,16 @@ document.getElementById('togglePwd').addEventListener('click', function(){
   }
 });
 
-document.getElementById('btnLogout').addEventListener('click', () => {
-  if(confirm('Yakin ingin logout?')){
+document.getElementById('btnLogout').addEventListener('click', async () => {
+  const confirmed = await showConfirm(
+    'Anda akan <strong>keluar</strong> dari dashboard admin.<br><small style="color:var(--charcoal-muted)">Lanjutkan logout?</small>',
+    {
+      variant: 'warning',
+      subtitle: 'Konfirmasi logout'
+    }
+  );
+  
+  if(confirmed){
     sessionStorage.removeItem(SESSION_KEY);
     localStorage.removeItem(SESSION_KEY);
     location.reload();
@@ -695,7 +816,7 @@ function viewBooking(idx){
   document.getElementById('detailModal').classList.add('show');
 }
 
-function changeStatus(idx){
+async function changeStatus(idx){
   const bookings = getBookings();
   const b = bookings[idx];
   if(!b) return;
@@ -705,7 +826,15 @@ function changeStatus(idx){
   const currentIdx = statuses.indexOf(b.status || 'pending');
   const nextStatus = statuses[(currentIdx + 1) % statuses.length];
   
-  if(confirm(`Ubah status booking ${b.name} dari "${labels[b.status||'pending']}" menjadi "${labels[nextStatus]}"?`)){
+  const confirmed = await showConfirm(
+    `Ubah status booking <strong>${b.name}</strong> dari <span class="highlight">${labels[b.status||'pending']}</span> menjadi <span class="highlight">${labels[nextStatus]}</span>?`,
+    {
+      variant: 'default',
+      subtitle: 'Konfirmasi perubahan status'
+    }
+  );
+  
+  if(confirmed){
     bookings[idx].status = nextStatus;
     saveBookings(bookings);
     loadBookings();
@@ -713,12 +842,20 @@ function changeStatus(idx){
   }
 }
 
-function deleteBooking(idx){
+async function deleteBooking(idx){
   const bookings = getBookings();
   const b = bookings[idx];
   if(!b) return;
   
-  if(confirm(`Yakin ingin menghapus booking ${b.name}? Tindakan ini tidak dapat dibatalkan.`)){
+  const confirmed = await showConfirm(
+    `Yakin ingin <strong>menghapus</strong> booking <strong>${b.name}</strong>?<br><small style="color:var(--charcoal-muted)">Tindakan ini tidak dapat dibatalkan.</small>`,
+    {
+      variant: 'danger',
+      subtitle: 'Peringatan penghapusan data'
+    }
+  );
+  
+  if(confirmed){
     bookings.splice(idx, 1);
     saveBookings(bookings);
     loadBookings();
@@ -772,7 +909,7 @@ function exportCSV(){
     b.createdAt||''
   ]);
   
-  let csv = '\uFEFF' + headers.join(',') + '\n'; // BOM for Excel
+  let csv = '\uFEFF' + headers.join(',') + '\n';
   rows.forEach(r => {
     csv += r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',') + '\n';
   });
@@ -792,10 +929,27 @@ document.getElementById('exportData').addEventListener('click', e => {
   exportCSV();
 });
 
-document.getElementById('clearData').addEventListener('click', e => {
+document.getElementById('clearData').addEventListener('click', async (e) => {
   e.preventDefault();
-  if(confirm('⚠️ PERINGATAN: Semua data booking akan dihapus permanen. Lanjutkan?')){
-    if(confirm('Konfirmasi sekali lagi: Hapus SEMUA data booking?')){
+  
+  const firstConfirm = await showConfirm(
+    '⚠️ <strong>PERINGATAN:</strong> Semua data booking akan dihapus <strong>permanen</strong>.<br><small style="color:var(--charcoal-muted)">Lanjutkan?</small>',
+    {
+      variant: 'danger',
+      subtitle: 'Peringatan kritis'
+    }
+  );
+  
+  if(firstConfirm){
+    const secondConfirm = await showConfirm(
+      'Konfirmasi <strong>sekali lagi</strong>: Hapus <strong>SEMUA</strong> data booking?<br><small style="color:var(--charcoal-muted)">Data tidak dapat dikembalikan!</small>',
+      {
+        variant: 'danger',
+        subtitle: 'Konfirmasi final'
+      }
+    );
+    
+    if(secondConfirm){
       localStorage.removeItem(STORAGE_KEY);
       loadBookings();
       showToast('Data Direset', 'Semua booking telah dihapus', 'warning');
@@ -843,20 +997,19 @@ document.getElementById('menuToggle').addEventListener('click', () => {
 // ===== INIT =====
 checkSession();
 
-// Close modal on overlay click
-document.querySelectorAll('.modal-overlay').forEach(m => {
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay, .confirm-overlay').forEach(m => {
   m.addEventListener('click', e => {
     if(e.target === m) m.classList.remove('show');
   });
 });
 
-// Keyboard shortcut: ESC to close modal
+// Keyboard shortcut: ESC to close modals
 document.addEventListener('keydown', e => {
   if(e.key === 'Escape'){
-    document.querySelectorAll('.modal-overlay.show').forEach(m => m.classList.remove('show'));
+    document.querySelectorAll('.modal-overlay.show, .confirm-overlay.show').forEach(m => m.classList.remove('show'));
   }
 });
 </script>
-
 </body>
 </html>
