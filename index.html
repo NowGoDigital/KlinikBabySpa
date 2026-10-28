@@ -40,7 +40,6 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .cursor-dot{position:fixed;width:8px;height:8px;background:var(--rose-500);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .15s ease;mix-blend-mode:difference}
 .cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--rose-400);border-radius:50%;pointer-events:none;z-index:9998;transition:transform .3s ease,width .3s,height .3s,border-color .3s}
 .cursor-ring.hover{width:60px;height:60px;border-color:var(--gold)}
-@media(max-width:768px){.cursor-dot,.cursor-ring{display:none}}
 
 /* ===== LOADER ===== */
 .loader{position:fixed;inset:0;background:var(--cream);z-index:10000;display:grid;place-items:center;transition:opacity .6s,visibility .6s}
@@ -56,138 +55,29 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .loader-bar::after{content:'';display:block;width:40%;height:100%;background:var(--grad-rose);animation:load 1.2s ease-in-out infinite}
 @keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
 
-/* ===== PROMO TOPBAR - AUTO HIDE ON SCROLL ===== */
-.promo-topbar{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:1001;
-  background:var(--grad-rose);
-  transition:transform .4s cubic-bezier(.4,0,.2,1);
-  overflow:hidden;
-  height:44px;
-  transform:translateY(0);
-}
-.promo-topbar.hide{
-  transform:translateY(-100%);
-}
-.promo-topbar::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);
-  animation:promoShine 3s ease-in-out infinite;
-}
+/* ===== PROMO TOPBAR ===== */
+.promo-topbar{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--grad-rose);transition:transform .4s cubic-bezier(.4,0,.2,1);overflow:hidden;height:44px}
+.promo-topbar.hide{transform:translateY(-100%)}
+.promo-topbar::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);animation:promoShine 3s ease-in-out infinite}
 @keyframes promoShine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-.promo-inner{
-  max-width:1400px;
-  margin:0 auto;
-  padding:0 40px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:16px;
-  height:100%;
-  position:relative;
-  z-index:2;
-}
-.promo-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  background:rgba(255,255,255,.2);
-  backdrop-filter:blur(10px);
-  padding:4px 12px;
-  border-radius:20px;
-  font-size:.7rem;
-  font-weight:700;
-  color:#fff;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  white-space:nowrap;
-  border:1px solid rgba(255,255,255,.3);
-  animation:promoPulse 2s ease-in-out infinite;
-}
-@keyframes promoPulse{
-  0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,.4)}
-  50%{transform:scale(1.05);box-shadow:0 0 0 6px rgba(255,255,255,0)}
-}
+.promo-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:center;gap:16px;height:100%;position:relative;z-index:2}
+.promo-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;border:1px solid rgba(255,255,255,.3);animation:promoPulse 2s ease-in-out infinite}
+@keyframes promoPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,.4)}50%{transform:scale(1.05);box-shadow:0 0 0 6px rgba(255,255,255,0)}}
 .promo-badge i{font-size:.65rem}
-.promo-text{
-  font-size:.85rem;
-  font-weight:500;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
+.promo-text{font-size:.85rem;font-weight:500;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
 .promo-text strong{font-weight:700;color:#fff}
-.promo-slot{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  background:#fff;
-  color:var(--rose-600);
-  padding:4px 12px;
-  border-radius:20px;
-  font-size:.75rem;
-  font-weight:700;
-  box-shadow:0 2px 10px rgba(0,0,0,.15);
-}
+.promo-slot{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--rose-600);padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:700;box-shadow:0 2px 10px rgba(0,0,0,.15)}
 .promo-slot i{color:var(--rose-500);animation:slotBlink 1.5s ease-in-out infinite}
 @keyframes slotBlink{0%,100%{opacity:1}50%{opacity:.4}}
-.promo-cta{
-  color:#fff;
-  font-weight:600;
-  font-size:.82rem;
-  padding:6px 16px;
-  border-radius:20px;
-  background:rgba(255,255,255,.2);
-  border:1px solid rgba(255,255,255,.4);
-  transition:all .3s;
-  white-space:nowrap;
-  text-decoration:none;
-}
+.promo-cta{color:#fff;font-weight:600;font-size:.82rem;padding:6px 16px;border-radius:20px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);transition:all .3s;white-space:nowrap;text-decoration:none}
 .promo-cta:hover{background:#fff;color:var(--rose-600);transform:translateY(-1px)}
-.promo-timer{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  font-size:.78rem;
-  font-weight:600;
-  color:#fff;
-  background:rgba(0,0,0,.2);
-  padding:4px 10px;
-  border-radius:20px;
-  font-family:monospace;
-  letter-spacing:1px;
-}
+.promo-timer{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;color:#fff;background:rgba(0,0,0,.2);padding:4px 10px;border-radius:20px;font-family:monospace;letter-spacing:1px}
 .promo-timer i{font-size:.7rem}
 
 /* ===== NAVBAR ===== */
-.navbar{
-  position:fixed;
-  top:44px;
-  left:0;
-  right:0;
-  z-index:1000;
-  padding:10px 0;
-  transition:all .4s cubic-bezier(.4,0,.2,1);
-  background:rgba(42,31,45,.85);
-  backdrop-filter:blur(20px);
-  -webkit-backdrop-filter:blur(20px);
-}
-.navbar.scrolled{
-  background:rgba(250,243,238,.95);
-  box-shadow:var(--shadow-sm);
-  padding:8px 0;
-}
-.navbar.topbar-hidden{
-  top:0;
-}
+.navbar{position:fixed;top:44px;left:0;right:0;z-index:1000;padding:10px 0;transition:all .4s cubic-bezier(.4,0,.2,1);background:rgba(42,31,45,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.navbar.scrolled{background:rgba(250,243,238,.95);box-shadow:var(--shadow-sm);padding:8px 0}
+.navbar.topbar-hidden{top:0}
 .nav-container{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
 .nav-brand{display:flex;align-items:center;gap:12px}
 .nav-logo{width:42px;height:42px;border-radius:50%;background:var(--grad-rose);display:grid;place-items:center;color:#fff;font-size:1.1rem;box-shadow:var(--shadow-glow);position:relative;transition:transform .4s}
@@ -249,14 +139,12 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 /* ===== SECTIONS ===== */
 section{position:relative;z-index:1}
 .container{max-width:1280px;margin:0 auto;padding:0 32px}
-
 .section-head{text-align:center;margin-bottom:50px;position:relative}
 .section-tag{display:inline-flex;align-items:center;gap:10px;background:rgba(255,111,163,.08);color:var(--rose-600);padding:8px 20px;border-radius:30px;font-size:.75rem;font-weight:600;margin-bottom:16px;letter-spacing:1.5px;text-transform:uppercase;position:relative}
 .section-tag::before,.section-tag::after{content:'';width:20px;height:1px;background:var(--rose-400)}
 .section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;color:var(--charcoal);margin-bottom:14px;line-height:1.2;letter-spacing:-.5px;text-align:center}
 .section-title .accent{background:linear-gradient(135deg,var(--rose-500),var(--gold-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-style:italic}
 .section-desc{font-size:.95rem;color:var(--charcoal-muted);max-width:600px;margin:0 auto;line-height:1.7;text-align:center}
-
 .section-divider{width:60px;height:3px;background:var(--grad-rose);margin:16px auto 0;border-radius:3px;position:relative}
 .section-divider::before,.section-divider::after{content:'';position:absolute;top:50%;width:8px;height:8px;background:var(--rose-400);border-radius:50%;transform:translateY(-50%)}
 .section-divider::before{left:-16px}
@@ -281,7 +169,7 @@ section{position:relative;z-index:1}
 .service-card .arrow{position:absolute;top:24px;right:24px;width:30px;height:30px;border-radius:50%;background:var(--rose-50);display:grid;place-items:center;color:var(--rose-400);font-size:.75rem;transition:all .4s;opacity:0;transform:translateX(-8px)}
 .service-card:hover .arrow{opacity:1;transform:translateX(0)}
 
-/* ===== BOOKING SYSTEM ===== */
+/* ===== BOOKING ===== */
 .booking{padding:80px 0;background:var(--grad-hero);position:relative;overflow:hidden}
 .booking::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;background:radial-gradient(circle,rgba(201,169,110,.12) 0%,transparent 70%);border-radius:50%}
 .booking-inner{max-width:1000px;margin:0 auto;position:relative;z-index:1}
@@ -357,7 +245,7 @@ section{position:relative;z-index:1}
 .why-card h3{font-family:var(--font-display);font-size:1.08rem;font-weight:600;color:var(--charcoal);margin-bottom:10px}
 .why-card p{font-size:.84rem;color:var(--charcoal-muted);line-height:1.6}
 
-/* ===== PROFIL / ABOUT ===== */
+/* ===== PROFIL ===== */
 .profil{padding:90px 0;background:var(--grad-hero);position:relative;overflow:hidden}
 .profil::before{content:'';position:absolute;top:-150px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(244,63,133,.06) 0%,transparent 70%);border-radius:50%}
 .profil::after{content:'';position:absolute;bottom:-150px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(201,169,110,.08) 0%,transparent 70%);border-radius:50%}
@@ -521,62 +409,129 @@ section{position:relative;z-index:1}
 .modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--charcoal);transition:all .3s;font-size:.9rem}
 .modal-close:hover{background:var(--rose-100);transform:rotate(90deg)}
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:1024px){
-  .hero-slide-title{font-size:clamp(2.2rem,5vw,3.8rem)}
-  .why-grid{grid-template-columns:repeat(2,1fr)}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .contact-grid{grid-template-columns:1fr}
-  .date-time-grid,.form-grid{grid-template-columns:1fr}
-  .booking-header,.booking-body,.booking-progress{padding-left:28px;padding-right:28px}
-  .booking-progress::before{left:45px;right:45px}
-  .profil-grid{grid-template-columns:1fr;gap:40px}
-  .profil-img-wrap{max-width:360px}
-  .profil-stats{grid-template-columns:repeat(2,1fr)}
-}
+/* ===== RESPONSIVE - MOBILE FIX ===== */
 @media(max-width:768px){
-  .nav-menu{display:none;position:fixed;inset:0;background:rgba(42,31,45,.98);backdrop-filter:blur(30px);flex-direction:column;justify-content:center;align-items:center;gap:16px;z-index:998}
-  .nav-menu.open{display:flex}
-  .nav-menu a{font-size:1.1rem;padding:14px 32px;color:#fff}
-  .nav-menu a:hover{background:rgba(255,255,255,.1)}
-  .hamburger{display:flex;z-index:999}
-  .hero-slide{padding:0 24px}
-  .hero-slide-title{font-size:clamp(2rem,7vw,3rem)}
-  .hero-slide-subtitle{font-size:1rem}
-  .section-title{font-size:1.9rem}
-  .services-grid{grid-template-columns:1fr 1fr}
-  .testi-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr}
-  .schedule{grid-template-columns:1fr}
-  .wa-float a span{display:none}
-  .wa-float a{padding:14px;border-radius:50%}
-  .time-slots{grid-template-columns:repeat(3,1fr)}
-  .booking-progress{padding:20px 20px 0}
-  .booking-progress::before{left:30px;right:30px}
-  .step-label{font-size:.65rem}
-  .slider-arrows{padding:0 15px}
-  .slider-arrow{width:42px;height:42px}
-  .cta-btns{flex-direction:column;align-items:center}
-  .cta-btn{width:100%;max-width:320px;justify-content:center}
-  .profil-float-badge{display:none}
-  .profil-stats{grid-template-columns:1fr 1fr;gap:12px}
-  .profil-stat{padding:18px 12px}
-  .profil-stat-num{font-size:1.5rem}
-  .promo-inner{padding:0 40px 0 16px}
-  .promo-text{font-size:.72rem}
-  .promo-badge{font-size:.62rem;padding:3px 8px}
-  .promo-slot{font-size:.68rem;padding:3px 8px}
-  .promo-timer{font-size:.68rem;padding:3px 8px}
+  /* Topbar Mobile - Compact 2 baris */
+  .promo-topbar{height:auto;min-height:42px}
+  .promo-inner{padding:8px 44px 8px 14px;gap:6px;flex-wrap:wrap;justify-content:center;height:auto;min-height:42px}
+  .promo-badge{font-size:.6rem;padding:3px 8px;order:1}
+  .promo-text{font-size:.68rem;order:3;width:100%;justify-content:center;gap:4px;line-height:1.4}
+  .promo-slot{font-size:.62rem;padding:2px 8px;order:2}
+  .promo-timer{font-size:.62rem;padding:2px 8px;order:4}
   .promo-cta{display:none}
-  .navbar{top:48px !important}
-}
-@media(max-width:480px){
+  
+  /* Navbar Mobile */
+  .navbar{top:42px !important;transition:top .4s cubic-bezier(.4,0,.2,1), background .4s, padding .4s}
+  .navbar.topbar-hidden{top:0 !important}
+  .navbar.scrolled{padding:8px 0}
+  .nav-container{padding:0 16px}
+  .nav-brand-text h1{font-size:1.05rem}
+  .nav-brand-text span{font-size:.58rem}
+  .nav-logo{width:38px;height:38px;font-size:1rem}
+  
+  /* Hamburger Mobile */
+  .hamburger{display:flex !important;z-index:1002;position:relative;padding:10px;margin-left:8px}
+  .hamburger span{width:24px;height:2.5px;background:#fff;border-radius:3px;transition:all .3s}
+  .navbar.scrolled .hamburger span{background:var(--charcoal)}
+  .hamburger:hover{background:rgba(255,255,255,.15)}
+  .navbar.scrolled .hamburger:hover{background:var(--rose-100)}
+  
+  /* Mobile Menu Overlay */
+  .nav-menu{display:none;position:fixed;inset:0;background:rgba(42,31,45,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);flex-direction:column;justify-content:center;align-items:center;gap:8px;z-index:1001;padding:20px;opacity:0;visibility:hidden;transition:opacity .4s, visibility .4s}
+  .nav-menu.open{display:flex;opacity:1;visibility:visible}
+  .nav-menu li{width:100%;max-width:320px;text-align:center}
+  .nav-menu a{display:block;width:100%;font-size:1.1rem;padding:16px 24px;color:#fff;border-radius:12px;font-weight:500;transition:all .3s;border:1px solid transparent}
+  .nav-menu a:hover,.nav-menu a.active{background:rgba(255,255,255,.08);color:#fff;border-color:rgba(255,255,255,.1)}
+  .nav-menu a::before{display:none}
+  .nav-menu .btn-book{margin-top:12px;background:var(--grad-rose);color:#fff !important;border:none;box-shadow:var(--shadow-glow)}
+  .nav-menu .btn-book:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(244,63,133,.4)}
+  
+  /* Close button mobile menu */
+  .menu-close{position:absolute;top:20px;right:20px;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.1);color:#fff;display:none;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;transition:all .3s;border:1px solid rgba(255,255,255,.2);z-index:1003}
+  .menu-close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg)}
+  .nav-menu.open ~ .menu-close{display:flex}
+  
+  /* Hero Mobile */
+  .hero-slide{padding:0 20px}
+  .hero-slide-title{font-size:clamp(1.8rem,8vw,2.6rem)}
+  .hero-slide-subtitle{font-size:.92rem;margin-bottom:28px}
+  .hero-slide-badge{font-size:.72rem;padding:8px 16px;margin-bottom:20px}
+  .hero-slide-ctas{flex-direction:column;align-items:center;width:100%}
+  .btn-slider{width:100%;max-width:300px;justify-content:center;padding:14px 24px;font-size:.88rem}
+  
+  /* Sections Mobile */
+  .section-title{font-size:1.7rem}
+  .section-desc{font-size:.88rem}
   .container{padding:0 20px}
+  .services{padding:60px 0}
+  .services-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .service-card{padding:20px 16px}
+  .service-ico{width:44px;height:44px;font-size:1.1rem;margin-bottom:14px}
+  .service-card h3{font-size:.95rem}
+  .service-card p{font-size:.78rem}
+  .service-card .arrow{display:none}
+  
+  /* Booking Mobile */
+  .booking{padding:60px 0}
+  .booking-header,.booking-body,.booking-progress{padding-left:20px;padding-right:20px}
+  .booking-progress::before{left:25px;right:25px}
+  .booking-progress{padding:20px 20px 0}
+  .step-label{font-size:.6rem}
+  .step-num{width:26px;height:26px;font-size:.72rem}
+  .time-slots{grid-template-columns:repeat(2,1fr);gap:6px}
+  .form-grid{grid-template-columns:1fr;gap:12px}
+  
+  /* Why & Testimonials Mobile */
+  .why{padding:60px 0}
+  .why-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .why-card{padding:24px 16px}
+  .why-ico{width:56px;height:56px;font-size:1.3rem}
+  .testimonials{padding:60px 0}
+  .testi-grid{grid-template-columns:1fr;gap:16px}
+  
+  /* Profil Mobile */
+  .profil{padding:60px 0}
+  .profil-grid{grid-template-columns:1fr;gap:30px}
+  .profil-img-wrap{max-width:300px}
+  .profil-float-badge{display:none}
+  .profil-stats{grid-template-columns:1fr 1fr;gap:10px;margin-top:30px}
+  .profil-stat{padding:16px 10px}
+  .profil-stat-num{font-size:1.4rem}
+  .profil-stat-label{font-size:.72rem}
+  
+  /* Contact Mobile */
+  .contact{padding:60px 0}
+  .contact-grid{grid-template-columns:1fr;gap:24px}
+  .schedule{grid-template-columns:1fr;gap:6px}
+  
+  /* CTA Mobile */
+  .cta{padding:60px 0}
+  .cta h2{font-size:1.6rem}
+  .cta p{font-size:.9rem}
+  .cta-btns{flex-direction:column;align-items:center}
+  .cta-btn{width:100%;max-width:300px;justify-content:center;padding:14px 24px;font-size:.88rem}
+  
+  /* Footer Mobile */
+  .footer{padding:40px 0 20px}
+  .footer-grid{grid-template-columns:1fr;gap:28px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  
+  /* Floating Buttons Mobile */
+  .wa-float a span{display:none}
+  .wa-float a{padding:14px;border-radius:50%;width:52px;height:52px;justify-content:center}
+  .scroll-top{width:42px;height:42px;bottom:20px;right:20px}
+  
+  /* Slider Arrows Mobile */
+  .slider-arrows{padding:0 10px}
+  .slider-arrow{width:40px;height:40px}
+}
+
+@media(max-width:480px){
   .services-grid{grid-template-columns:1fr}
-  .hero-slide-ctas{flex-direction:column;align-items:center}
-  .btn-slider{width:100%;justify-content:center}
-  .booking-header,.booking-body{padding-left:20px;padding-right:20px}
-  .modal{padding:32px 22px}
+  .why-grid{grid-template-columns:1fr}
+  .profil-stats{grid-template-columns:1fr 1fr}
+  .booking-header h2{font-size:1.3rem}
+  .step-title{font-size:1.15rem}
 }
 </style>
 </head>
@@ -628,6 +583,7 @@ section{position:relative;z-index:1}
       <li><a href="#kontak">Kontak</a></li>
       <li><a href="#booking" class="btn-book"><i class="fas fa-calendar-check"></i> Booking</a></li>
     </ul>
+    <button class="menu-close" id="menuClose" aria-label="Tutup menu"><i class="fas fa-times"></i></button>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -753,7 +709,7 @@ section{position:relative;z-index:1}
             <div class="service-opt" data-service="Pijat Sehat"><div class="check"><i class="fas fa-check"></i></div><div class="ico">👐</div><h4>Pijat Sehat</h4><p>Stimulasi tumbuh kembang</p></div>
             <div class="service-opt" data-service="GTM"><div class="check"><i class="fas fa-check"></i></div><div class="ico">️</div><h4>GTM</h4><p>Kembali nafsu makan</p></div>
             <div class="service-opt" data-service="Pijat Oksitosin"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Pijat Oksitosin</h4><p>Lancar ASI</p></div>
-            <div class="service-opt" data-service="Senam Hamil"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Senam Hamil</h4><p>Kebugaran ibu</p></div>
+            <div class="service-opt" data-service="Senam Hamil"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🤰</div><h4>Senam Hamil</h4><p>Kebugaran ibu</p></div>
             <div class="service-opt" data-service="Cukur Gundul"><div class="check"><i class="fas fa-check"></i></div><div class="ico">✂️</div><h4>Cukur Gundul</h4><p>Peralatan steril</p></div>
             <div class="service-opt" data-service="Pijat Laktasi"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🍼</div><h4>Pijat Laktasi</h4><p>Atasi bendungan ASI</p></div>
             <div class="service-opt" data-service="Perawatan Bayi Baru Lahir"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Perawatan BBL</h4><p>Komprehensif</p></div>
@@ -1047,11 +1003,9 @@ document.querySelectorAll('a,button,.service-card,.service-opt,.time-slot,.conta
   const topbar = document.getElementById('promoTopbar');
   const navbar = document.getElementById('navbar');
   const countdownEl = document.getElementById('promoCountdown');
-  const SCROLL_THRESHOLD = 100; // px - topbar hide setelah scroll 100px
-  let lastScrollY = 0;
+  const SCROLL_THRESHOLD = 80;
   let ticking = false;
 
-  // Countdown timer
   function initCountdown(){
     let endTime = localStorage.getItem('bidanTasya_promo_end');
     if(!endTime){
@@ -1069,27 +1023,24 @@ document.querySelectorAll('a,button,.service-card,.service-opt,.time-slot,.conta
       const hours = Math.floor(remaining / (1000 * 60 * 60));
       const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
-      countdownEl.textContent = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+      if(countdownEl){
+        countdownEl.textContent = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+      }
     }
     updateTimer();
     setInterval(updateTimer, 1000);
   }
   if(countdownEl) initCountdown();
 
-  // Scroll handler - hide topbar when scrolling down
   function onScroll(){
-    lastScrollY = window.scrollY;
-    
-    if(lastScrollY > SCROLL_THRESHOLD){
-      // Scroll lebih dari threshold - hide topbar, navbar naik ke top
+    const scrollY = window.scrollY;
+    if(scrollY > SCROLL_THRESHOLD){
       topbar.classList.add('hide');
       navbar.classList.add('topbar-hidden');
     } else {
-      // Scroll di atas threshold - show topbar, navbar di bawah topbar
       topbar.classList.remove('hide');
       navbar.classList.remove('topbar-hidden');
     }
-    
     ticking = false;
   }
 
@@ -1100,7 +1051,6 @@ document.querySelectorAll('a,button,.service-card,.service-opt,.time-slot,.conta
     }
   }, {passive: true});
 
-  // Initial check
   onScroll();
 })();
 
@@ -1110,10 +1060,40 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 150);
 });
 
-// ===== HAMBURGER =====
-const hamburger=document.getElementById('hamburger'),navMenu=document.getElementById('navMenu');
-hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');navMenu.classList.toggle('open')});
-document.querySelectorAll('.nav-menu a').forEach(l=>l.addEventListener('click',()=>{hamburger.classList.remove('active');navMenu.classList.remove('open')}));
+// ===== HAMBURGER MOBILE (FIXED) =====
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+const menuClose = document.getElementById('menuClose');
+
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navMenu.classList.toggle('open');
+  document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
+});
+
+if(menuClose){
+  menuClose.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+}
+
+document.querySelectorAll('.nav-menu a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+navMenu.addEventListener('click', (e) => {
+  if(e.target === navMenu){
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
 
 // ===== SCROLL TOP =====
 const scrollTopBtn=document.getElementById('scrollTop');
@@ -1167,7 +1147,7 @@ document.getElementById('back2').addEventListener('click',()=>goToStep(1));
 document.getElementById('back3').addEventListener('click',()=>goToStep(2));
 document.getElementById('back4').addEventListener('click',()=>goToStep(3));
 function buildSummary(){bookingData.name=document.getElementById('bookName').value.trim();bookingData.phone=document.getElementById('bookPhone').value.trim();bookingData.baby=document.getElementById('bookBaby').value.trim();bookingData.age=document.getElementById('bookAge').value;bookingData.notes=document.getElementById('bookNotes').value.trim();const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});document.getElementById('bookingSummary').innerHTML=`<div class="summary-row"><span class="label">Layanan</span><span class="value">${bookingData.services.join(', ')}</span></div><div class="summary-row"><span class="label">Tanggal</span><span class="value">${dateFormatted}</span></div><div class="summary-row"><span class="label">Waktu</span><span class="value">${bookingData.time} WITA</span></div><div class="summary-row"><span class="label">Nama Bunda</span><span class="value">${bookingData.name}</span></div><div class="summary-row"><span class="label">WhatsApp</span><span class="value">${bookingData.phone}</span></div><div class="summary-row"><span class="label">Nama Bayi</span><span class="value">${bookingData.baby}</span></div><div class="summary-row"><span class="label">Usia Bayi</span><span class="value">${bookingData.age}</span></div>${bookingData.notes?`<div class="summary-row"><span class="label">Catatan</span><span class="value">${bookingData.notes}</span></div>`:''}`}
-document.getElementById('submitBooking').addEventListener('click',()=>{const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0AHalo Bidan Tasya, saya ingin booking:%0A%0A📋 *Layanan:* ${bookingData.services.join(', ')}%0A📅 *Tanggal:* ${dateFormatted}%0A⏰ *Waktu:* ${bookingData.time} WITA%0A *Nama Bunda:* ${bookingData.name}%0A📱 *WhatsApp:* ${bookingData.phone}%0A👶 *Nama Bayi:* ${bookingData.baby}%0A *Usia Bayi:* ${bookingData.age}%0A${bookingData.notes?`📝 *Catatan:* ${bookingData.notes}%0A`:''}%0ATerima kasih!`;window.open(`https://wa.me/6287854832279?text=${msg}`,'_blank');document.getElementById('successModal').classList.add('show')});
+document.getElementById('submitBooking').addEventListener('click',()=>{const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0AHalo Bidan Tasya, saya ingin booking:%0A%0A📋 *Layanan:* ${bookingData.services.join(', ')}%0A📅 *Tanggal:* ${dateFormatted}%0A⏰ *Waktu:* ${bookingData.time} WITA%0A👩 *Nama Bunda:* ${bookingData.name}%0A📱 *WhatsApp:* ${bookingData.phone}%0A👶 *Nama Bayi:* ${bookingData.baby}%0A *Usia Bayi:* ${bookingData.age}%0A${bookingData.notes?`📝 *Catatan:* ${bookingData.notes}%0A`:''}%0ATerima kasih!`;window.open(`https://wa.me/6287854832279?text=${msg}`,'_blank');document.getElementById('successModal').classList.add('show')});
 document.getElementById('modalClose').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show')});
 document.getElementById('modalOk').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show');bookingData.services=[];bookingData.date='';bookingData.time='';document.querySelectorAll('.service-opt').forEach(s=>s.classList.remove('selected'));document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));document.getElementById('bookDate').value='';document.getElementById('bookName').value='';document.getElementById('bookPhone').value='';document.getElementById('bookBaby').value='';document.getElementById('bookAge').value='';document.getElementById('bookNotes').value='';document.getElementById('next1').disabled=true;document.getElementById('next2').disabled=true;document.getElementById('next3').disabled=true;goToStep(1)});
 document.getElementById('successModal').addEventListener('click',e=>{if(e.target.id==='successModal')document.getElementById('successModal').classList.remove('show')});
