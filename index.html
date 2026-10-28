@@ -27,8 +27,8 @@
   --font-display:'Playfair Display',serif;
   --font-body:'Poppins',sans-serif;
   --font-elegant:'Cormorant Garamond',serif;
-  --topbar-h:44px;
-  --topbar-h-m:42px;
+  --topbar-h:48px;
+  --topbar-h-m:46px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:120px;overflow-y:auto}
@@ -57,24 +57,131 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .loader-bar::after{content:'';display:block;width:40%;height:100%;background:var(--grad-rose);animation:load 1.2s ease-in-out infinite}
 @keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
 
-/* ===== PROMO TOPBAR ===== */
-.promo-topbar{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--grad-rose);height:var(--topbar-h);transition:transform .4s cubic-bezier(.4,0,.2,1);overflow:hidden}
-.promo-topbar.hide{transform:translateY(-100%)}
-.promo-topbar::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);animation:promoShine 3s ease-in-out infinite}
+/* ===== PROMO TOPBAR - NEW EXCLUSIVE DESIGN ===== */
+.promo-topbar{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:1001;
+  background:linear-gradient(90deg,#1a0f1a 0%,#2a1f2d 30%,#4a1f3a 70%,#1a0f1a 100%);
+  height:var(--topbar-h);
+  transition:transform .4s cubic-bezier(.4,0,.2,1);
+  overflow:hidden;
+  border-bottom:1px solid rgba(244,63,133,.3);
+}
+.promo-topbar::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,transparent,rgba(244,63,133,.15),transparent);
+  animation:promoShine 4s ease-in-out infinite;
+}
 @keyframes promoShine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-.promo-inner{max-width:1400px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:center;gap:16px;height:100%;position:relative;z-index:2}
-.promo-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;border:1px solid rgba(255,255,255,.3);animation:promoPulse 2s ease-in-out infinite}
-@keyframes promoPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,.4)}50%{transform:scale(1.05);box-shadow:0 0 0 6px rgba(255,255,255,0)}}
-.promo-badge i{font-size:.65rem}
-.promo-text{font-size:.85rem;font-weight:500;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
-.promo-text strong{font-weight:700;color:#fff}
-.promo-slot{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--rose-600);padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:700;box-shadow:0 2px 10px rgba(0,0,0,.15)}
-.promo-slot i{color:var(--rose-500);animation:slotBlink 1.5s ease-in-out infinite}
-@keyframes slotBlink{0%,100%{opacity:1}50%{opacity:.4}}
-.promo-cta{color:#fff;font-weight:600;font-size:.82rem;padding:6px 16px;border-radius:20px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);transition:all .3s;white-space:nowrap;text-decoration:none}
-.promo-cta:hover{background:#fff;color:var(--rose-600);transform:translateY(-1px)}
-.promo-timer{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;color:#fff;background:rgba(0,0,0,.2);padding:4px 10px;border-radius:20px;font-family:monospace;letter-spacing:1px}
-.promo-timer i{font-size:.7rem}
+.promo-topbar.hide{transform:translateY(-100%)}
+.promo-inner{
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  height:100%;
+  position:relative;
+  z-index:2;
+}
+.promo-exclusive-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:linear-gradient(135deg,var(--rose-500),var(--rose-700));
+  color:#fff;
+  padding:5px 12px;
+  border-radius:20px;
+  font-size:.68rem;
+  font-weight:700;
+  letter-spacing:1.5px;
+  white-space:nowrap;
+  box-shadow:0 2px 10px rgba(244,63,133,.4);
+  animation:promoPulse 2s ease-in-out infinite;
+  flex-shrink:0;
+}
+@keyframes promoPulse{
+  0%,100%{transform:scale(1);box-shadow:0 2px 10px rgba(244,63,133,.4)}
+  50%{transform:scale(1.05);box-shadow:0 4px 15px rgba(244,63,133,.6)}
+}
+.promo-exclusive-badge i{font-size:.6rem}
+.promo-text{
+  font-size:.82rem;
+  font-weight:500;
+  color:rgba(255,255,255,.95);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+  line-height:1.4;
+}
+.promo-text strong{
+  font-weight:700;
+  color:#fff;
+}
+.promo-text .highlight{
+  color:var(--champagne);
+  font-style:italic;
+  font-family:var(--font-display);
+}
+.promo-slot-counter{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(10px);
+  padding:4px 14px;
+  border-radius:20px;
+  font-size:.78rem;
+  font-weight:700;
+  color:#fff;
+  border:1px solid rgba(244,63,133,.4);
+  flex-shrink:0;
+}
+.promo-slot-counter .slot-num{
+  background:var(--grad-rose);
+  padding:2px 10px;
+  border-radius:12px;
+  font-size:.72rem;
+  font-weight:800;
+  box-shadow:0 2px 8px rgba(244,63,133,.4);
+}
+.promo-slot-counter .slot-num .current{color:#fff}
+.promo-slot-counter .slot-num .total{color:rgba(255,255,255,.7)}
+.promo-slot-counter .slot-num .divider{margin:0 2px;color:rgba(255,255,255,.5)}
+.promo-cta-claim{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--grad-rose);
+  color:#fff;
+  font-weight:700;
+  font-size:.78rem;
+  padding:6px 18px;
+  border-radius:20px;
+  text-decoration:none;
+  white-space:nowrap;
+  box-shadow:0 4px 15px rgba(244,63,133,.5);
+  transition:all .3s;
+  letter-spacing:.5px;
+  flex-shrink:0;
+  animation:ctaGlow 2s ease-in-out infinite;
+}
+@keyframes ctaGlow{
+  0%,100%{box-shadow:0 4px 15px rgba(244,63,133,.5)}
+  50%{box-shadow:0 4px 20px rgba(244,63,133,.8)}
+}
+.promo-cta-claim:hover{
+  transform:translateY(-2px) scale(1.05);
+  box-shadow:0 6px 20px rgba(244,63,133,.7);
+}
+.promo-cta-claim i{font-size:.7rem}
 
 /* ===== NAVBAR ===== */
 .navbar{position:fixed;top:var(--topbar-h);left:0;right:0;z-index:1000;padding:10px 0;transition:top .4s cubic-bezier(.4,0,.2,1), background .4s, padding .4s;background:rgba(42,31,45,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
@@ -411,7 +518,7 @@ section{position:relative;z-index:1}
 .modal-close{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--cream);display:grid;place-items:center;color:var(--charcoal);transition:all .3s;font-size:.9rem}
 .modal-close:hover{background:var(--rose-100);transform:rotate(90deg)}
 
-/* ===== MOBILE MENU OVERLAY (SEPARATE FROM NAV) ===== */
+/* ===== MOBILE MENU OVERLAY ===== */
 .mobile-menu-overlay{
   display:none;
   position:fixed;
@@ -482,16 +589,16 @@ section{position:relative;z-index:1}
 }
 .mobile-menu-list .btn-book:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(244,63,133,.4)}
 
-/* ===== RESPONSIVE - MOBILE FIX ===== */
+/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
-  /* Topbar Mobile */
+  /* Topbar Mobile - Compact */
   .promo-topbar{height:var(--topbar-h-m)}
   .promo-inner{padding:0 44px 0 14px;gap:6px;flex-wrap:wrap;justify-content:center}
-  .promo-badge{font-size:.6rem;padding:3px 8px;order:1}
-  .promo-text{font-size:.68rem;order:3;width:100%;justify-content:center;gap:4px;line-height:1.4}
-  .promo-slot{font-size:.62rem;padding:2px 8px;order:2}
-  .promo-timer{font-size:.62rem;padding:2px 8px;order:4}
-  .promo-cta{display:none}
+  .promo-exclusive-badge{font-size:.58rem;padding:3px 8px;order:1}
+  .promo-text{font-size:.65rem;order:3;width:100%;justify-content:center;gap:3px;line-height:1.3}
+  .promo-slot-counter{font-size:.6rem;padding:3px 8px;order:2}
+  .promo-slot-counter .slot-num{font-size:.62rem;padding:2px 8px}
+  .promo-cta-claim{font-size:.62rem;padding:4px 12px;order:4}
   
   /* Navbar Mobile */
   .navbar{top:var(--topbar-h-m)}
@@ -611,16 +718,23 @@ section{position:relative;z-index:1}
   </div>
 </div>
 
-<!-- Promo Topbar -->
+<!-- Promo Topbar - NEW EXCLUSIVE DESIGN -->
 <div class="promo-topbar" id="promoTopbar">
   <div class="promo-inner">
-    <div class="promo-badge"><i class="fas fa-fire"></i> PROMO</div>
-    <div class="promo-text">
-      <span>🎁 <strong>Diskon 20%</strong> untuk booking pertama!</span>
-      <span class="promo-slot"><i class="fas fa-circle"></i> Tersisa <strong>1 SLOT</strong> saja</span>
-      <span class="promo-timer"><i class="fas fa-clock"></i> <span id="promoCountdown">23:59:59</span></span>
+    <div class="promo-exclusive-badge">
+      <i class="fas fa-crown"></i> PENAWARAN TERBATAS
     </div>
-    <a href="#booking" class="promo-cta">Klaim Sekarang <i class="fas fa-arrow-right" style="font-size:.7rem;margin-left:4px"></i></a>
+    <div class="promo-text">
+      <span>Desain website premium ini dibuka hanya untuk <strong class="highlight">1 slot saja</strong> — amankan sebelum diambil klien lain</span>
+    </div>
+    <div class="promo-slot-counter">
+      <i class="fas fa-fire" style="color:var(--rose-400)"></i>
+      <span>SLOT:</span>
+      <span class="slot-num"><span class="current">1</span><span class="divider">/</span><span class="total">1</span></span>
+    </div>
+    <a href="#booking" class="promo-cta-claim">
+      <i class="fas fa-bolt"></i> KLAIM SEKARANG
+    </a>
   </div>
 </div>
 
@@ -652,7 +766,7 @@ section{position:relative;z-index:1}
   </div>
 </nav>
 
-<!-- Mobile Menu Overlay (SEPARATE) -->
+<!-- Mobile Menu Overlay -->
 <div class="mobile-menu-overlay" id="mobileMenu">
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Tutup menu"><i class="fas fa-times"></i></button>
   <ul class="mobile-menu-list">
@@ -786,9 +900,9 @@ section{position:relative;z-index:1}
             <div class="service-opt" data-service="Pijat Sehat"><div class="check"><i class="fas fa-check"></i></div><div class="ico">👐</div><h4>Pijat Sehat</h4><p>Stimulasi tumbuh kembang</p></div>
             <div class="service-opt" data-service="GTM"><div class="check"><i class="fas fa-check"></i></div><div class="ico">️</div><h4>GTM</h4><p>Kembali nafsu makan</p></div>
             <div class="service-opt" data-service="Pijat Oksitosin"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Pijat Oksitosin</h4><p>Lancar ASI</p></div>
-            <div class="service-opt" data-service="Senam Hamil"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🤰</div><h4>Senam Hamil</h4><p>Kebugaran ibu</p></div>
+            <div class="service-opt" data-service="Senam Hamil"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Senam Hamil</h4><p>Kebugaran ibu</p></div>
             <div class="service-opt" data-service="Cukur Gundul"><div class="check"><i class="fas fa-check"></i></div><div class="ico">✂️</div><h4>Cukur Gundul</h4><p>Peralatan steril</p></div>
-            <div class="service-opt" data-service="Pijat Laktasi"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Pijat Laktasi</h4><p>Atasi bendungan ASI</p></div>
+            <div class="service-opt" data-service="Pijat Laktasi"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🍼</div><h4>Pijat Laktasi</h4><p>Atasi bendungan ASI</p></div>
             <div class="service-opt" data-service="Perawatan Bayi Baru Lahir"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Perawatan BBL</h4><p>Komprehensif</p></div>
           </div>
           <div class="booking-nav"><div></div><button class="btn-nav btn-next" id="next1" disabled>Lanjut <i class="fas fa-arrow-right"></i></button></div>
@@ -1079,35 +1193,8 @@ document.querySelectorAll('a,button,.service-card,.service-opt,.time-slot,.conta
 (function(){
   const topbar = document.getElementById('promoTopbar');
   const navbar = document.getElementById('navbar');
-  const countdownEl = document.getElementById('promoCountdown');
   const SCROLL_THRESHOLD = 80;
   let ticking = false;
-
-  function initCountdown(){
-    let endTime = localStorage.getItem('bidanTasya_promo_end');
-    if(!endTime){
-      endTime = Date.now() + (24 * 60 * 60 * 1000);
-      localStorage.setItem('bidanTasya_promo_end', endTime);
-    }
-    function updateTimer(){
-      const now = Date.now();
-      const remaining = endTime - now;
-      if(remaining <= 0){
-        endTime = Date.now() + (24 * 60 * 60 * 1000);
-        localStorage.setItem('bidanTasya_promo_end', endTime);
-        return;
-      }
-      const hours = Math.floor(remaining / (1000 * 60 * 60));
-      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
-      if(countdownEl){
-        countdownEl.textContent = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
-      }
-    }
-    updateTimer();
-    setInterval(updateTimer, 1000);
-  }
-  if(countdownEl) initCountdown();
 
   function onScroll(){
     const scrollY = window.scrollY;
@@ -1137,7 +1224,7 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 150);
 });
 
-// ===== HAMBURGER & MOBILE MENU (FIXED) =====
+// ===== HAMBURGER & MOBILE MENU =====
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 const mobileMenuClose = document.getElementById('mobileMenuClose');
@@ -1230,7 +1317,7 @@ document.getElementById('back2').addEventListener('click',()=>goToStep(1));
 document.getElementById('back3').addEventListener('click',()=>goToStep(2));
 document.getElementById('back4').addEventListener('click',()=>goToStep(3));
 function buildSummary(){bookingData.name=document.getElementById('bookName').value.trim();bookingData.phone=document.getElementById('bookPhone').value.trim();bookingData.baby=document.getElementById('bookBaby').value.trim();bookingData.age=document.getElementById('bookAge').value;bookingData.notes=document.getElementById('bookNotes').value.trim();const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});document.getElementById('bookingSummary').innerHTML=`<div class="summary-row"><span class="label">Layanan</span><span class="value">${bookingData.services.join(', ')}</span></div><div class="summary-row"><span class="label">Tanggal</span><span class="value">${dateFormatted}</span></div><div class="summary-row"><span class="label">Waktu</span><span class="value">${bookingData.time} WITA</span></div><div class="summary-row"><span class="label">Nama Bunda</span><span class="value">${bookingData.name}</span></div><div class="summary-row"><span class="label">WhatsApp</span><span class="value">${bookingData.phone}</span></div><div class="summary-row"><span class="label">Nama Bayi</span><span class="value">${bookingData.baby}</span></div><div class="summary-row"><span class="label">Usia Bayi</span><span class="value">${bookingData.age}</span></div>${bookingData.notes?`<div class="summary-row"><span class="label">Catatan</span><span class="value">${bookingData.notes}</span></div>`:''}`}
-document.getElementById('submitBooking').addEventListener('click',()=>{const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0AHalo Bidan Tasya, saya ingin booking:%0A%0A📋 *Layanan:* ${bookingData.services.join(', ')}%0A📅 *Tanggal:* ${dateFormatted}%0A⏰ *Waktu:* ${bookingData.time} WITA%0A *Nama Bunda:* ${bookingData.name}%0A📱 *WhatsApp:* ${bookingData.phone}%0A👶 *Nama Bayi:* ${bookingData.baby}%0A *Usia Bayi:* ${bookingData.age}%0A${bookingData.notes?`📝 *Catatan:* ${bookingData.notes}%0A`:''}%0ATerima kasih!`;window.open(`https://wa.me/6287854832279?text=${msg}`,'_blank');document.getElementById('successModal').classList.add('show')});
+document.getElementById('submitBooking').addEventListener('click',()=>{const dateFormatted=new Date(bookingData.date).toLocaleDateString('id-ID',{weekday:'long',year:'numeric',month:'long',day:'numeric'});const msg=`*BOOKING BABY SPA - BIDAN TASYA*%0A%0AHalo Bidan Tasya, saya ingin booking:%0A%0A📋 *Layanan:* ${bookingData.services.join(', ')}%0A📅 *Tanggal:* ${dateFormatted}%0A⏰ *Waktu:* ${bookingData.time} WITA%0A👩 *Nama Bunda:* ${bookingData.name}%0A📱 *WhatsApp:* ${bookingData.phone}%0A👶 *Nama Bayi:* ${bookingData.baby}%0A *Usia Bayi:* ${bookingData.age}%0A${bookingData.notes?`📝 *Catatan:* ${bookingData.notes}%0A`:''}%0ATerima kasih!`;window.open(`https://wa.me/6287854832279?text=${msg}`,'_blank');document.getElementById('successModal').classList.add('show')});
 document.getElementById('modalClose').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show')});
 document.getElementById('modalOk').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show');bookingData.services=[];bookingData.date='';bookingData.time='';document.querySelectorAll('.service-opt').forEach(s=>s.classList.remove('selected'));document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));document.getElementById('bookDate').value='';document.getElementById('bookName').value='';document.getElementById('bookPhone').value='';document.getElementById('bookBaby').value='';document.getElementById('bookAge').value='';document.getElementById('bookNotes').value='';document.getElementById('next1').disabled=true;document.getElementById('next2').disabled=true;document.getElementById('next3').disabled=true;goToStep(1)});
 document.getElementById('successModal').addEventListener('click',e=>{if(e.target.id==='successModal')document.getElementById('successModal').classList.remove('show')});
