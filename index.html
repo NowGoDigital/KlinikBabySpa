@@ -239,6 +239,56 @@ section{position:relative;z-index:1}
 .why-card h3{font-family:var(--font-display);font-size:1.08rem;font-weight:600;color:var(--charcoal);margin-bottom:10px}
 .why-card p{font-size:.84rem;color:var(--charcoal-muted);line-height:1.6}
 
+/* ===== PROFIL / ABOUT ===== */
+.profil{padding:90px 0;background:var(--grad-hero);position:relative;overflow:hidden}
+.profil::before{content:'';position:absolute;top:-150px;left:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(244,63,133,.06) 0%,transparent 70%);border-radius:50%}
+.profil::after{content:'';position:absolute;bottom:-150px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(201,169,110,.08) 0%,transparent 70%);border-radius:50%}
+.profil-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:center;position:relative;z-index:1}
+.profil-image{position:relative}
+.profil-img-wrap{position:relative;width:100%;max-width:420px;margin:0 auto}
+.profil-img-frame{width:100%;aspect-ratio:4/5;border-radius:var(--radius-lg);overflow:hidden;position:relative;box-shadow:var(--shadow-xl);border:6px solid var(--white)}
+.profil-img-frame img{width:100%;height:100%;object-fit:cover}
+.profil-img-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(42,31,45,.3) 100%);pointer-events:none}
+.profil-img-placeholder{width:100%;height:100%;background:linear-gradient(145deg,var(--rose-100),var(--champagne));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.profil-img-placeholder i{font-size:5rem;color:var(--rose-400);opacity:.7}
+.profil-img-placeholder span{font-family:var(--font-display);font-weight:600;color:var(--charcoal);font-size:1.1rem}
+.profil-float-badge{position:absolute;background:var(--white);border-radius:var(--radius-md);padding:16px 20px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:14px;z-index:2;border:1px solid rgba(255,255,255,.8)}
+.profil-float-badge.top{top:30px;right:-20px;animation:floatY 5s ease-in-out infinite}
+.profil-float-badge.bottom{bottom:40px;left:-20px;animation:floatY 5s ease-in-out infinite;animation-delay:-2s}
+.profil-float-badge .ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:1.1rem;color:#fff;flex-shrink:0}
+.profil-float-badge .ico.rose{background:var(--grad-rose);box-shadow:var(--shadow-glow)}
+.profil-float-badge .ico.gold{background:linear-gradient(135deg,var(--champagne),var(--gold));box-shadow:0 4px 12px rgba(201,169,110,.3)}
+.profil-float-badge strong{display:block;font-size:.88rem;color:var(--charcoal);font-weight:600}
+.profil-float-badge span{font-size:.72rem;color:var(--charcoal-muted)}
+.profil-content{position:relative}
+.profil-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,111,163,.1);color:var(--rose-600);padding:6px 16px;border-radius:30px;font-size:.72rem;font-weight:600;margin-bottom:16px;letter-spacing:1px;text-transform:uppercase}
+.profil-content h2{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;color:var(--charcoal);margin-bottom:8px;line-height:1.2;letter-spacing:-.5px}
+.profil-content h2 .accent{background:linear-gradient(135deg,var(--rose-500),var(--gold-dark));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-style:italic}
+.profil-role{font-size:.95rem;color:var(--rose-600);font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.profil-role::before{content:'';width:30px;height:2px;background:var(--grad-rose);border-radius:2px}
+.profil-desc{font-size:.95rem;color:var(--charcoal-muted);line-height:1.75;margin-bottom:24px}
+.profil-qualifications{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.profil-qualifications li{display:flex;align-items:flex-start;gap:12px;font-size:.9rem;color:var(--charcoal)}
+.profil-qualifications li i{color:var(--rose-500);margin-top:3px;flex-shrink:0;font-size:.85rem}
+.profil-qualifications li strong{color:var(--charcoal);font-weight:600}
+.profil-cta{display:flex;gap:12px;flex-wrap:wrap}
+.profil-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:50px;position:relative;z-index:1}
+.profil-stat{text-align:center;padding:22px 16px;background:var(--white);border-radius:var(--radius-md);border:1px solid rgba(42,31,45,.06);transition:all .4s}
+.profil-stat:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(244,63,133,.15)}
+.profil-stat-num{font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--rose-600);line-height:1;margin-bottom:6px}
+.profil-stat-label{font-size:.78rem;color:var(--charcoal-muted);font-weight:500}
+@media(max-width:1024px){
+  .profil-grid{grid-template-columns:1fr;gap:40px}
+  .profil-img-wrap{max-width:360px}
+  .profil-stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:640px){
+  .profil-float-badge{display:none}
+  .profil-stats{grid-template-columns:1fr 1fr;gap:12px}
+  .profil-stat{padding:18px 12px}
+  .profil-stat-num{font-size:1.5rem}
+}
+  
 /* ===== TESTIMONIALS ===== */
 .testimonials{padding:80px 0;background:var(--grad-hero);position:relative;overflow:hidden}
 .testimonials::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(244,63,133,.05) 0%,transparent 70%);border-radius:50%}
@@ -426,6 +476,7 @@ section{position:relative;z-index:1}
     </a>
     <ul class="nav-menu" id="navMenu">
       <li><a href="#beranda" class="active">Beranda</a></li>
+      <li><a href="#profil">Profil</a></li>
       <li><a href="#layanan">Layanan</a></li>
       <li><a href="#booking">Booking</a></li>
       <li><a href="#keunggulan">Keunggulan</a></li>
@@ -620,6 +671,90 @@ section{position:relative;z-index:1}
   </div>
 </section>
 
+<!-- Profil / Tentang Kami -->
+<section class="profil" id="profil">
+  <div class="container">
+    <div class="profil-grid">
+      <!-- Image Side -->
+      <div class="profil-image reveal">
+        <div class="profil-img-wrap">
+          <div class="profil-img-frame">
+            <!-- Ganti src dengan foto Bidan Tasya yang asli -->
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80" alt="Bidan Tasya - Terapis Baby Spa Profesional">
+          </div>
+          <!-- Floating Badges -->
+          <div class="profil-float-badge top">
+            <div class="ico rose"><i class="fas fa-award"></i></div>
+            <div>
+              <strong>Bersertifikat</strong>
+              <span>Terapis Profesional</span>
+            </div>
+          </div>
+          <div class="profil-float-badge bottom">
+            <div class="ico gold"><i class="fas fa-heart"></i></div>
+            <div>
+              <strong>500+ Keluarga</strong>
+              <span>Sudah Percaya</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Side -->
+      <div class="profil-content reveal d2">
+        <div class="profil-tag"><i class="fas fa-user-nurse"></i> Tentang Kami</div>
+        <h2>Kenali Lebih Dekat <span class="accent">Bidan Tasya</span></h2>
+        <div class="profil-role">Founder & Terapis Baby Spa Bersertifikat</div>
+        <p class="profil-desc">
+          Bidan Tasya adalah seorang bidan profesional yang berdedikasi tinggi dalam memberikan perawatan terbaik untuk ibu dan bayi. Dengan pengalaman lebih dari 5 tahun di bidang perawatan bayi, beliau mendirikan Klinik Baby Spa Bidan Tasya dengan visi menghadirkan layanan baby spa yang aman, nyaman, dan berkualitas premium bagi keluarga di Lotim dan sekitarnya.
+        </p>
+        <ul class="profil-qualifications">
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <span><strong>Bidan Bersertifikat</strong> — Lulusan resmi dengan STR aktif</span>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <span><strong>Terapis Baby Spa Profesional</strong> — Pelatihan khusus baby spa & pijat bayi</span>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <span><strong>5+ Tahun Pengalaman</strong> — Menangani ratusan ibu & bayi</span>
+          </li>
+          <li>
+            <i class="fas fa-check-circle"></i>
+            <span><strong>Peralatan Steril & Modern</strong> — Standar keamanan tertinggi</span>
+          </li>
+        </ul>
+        <div class="profil-cta">
+          <a href="#booking" class="btn-slider btn-slider-primary" style="padding:14px 28px;font-size:.88rem"><i class="fas fa-calendar-check"></i> Booking Sekarang</a>
+          <a href="#kontak" class="btn-slider btn-slider-outline" style="padding:14px 28px;font-size:.88rem"><i class="fas fa-phone"></i> Hubungi Kami</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="profil-stats reveal d3">
+      <div class="profil-stat">
+        <div class="profil-stat-num">5+</div>
+        <div class="profil-stat-label">Tahun Pengalaman</div>
+      </div>
+      <div class="profil-stat">
+        <div class="profil-stat-num">500+</div>
+        <div class="profil-stat-label">Pasien Terlayani</div>
+      </div>
+      <div class="profil-stat">
+        <div class="profil-stat-num">10+</div>
+        <div class="profil-stat-label">Layanan Tersedia</div>
+      </div>
+      <div class="profil-stat">
+        <div class="profil-stat-num">4.9</div>
+        <div class="profil-stat-label">Rating Kepuasan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Testimonials -->
 <section class="testimonials" id="testimoni">
   <div class="container">
@@ -729,6 +864,7 @@ section{position:relative;z-index:1}
         <h4>Navigasi</h4>
         <ul class="footer-links">
           <li><a href="#beranda"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+          <li><a href="#profil"><i class="fas fa-chevron-right"></i> Profil</a></li>
           <li><a href="#layanan"><i class="fas fa-chevron-right"></i> Layanan</a></li>
           <li><a href="#booking"><i class="fas fa-chevron-right"></i> Booking</a></li>
           <li><a href="#keunggulan"><i class="fas fa-chevron-right"></i> Keunggulan</a></li>
