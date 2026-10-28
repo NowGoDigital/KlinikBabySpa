@@ -56,6 +56,49 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .loader-bar::after{content:'';display:block;width:40%;height:100%;background:var(--grad-rose);animation:load 1.2s ease-in-out infinite}
 @keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
 
+/* ===== PROMO TOPBAR ===== */
+.promo-topbar{position:fixed;top:0;left:0;right:0;z-index:1001;background:var(--grad-rose);padding:0;transition:all .4s cubic-bezier(.4,0,.2,1);overflow:hidden}
+.promo-topbar.hidden{transform:translateY(-100%);opacity:0;pointer-events:none}
+.promo-topbar::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);animation:promoShine 3s ease-in-out infinite}
+@keyframes promoShine{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.promo-topbar::after{content:'';position:absolute;top:0;right:0;width:200px;height:100%;background:radial-gradient(circle at right,rgba(255,255,255,.15),transparent 70%);pointer-events:none}
+.promo-inner{max-width:1400px;margin:0 auto;padding:10px 40px;display:flex;align-items:center;justify-content:center;gap:16px;position:relative;z-index:2}
+.promo-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.2);backdrop-filter:blur(10px);padding:4px 12px;border-radius:20px;font-size:.7rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:1px;white-space:nowrap;border:1px solid rgba(255,255,255,.3);animation:promoPulse 2s ease-in-out infinite}
+@keyframes promoPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,255,255,.4)}50%{transform:scale(1.05);box-shadow:0 0 0 6px rgba(255,255,255,0)}}
+.promo-badge i{font-size:.65rem}
+.promo-text{font-size:.85rem;font-weight:500;color:#fff;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center}
+.promo-text strong{font-weight:700;color:#fff}
+.promo-slot{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--rose-600);padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:700;box-shadow:0 2px 10px rgba(0,0,0,.15)}
+.promo-slot i{color:var(--rose-500);animation:slotBlink 1.5s ease-in-out infinite}
+@keyframes slotBlink{0%,100%{opacity:1}50%{opacity:.4}}
+.promo-cta{color:#fff;font-weight:600;font-size:.82rem;padding:6px 16px;border-radius:20px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);transition:all .3s;white-space:nowrap;text-decoration:none}
+.promo-cta:hover{background:#fff;color:var(--rose-600);transform:translateY(-1px)}
+.promo-timer{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;color:#fff;background:rgba(0,0,0,.2);padding:4px 10px;border-radius:20px;font-family:monospace;letter-spacing:1px}
+.promo-timer i{font-size:.7rem}
+.promo-close{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.2);color:#fff;display:grid;place-items:center;cursor:pointer;transition:all .3s;border:1px solid rgba(255,255,255,.3);font-size:.8rem}
+.promo-close:hover{background:rgba(255,255,255,.4);transform:translateY(-50%) rotate(90deg)}
+.promo-topbar.hidden ~ .navbar{top:0}
+
+/* Adjust navbar position when promo is visible */
+.navbar{top:44px}
+.navbar.scrolled{top:0}
+.promo-topbar.hidden ~ .navbar{top:0}
+
+@media(max-width:1024px){
+  .promo-inner{padding:10px 20px;gap:10px;flex-wrap:wrap}
+  .promo-text{font-size:.78rem}
+  .promo-cta{display:none}
+  .navbar{top:52px}
+}
+@media(max-width:640px){
+  .promo-inner{padding:8px 40px 8px 16px}
+  .promo-text{font-size:.72rem}
+  .promo-badge{font-size:.62rem;padding:3px 8px}
+  .promo-slot{font-size:.68rem;padding:3px 8px}
+  .promo-timer{font-size:.68rem;padding:3px 8px}
+  .navbar{top:48px}
+}
+  
 /* ===== NAVBAR ===== */
 .navbar{position:fixed;top:0;left:0;right:0;z-index:1000;padding:10px 0;transition:all .4s cubic-bezier(.4,0,.2,1);background:rgba(42,31,45,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
 .navbar.scrolled{background:rgba(250,243,238,.95);box-shadow:var(--shadow-sm);padding:8px 0}
@@ -288,6 +331,8 @@ section{position:relative;z-index:1}
   .profil-stat{padding:18px 12px}
   .profil-stat-num{font-size:1.5rem}
 }
+
+
   
 /* ===== TESTIMONIALS ===== */
 .testimonials{padding:80px 0;background:var(--grad-hero);position:relative;overflow:hidden}
@@ -464,6 +509,24 @@ section{position:relative;z-index:1}
   </div>
 </div>
 
+<!-- ===== PROMO TOPBAR ===== -->
+<div class="promo-topbar" id="promoTopbar">
+  <div class="promo-inner">
+    <div class="promo-badge"><i class="fas fa-fire"></i> PROMO</div>
+    <div class="promo-text">
+      <span>🎁 <strong>Diskon 20%</strong> untuk booking pertama!</span>
+      <span class="promo-slot"><i class="fas fa-circle"></i> Tersisa <strong>1 SLOT</strong> saja</span>
+      <span class="promo-timer"><i class="fas fa-clock"></i> <span id="promoCountdown">23:59:59</span></span>
+    </div>
+    <a href="#booking" class="promo-cta">Klaim Sekarang <i class="fas fa-arrow-right" style="font-size:.7rem;margin-left:4px"></i></a>
+    <button class="promo-close" id="promoClose" aria-label="Tutup"><i class="fas fa-times"></i></button>
+  </div>
+</div>
+
+<!-- Navbar (existing) -->
+<nav class="navbar" id="navbar">
+  ...
+  
 <!-- Navbar -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
@@ -917,8 +980,13 @@ document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;dot.
 function animateRing(){ringX+=(mouseX-ringX)*.15;ringY+=(mouseY-ringY)*.15;ring.style.left=ringX-18+'px';ring.style.top=ringY-18+'px';requestAnimationFrame(animateRing)}
 animateRing();
 document.querySelectorAll('a,button,.service-card,.service-opt,.time-slot,.contact-card,.cta-btn').forEach(el=>{el.addEventListener('mouseenter',()=>ring.classList.add('hover'));el.addEventListener('mouseleave',()=>ring.classList.remove('hover'))});
+// Navbar scroll (with promo topbar support)
 const navbar=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
+const promoTopbar=document.getElementById('promoTopbar');
+window.addEventListener('scroll',()=>{
+  const isPromoHidden = promoTopbar && promoTopbar.classList.contains('hidden');
+  navbar.classList.toggle('scrolled', window.scrollY > 50 || isPromoHidden);
+});
 const hamburger=document.getElementById('hamburger'),navMenu=document.getElementById('navMenu');
 hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');navMenu.classList.toggle('open')});
 document.querySelectorAll('.nav-menu a').forEach(l=>l.addEventListener('click',()=>{hamburger.classList.remove('active');navMenu.classList.remove('open')}));
@@ -969,6 +1037,68 @@ document.getElementById('submitBooking').addEventListener('click',()=>{const dat
 document.getElementById('modalClose').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show')});
 document.getElementById('modalOk').addEventListener('click',()=>{document.getElementById('successModal').classList.remove('show');bookingData.services=[];bookingData.date='';bookingData.time='';document.querySelectorAll('.service-opt').forEach(s=>s.classList.remove('selected'));document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('selected'));document.getElementById('bookDate').value='';document.getElementById('bookName').value='';document.getElementById('bookPhone').value='';document.getElementById('bookBaby').value='';document.getElementById('bookAge').value='';document.getElementById('bookNotes').value='';document.getElementById('next1').disabled=true;document.getElementById('next2').disabled=true;document.getElementById('next3').disabled=true;goToStep(1)});
 document.getElementById('successModal').addEventListener('click',e=>{if(e.target.id==='successModal')document.getElementById('successModal').classList.remove('show')});
+
+// ===== PROMO TOPBAR =====
+(function(){
+  const topbar = document.getElementById('promoTopbar');
+  const closeBtn = document.getElementById('promoClose');
+  const countdownEl = document.getElementById('promoCountdown');
+  const STORAGE_KEY_PROMO = 'bidanTasya_promo_closed';
+  
+  // Check if user already closed it
+  const isClosed = sessionStorage.getItem(STORAGE_KEY_PROMO);
+  if(isClosed === 'true'){
+    topbar.classList.add('hidden');
+    document.querySelector('.navbar').style.top = '0';
+  }
+  
+  // Close button handler
+  closeBtn.addEventListener('click', () => {
+    topbar.classList.add('hidden');
+    sessionStorage.setItem(STORAGE_KEY_PROMO, 'true');
+    // Adjust navbar position
+    setTimeout(() => {
+      document.querySelector('.navbar').style.top = '0';
+    }, 400);
+  });
+  
+  // Countdown timer (24 hours from first visit)
+  function initCountdown(){
+    let endTime = localStorage.getItem('bidanTasya_promo_end');
+    if(!endTime){
+      // Set 24 hours from now
+      endTime = Date.now() + (24 * 60 * 60 * 1000);
+      localStorage.setItem('bidanTasya_promo_end', endTime);
+    }
+    
+    function updateTimer(){
+      const now = Date.now();
+      const remaining = endTime - now;
+      
+      if(remaining <= 0){
+        // Reset timer
+        endTime = Date.now() + (24 * 60 * 60 * 1000);
+        localStorage.setItem('bidanTasya_promo_end', endTime);
+        return;
+      }
+      
+      const hours = Math.floor(remaining / (1000 * 60 * 60));
+      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+      
+      countdownEl.textContent = 
+        `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+    }
+    
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  }
+  
+  if(countdownEl){
+    initCountdown();
+  }
+})();
+
 </script>
 
 <script>
