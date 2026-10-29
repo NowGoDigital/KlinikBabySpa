@@ -57,7 +57,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .loader-bar::after{content:'';display:block;width:40%;height:100%;background:var(--grad-rose);animation:load 1.2s ease-in-out infinite}
 @keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
 
-/* ===== PROMO TOPBAR - NEW EXCLUSIVE DESIGN ===== */
+/* ===== PROMO TOPBAR ===== */
 .promo-topbar{
   position:fixed;
   top:0;left:0;right:0;
@@ -121,15 +121,8 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
   justify-content:center;
   line-height:1.4;
 }
-.promo-text strong{
-  font-weight:700;
-  color:#fff;
-}
-.promo-text .highlight{
-  color:var(--champagne);
-  font-style:italic;
-  font-family:var(--font-display);
-}
+.promo-text strong{font-weight:700;color:#fff}
+.promo-text .highlight{color:var(--champagne);font-style:italic;font-family:var(--font-display)}
 .promo-slot-counter{
   display:inline-flex;
   align-items:center;
@@ -180,8 +173,9 @@ button{font-family:inherit;cursor:pointer;border:none;background:none}
 .promo-cta-claim:hover{
   transform:translateY(-2px) scale(1.05);
   box-shadow:0 6px 20px rgba(244,63,133,.7);
+  background:linear-gradient(135deg,#25d366,#128c7e);
 }
-.promo-cta-claim i{font-size:.7rem}
+.promo-cta-claim i{font-size:.85rem}
 
 /* ===== NAVBAR ===== */
 .navbar{position:fixed;top:var(--topbar-h);left:0;right:0;z-index:1000;padding:10px 0;transition:top .4s cubic-bezier(.4,0,.2,1), background .4s, padding .4s;background:rgba(42,31,45,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
@@ -264,7 +258,6 @@ section{position:relative;z-index:1}
 .services::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--rose-200),transparent)}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px}
 
-/* Service Card - New Design */
 .service-card{
   background:var(--white);
   border-radius:var(--radius-md);
@@ -294,7 +287,6 @@ section{position:relative;z-index:1}
 }
 .service-card:hover::before{transform:scaleX(1)}
 
-/* Image Container */
 .service-img-wrap{
   position:relative;
   width:100%;
@@ -308,9 +300,8 @@ section{position:relative;z-index:1}
   object-fit:cover;
   transition:transform .6s cubic-bezier(.4,0,.2,1);
 }
-.service-card:hover .service-img-wrap img{
-  transform:scale(1.08);
-}
+.service-card:hover .service-img-wrap img{transform:scale(1.08)}
+
 .service-img-overlay{
   position:absolute;
   inset:0;
@@ -356,7 +347,6 @@ section{position:relative;z-index:1}
   letter-spacing:1px;
 }
 
-/* Content */
 .service-content{
   padding:20px 22px 22px;
   flex:1;
@@ -378,35 +368,7 @@ section{position:relative;z-index:1}
   margin-bottom:14px;
   flex:1;
 }
-.service-card-footer{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding-top:12px;
-  border-top:1px solid rgba(42,31,45,.06);
-}
-.service-link{
-  font-size:.78rem;
-  font-weight:600;
-  color:var(--rose-600);
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  transition:all .3s;
-  text-decoration:none;
-}
-.service-link i{
-  font-size:.7rem;
-  transition:transform .3s;
-}
-.service-card:hover .service-link i{
-  transform:translateX(4px);
-}
-.service-link:hover{
-  color:var(--rose-700);
-}
 
-/* Different image positions for variety */
 .service-card:nth-child(1) .service-img-wrap img{object-position:center}
 .service-card:nth-child(2) .service-img-wrap img{object-position:left}
 .service-card:nth-child(3) .service-img-wrap img{object-position:right}
@@ -417,25 +379,6 @@ section{position:relative;z-index:1}
 .service-card:nth-child(8) .service-img-wrap img{object-position:center}
 .service-card:nth-child(9) .service-img-wrap img{object-position:left top}
 .service-card:nth-child(10) .service-img-wrap img{object-position:right bottom}
-
-/* Responsive Mobile */
-@media(max-width:768px){
-  .services{padding:60px 0}
-  .services-grid{grid-template-columns:1fr 1fr;gap:14px}
-  .service-img-wrap{height:140px}
-  .service-img-badge{width:36px;height:36px;font-size:1rem;border-radius:10px}
-  .service-img-number{font-size:.65rem;padding:3px 8px}
-  .service-content{padding:14px 16px 16px}
-  .service-card h3{font-size:.95rem}
-  .service-card p{font-size:.76rem;margin-bottom:10px}
-  .service-link{font-size:.72rem}
-}
-@media(max-width:480px){
-  .services-grid{grid-template-columns:1fr}
-  .service-img-wrap{height:180px}
-  .service-content{padding:18px 20px 20px}
-  .service-card h3{font-size:1.05rem}
-}
 
 /* ===== BOOKING ===== */
 .booking{padding:80px 0;background:var(--grad-hero);position:relative;overflow:hidden}
@@ -750,7 +693,7 @@ section{position:relative;z-index:1}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
-  /* Topbar Mobile - Compact */
+  /* Topbar Mobile */
   .promo-topbar{height:var(--topbar-h-m)}
   .promo-inner{padding:0 44px 0 14px;gap:6px;flex-wrap:wrap;justify-content:center}
   .promo-exclusive-badge{font-size:.58rem;padding:3px 8px;order:1}
@@ -778,6 +721,16 @@ section{position:relative;z-index:1}
   .hamburger:hover{background:rgba(255,255,255,.15)}
   .navbar.scrolled .hamburger:hover{background:var(--rose-100)}
   
+  /* Services Mobile */
+  .services{padding:60px 0}
+  .services-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .service-img-wrap{height:140px}
+  .service-img-badge{width:36px;height:36px;font-size:1rem;border-radius:10px}
+  .service-img-number{font-size:.65rem;padding:3px 8px}
+  .service-content{padding:14px 16px 16px}
+  .service-card h3{font-size:.95rem}
+  .service-card p{font-size:.76rem;margin-bottom:10px}
+  
   /* Hero Mobile */
   .hero-slide{padding:0 20px}
   .hero-slide-title{font-size:clamp(1.8rem,8vw,2.6rem)}
@@ -790,13 +743,7 @@ section{position:relative;z-index:1}
   .section-title{font-size:1.7rem}
   .section-desc{font-size:.88rem}
   .container{padding:0 20px}
-  .services{padding:60px 0}
   .services-grid{grid-template-columns:1fr 1fr;gap:14px}
-  .service-card{padding:20px 16px}
-  .service-ico{width:44px;height:44px;font-size:1.1rem;margin-bottom:14px}
-  .service-card h3{font-size:.95rem}
-  .service-card p{font-size:.78rem}
-  .service-card .arrow{display:none}
   
   /* Booking Mobile */
   .booking{padding:60px 0}
@@ -855,6 +802,9 @@ section{position:relative;z-index:1}
 
 @media(max-width:480px){
   .services-grid{grid-template-columns:1fr}
+  .service-img-wrap{height:180px}
+  .service-content{padding:18px 20px 20px}
+  .service-card h3{font-size:1.05rem}
   .why-grid{grid-template-columns:1fr}
   .profil-stats{grid-template-columns:1fr 1fr}
   .booking-header h2{font-size:1.3rem}
@@ -877,7 +827,7 @@ section{position:relative;z-index:1}
   </div>
 </div>
 
-<!-- Promo Topbar - NEW EXCLUSIVE DESIGN -->
+<!-- Promo Topbar -->
 <div class="promo-topbar" id="promoTopbar">
   <div class="promo-inner">
     <div class="promo-exclusive-badge">
@@ -892,7 +842,7 @@ section{position:relative;z-index:1}
       <span class="slot-num"><span class="current">1</span><span class="divider">/</span><span class="total">1</span></span>
     </div>
     <a href="https://wa.me/628175761165?text=Halo%20Admin%2C%20saya%20tertarik%20dengan%20penawaran%20website%20premium%20Klinik%20Baby%20Spa%20Bidan%20Tasya.%20Saya%20ingin%20klaim%201%20slot%20yang%20tersedia.%20Mohon%20informasi%20lebih%20lanjut.%20Terima%20kasih." class="promo-cta-claim" target="_blank" rel="noopener">
-    <i class="fab fa-whatsapp"></i> KLAIM SEKARANG
+      <i class="fab fa-whatsapp"></i> KLAIM SEKARANG
     </a>
   </div>
 </div>
@@ -907,7 +857,6 @@ section{position:relative;z-index:1}
         <span>Premium Baby Care</span>
       </div>
     </a>
-    <!-- Desktop Menu -->
     <ul class="nav-menu" id="navMenu">
       <li><a href="#beranda" class="active">Beranda</a></li>
       <li><a href="#profil">Profil</a></li>
@@ -918,7 +867,6 @@ section{position:relative;z-index:1}
       <li><a href="#kontak">Kontak</a></li>
       <li><a href="#booking" class="btn-book"><i class="fas fa-calendar-check"></i> Booking</a></li>
     </ul>
-    <!-- Hamburger Button -->
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -998,7 +946,7 @@ section{position:relative;z-index:1}
   <div class="slider-progress" id="sliderProgress"></div>
 </section>
 
-<!-- Services -->
+<!-- Services - REDESIGN DENGAN GAMBAR -->
 <section class="services" id="layanan">
   <div class="container">
     <div class="section-head reveal">
@@ -1019,9 +967,6 @@ section{position:relative;z-index:1}
         <div class="service-content">
           <h3>Nafas Grok-Grok</h3>
           <p>Melegakan pernapasan si kecil dengan teknik pijat khusus yang aman dan lembut</p>
-          <div class="service-card-footer">
-            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
-          </div>
         </div>
       </div>
 
@@ -1036,9 +981,6 @@ section{position:relative;z-index:1}
         <div class="service-content">
           <h3>Hidung Tersumbat</h3>
           <p>Terapi lembut agar si kecil bisa bernapas dengan lega dan nyaman</p>
-          <div class="service-card-footer">
-            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
-          </div>
         </div>
       </div>
 
@@ -1053,9 +995,6 @@ section{position:relative;z-index:1}
         <div class="service-content">
           <h3>Batuk Pilek</h3>
           <p>Penanganan alami tanpa obat kimia untuk meredakan batuk dan pilek</p>
-          <div class="service-card-footer">
-            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
-          </div>
         </div>
       </div>
 
@@ -1070,9 +1009,6 @@ section{position:relative;z-index:1}
         <div class="service-content">
           <h3>Batuk Berdahak</h3>
           <p>Pijat terapeutik untuk mengencerkan dan membantu mengeluarkan dahak</p>
-          <div class="service-card-footer">
-            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
-          </div>
         </div>
       </div>
 
@@ -1087,9 +1023,6 @@ section{position:relative;z-index:1}
         <div class="service-content">
           <h3>Perut Kembung</h3>
           <p>Pijat khusus perut untuk mengurangi kembung dan kolik pada bayi</p>
-          <div class="service-card-footer">
-            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
-          </div>
         </div>
       </div>
 
@@ -1104,9 +1037,6 @@ section{position:relative;z-index:1}
         <div class="service-content">
           <h3>Rewel / Susah Tidur</h3>
           <p>Relaksasi dan pijat bayi untuk membantu tidur nyenyak dan tenang</p>
-          <div class="service-card-footer">
-            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
-          </div>
         </div>
       </div>
 
@@ -1121,9 +1051,6 @@ section{position:relative;z-index:1}
         <div class="service-content">
           <h3>Sembelit</h3>
           <p>Pijat abdomen untuk melancarkan pencernaan dan mengatasi sembelit</p>
-          <div class="service-card-footer">
-            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
-          </div>
         </div>
       </div>
 
@@ -1138,9 +1065,6 @@ section{position:relative;z-index:1}
         <div class="service-content">
           <h3>Diare</h3>
           <p>Perawatan komprehensif untuk membantu mengatasi diare pada bayi</p>
-          <div class="service-card-footer">
-            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
-          </div>
         </div>
       </div>
 
@@ -1155,9 +1079,6 @@ section{position:relative;z-index:1}
         <div class="service-content">
           <h3>Pijat Sehat</h3>
           <p>Stimulasi tumbuh kembang dan meningkatkan imunitas si kecil</p>
-          <div class="service-card-footer">
-            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
-          </div>
         </div>
       </div>
 
@@ -1172,9 +1093,6 @@ section{position:relative;z-index:1}
         <div class="service-content">
           <h3>GTM</h3>
           <p>Terapi khusus untuk mengembalikan nafsu makan si kecil</p>
-          <div class="service-card-footer">
-            <span class="service-link">Selengkapnya <i class="fas fa-arrow-right"></i></span>
-          </div>
         </div>
       </div>
     </div>
@@ -1215,10 +1133,10 @@ section{position:relative;z-index:1}
             <div class="service-opt" data-service="Rewel/Susah Tidur"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🌙</div><h4>Rewel/Susah Tidur</h4><p>Tidur nyenyak</p></div>
             <div class="service-opt" data-service="Sembelit"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Sembelit</h4><p>Lancar pencernaan</p></div>
             <div class="service-opt" data-service="Diare"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Diare</h4><p>Perawatan komprehensif</p></div>
-            <div class="service-opt" data-service="Pijat Sehat"><div class="check"><i class="fas fa-check"></i></div><div class="ico">👐</div><h4>Pijat Sehat</h4><p>Stimulasi tumbuh kembang</p></div>
+            <div class="service-opt" data-service="Pijat Sehat"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Pijat Sehat</h4><p>Stimulasi tumbuh kembang</p></div>
             <div class="service-opt" data-service="GTM"><div class="check"><i class="fas fa-check"></i></div><div class="ico">️</div><h4>GTM</h4><p>Kembali nafsu makan</p></div>
             <div class="service-opt" data-service="Pijat Oksitosin"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Pijat Oksitosin</h4><p>Lancar ASI</p></div>
-            <div class="service-opt" data-service="Senam Hamil"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Senam Hamil</h4><p>Kebugaran ibu</p></div>
+            <div class="service-opt" data-service="Senam Hamil"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🤰</div><h4>Senam Hamil</h4><p>Kebugaran ibu</p></div>
             <div class="service-opt" data-service="Cukur Gundul"><div class="check"><i class="fas fa-check"></i></div><div class="ico">✂️</div><h4>Cukur Gundul</h4><p>Peralatan steril</p></div>
             <div class="service-opt" data-service="Pijat Laktasi"><div class="check"><i class="fas fa-check"></i></div><div class="ico">🍼</div><h4>Pijat Laktasi</h4><p>Atasi bendungan ASI</p></div>
             <div class="service-opt" data-service="Perawatan Bayi Baru Lahir"><div class="check"><i class="fas fa-check"></i></div><div class="ico"></div><h4>Perawatan BBL</h4><p>Komprehensif</p></div>
